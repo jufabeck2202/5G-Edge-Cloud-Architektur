@@ -20,6 +20,8 @@
 \usepackage{hyperref}
 \numberwithin{figure}{section}
 
+\usepackage[citestyle=numeric,style=numeric,backend=biber]{biblatex}
+\addbibresource{literature.bib}
 
 %
 % ECMAScript 2015 (ES6) definition by Gary Hammock
@@ -134,12 +136,13 @@
 % -------------------------------------------------------------------------------------------------
 
 \begin{abstract}
-  Immer mehr Webseiten verwenden clientseitiges Rendern um interaktive Single Page Anwendungen 
-  anzubieten. Single Page Anwendungen erlauben eine bessere Nutzererfahrung,
-  führen aber zu einer schlechteren Indexierbarkeit und Ladezeit der Webseite. Universal Rendering
-  löst diese Probleme, indem Sie clientseitiges und serverseitiges Rendern kombinieren. Diese Arbeit 
-  evaluiert die Vor -und Nachteile der jeweiligen Rendermethoden und erläutert die Funktion von Universal 
-  Rendering.
+  Die Edge Cloud wird in dem Zeitalter von 5G eine wichtige Rolle spielen. 
+  Als ein Bestandteil der 5G-Netzwerkarchitektur bietet es nicht nur eine Vielzahl von Cloud-Ressourcen, sondern
+  ermöglicht neue Platformen für Drittanbieter und das Entwickeln von neuen Erfahrungen für den Nutzer.
+  Multi-Access Edge Computing (MEC) bietet Speicher- und Rechenressourcen in der Nähe des Endgerätes, 
+  eine besser Latenzzeit für mobile Endbenutzer und effizientere Nutzung des Mobile Backhaul
+  und Core Netzwerkes. Diese Seminararbeit erläutert, welche Technologien MEC ermöglicht und geht auf die Architekturen 
+  hinter Multi-Access Edge Computing ein.
 \end{abstract}
 
 % -------------------------------------------------------------------------------------------------
@@ -149,16 +152,75 @@
 
 \section{Einleitung}
 \label{sec:Einleitung}
+\subsection{Problem}
+\label{subsec:Problem}
+\section{Edge Computing}
+\label{sec:Edge Computing}
+Beim Edge Computing wird die Berechnung und Speicherung von Daten in die Nähe der Quelle gebracht,
+an den sogenannten Rand oder \textit{Edge} des Netzwerks. Im Gegensatz zum Cloud Computing werden die Daten
+nicht an zentralen Rechenzentren verarbeitet, sonden an dezentralen Cloud Systemen am Rand des Neztwerks. 
+Folgende Vorteile bringt Edge Computing: \cite{labrieTopBenefitsEdge}
+\begin{itemize}
+  \item \textbf{Geschwindigkeit und Latenz:} Abhängig von der Anwendungen spielt die Länge der Datenverarbeitung 
+  Entscheidende Rolle. Beispielsweise bei Autonomen Fahrzeugen ist es wichtig, das innerhalb von Millisekunden die Daten
+  verarbeitet werden. Auch bei Digitalen Fabriken ist es meist zu langsam die Daten zu einer zentralen Cloud und zurück
+  zu senden. 
+  Wenn die Datenverarbeitung auf den Rand des Netzwerks verlegt wird, wird die Latenz des Netzwerks verhindert und schneller
+  auf Anfragen geantwortet.
+  \item \textbf{Netzlast:} Dadurch das die Daten nicht zu einer zentralen Cloud gesendet werden, sonder am Rand des Netzwerks 
+  verarbeitet werden, verringert sich nicht nur die Latenz sonder auch die Netzlast des gesamten Netzwerks. 
+  Die Daten müssen nicht weitreichend weiter gesendet werden, sondern werden dezentral in der Nähe der Anwendungen verarbeitet.
+  \item \textbf{Security:} Wenn Daten an einem zentralen Cloud verarbietet werden ist diese sehr Anfällig. 
+  So kann Beispielsweise ein DDoS-Angriff den gesammten Betrieb eines Unternehmens stören wenn alle Systeme mit einer zentralen
+  Cloud Arbeiten. Da bei Edge Computing kein einziges Zentrales Systeme existiert, verringert sich die Auswirkung eines solchen
+  Angriffes auf das gesamte unternehmen.  
+  Edge Computing hilft Unternehmen auch dabei, die Probleme der lokalen Compliance- und Datenschutzbestimmungen zu überwinden,
+  da die Daten auf lokalen Systemen verarbeitet werden.
+  \item \textbf{Kosteneinsparungen:} Durch Internet Off Things Geräte oder auch Beispielsweise durch eine Smart Factory wird
+  eine vielzahl an Daten generiert. Nicht alle Daten sind dabei kritisch für die Operation der Systeme. Edge Computing erlaubt
+  das Kategorisieren der Daten. In dem ein großteil der Verarbeitung am Rand des Netzwerks stattfindet wird Bandbreite gespart.
+  eim Edge-Computing geht es nicht darum, die Notwendigkeit der Cloud zu beseitigen, sondern darum, den Datenfluss zu optimieren, 
+  um Ihre Betriebskosten zu maximieren.
+  \item \textbf{Zuverlässigkeit:} Wenn Edge-Geräte Daten lokal speichern und verarbeiten können, verbessert dies die Zuverlässigkeit.
+  Ein Unternehmen ist nicht auf die Verbindung auf zur zentralen Cloud angewiesen. 
+  Eine vorübergehende Unterbrechungen der Konnektivität hat keine Auswirkungen auf den Bettrieb von Geräte,
+  nur weil sie die Verbindung zur Cloud verloren haben.
+  \item \textbf{Skalierbarkeit:}
+  Bei Cloud-Computing-Architekturen müssen Daten in den meisten Fällen zunächst an ein zentral gelegenes Rechenzentrum
+  weitergeleitet werden. Das Erweitern oder sogar nur das Ändern dedizierter Rechenzentren ist eine teure Angelegenheit. 
+  Darüber hinaus können IoT-Geräte zusammen mit ihren Verarbeitungs- und Datenverwaltungstools am Rande einer einzelnen 
+  Implantation bereitgestellt werden, 
+  anstatt auf die Koordination der Bemühungen von Mitarbeitern an mehreren Standorten zu warten.
+\end{itemize}
+\newpage
+
+\section{5G Edge Computing}
+\label{sec:5G Edge Computing}
 
 \newpage
+\section{Architekturen}
+\label{sec:Architekturen}
+\subsection{Standards}
+\label{subsec:Architekturen}
+
+\section{Anwendungen}
+\label{sec:Anwendungen}
+\subsection{Internet of Things}
+\label{subsec:Internet of Things}
+\subsection{Smart Factory}
+\label{subsec:Smart Factory}
+\subsection{Autonomes Fahren}
+\label{subsec:Autonomes Fahren}
+\section{Ausblick}
+\label{sec:Ausblick}
+
 % -------------------------------------------------------------------------------------------------
 
 % -------------------------------------------------------------------------------------------------
 \newpage
 % Normaler LNCS Zitierstil
 %\bibliographystyle{splncs}
-\bibliographystyle{unsrt}
-% TODO: Ändern der folgenden Zeile, damit die .bib-Datei gefunden wird
-\bibliography{literatur}
+\printbibliography[heading=bibintoc]
+
 
 \end{document}
