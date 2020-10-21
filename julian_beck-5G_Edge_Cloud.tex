@@ -199,12 +199,81 @@ Folgende Vorteile bringt Edge Computing: \cite{labrieTopBenefitsEdge}
 
 \subsection{5G Edge Computing}
 \label{subsec:5G Edge Computing}
-\subsection{Network Funktion Virtualisierung}
-\label{subsec:Virtuelle Maschinen und Container}
+\subsection{Network-Function Virtualisierung}
+\label{subsec:Network-Function Virtualisierung}
+Network-Function Virtualisierung (NFV) erlaubt es Netzwerk Funktionen von der Hardware zu entkoppeln.
+Dies erlaubt das Verwenden von Gateways, Firewalls, DNS Services und Caching ohne proprietär Hardware.
+\\
+\\
+Um ein neues Netwzerk zu erstellen, wird eine Vielzahl von verschieden Hardware Komponenten benötigt. 
+Diese benötigen Platz, Energy und müssen von qualifizierten Personal überwacht und gewartet werden. 
+Network-Function Virtualisierung will diese Probleme lösen, in dem Virtualisierungstechniken auf standard
+Server Hardware Komponenten verwendet werden. 
+Foldgende Vorteile werden durch NFV erziehlt und sind Relevant 5G Edge Clouds: \cite{nfv_wp}
+\begin{itemize}
+  \item \textbf{Skalierbarkeit und Flexibilität:} Die Virtualisierung erlaubt eine einfache skallierung der Ressourcen.
+  So kann bei einer großen Nachfrage die Services skalliert werden. Es können auch schnell mehrere Instanzen einer Komponente auf 
+  der einer VM gestartet werden.
+  \item \textbf{Kosteneinsparungen:} Durch die Verwendung von Standard Komponenten werden die Kosten und der Energieverbrauch minimiert.
+  \item \textbf{Anpassungsfähigkeit:} Die Virtualisierung erlaubt eine schnelle Anpassung an Anforderungen eines Kunden. 
+  Die Server können durch der Virtualiserung von mehreren Nuzern gleichzeitig verwendet werden und gleichzeitig die Anforderungen des jeweiligen
+  Kunden erfüllen.
+  \item \textbf{Verbesserte Effizienz durch homogene Systeme:}
+\end{itemize}
+\subsubsection{NFV Architektur und Orchestration Framework:}
+Das Europäische Institut für Telekommunikationsnormen \textit{ETSI} hat ein Standard für ein NFV Framework veröffentlicht.
+Dieser Standard definiert sogenannte Virtualized Network Functions \textit{VNF}, welche Neztwek Funktionen in Software abbilden.
+Die \textit{VNFs} werden in der \textit{NFV} Infrastruktur \textit{NFVI} deployed. Die \textit{NFV} Infrastruktur besteht aus den
+enthält die Hardware Komponenten wie CPU und Speicher, aber auch die Virtualisierungslayer. \\
+Der \textit{NFV MANO} (NFV Managment und Orchestrierung) Layer verwaltet die Infrastruktur und passt diese an die Anforderungen an.
+Der VM lifevyvle wird auch von \textit{NFV MANO} verwaltet, wenn eine VM abstürtr wird sie von diesem neugestartet.
+\subsubsection{5G Edge Cloud und NFV:}
+Die Network-Function Virtualisierung spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
+\textit{NFV} erlaubt \textit{Network Slicing}, ein Aspekt der virtuellen Netzwerkarchitektur, 
+mit dem mehrere virtuelle Netzwerke auf einer gemeinsam genutzten Infrastruktur bereitgestellt werden können.
+\textit{NFV} ermöglicht die 5G-Virtualisierung, sodass das physische Netzwerk in mehrere virtuelle Netzwerke unterteilt werden können. 
+Dies erlaubt es unterschiedliche Radio Access Networks ()\textit{RAN}) 
+oder verschiedene Arten von Diensten gleichzeitig anzubieten. Der Anwender merkt dabei kein Unterschied, da die Network Slices
+voneinander isoliert sind. 
+\textit{NFV} ist für die Skalierbarkeit, Flexibilität und Migration in einer 5G Edge Cloud wichtig. So kann wenn die Anfragen an eine
+Anwendung steigt, nicht nur die Ressourcen für die Anwendung an sich einfach skaliert werden, sondern durch das hinzufügen einer neuen
+Software Instant in der \textit{NFVI}, kann auch die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV}
 \subsection{Software-defined Networking}
 \label{subsec:Software-defined Networking}
+Neben \textit{NFV}, ist auch Software Defined Networking \textit{(SDN)} ein Schlüssel für Virtualisierung von Netzwerken.
+Bei einem \textit{SDN} ist die Steuerung des Netzwerks von der Hardware getrennt. Es wird zwischen einem Controller, einer Southbound und einer
+Northbound API unterschieden. Die Southbound APIs führt die Anweisungen nimmt und gibt Informationen des Controllers weiter an Netzwerkgeräte wie Switches,
+Access Points und Router weiter. Der Controller ist das zentrale Element eines \textit{SDN} Netzwerkes, er ermöglicht ein zentrales managen und steuern des 
+Netzwerkes. Die Northbound API gibt Informationen an den Controller weiter. Es ist die schnittstelle zwiscen Anwendungen und dem \textit{SDN} Controller.\cite{SoftwareDefinedNetworkingSDN}
+\\
+\\
+Software Defined Networking kann so \textit{MEC} unterstützen, indem es automatisch und flexibel service management durchführt.
+Da bei einem SDN die Daten und Controll Ebene durch die Southbound und Norhtbound API getrennt ist, 
+führt SDN eine zentrale Steuerung ein, 
+mit der virtuelle Netzwerkinstanzen einfach instanziiert und angeboten werden können, 
+indem die zugrunde liegende Netzwerkinfrastruktur abstrahiert wird. \\
+Im Kontext von MEC kann der SDN-Controller MEC-bezogene VNFs, 
+VMs und Container als eine weitere Netzwerkkomponente behandeln, der dynamisch zugewiesen und neu lokalisiert werden kann.
+So kann der SDN flexibel Service anpassen und dynamsich Dienste bereitstellen, indem er VNFs und MEC Dienste verbindet.
+Gleichzeitig kann er die mobilität der Dienste ermöglichen.
 \subsection{Virtuelle Maschinen und Container}
 \label{subsec:Virtuelle Maschinen und Container}
+Bei Cloud-Computing werden Rechenressourcen über ein Netzwerk zu Verfügung gestellt.
+Eine Cloud Platform besteht typischerweise aus einer Anzahl an Maschinen die durch ein Hypervisor zu einer zentralen Maschine zusammen gefasst werden.
+Dieser kann isolierte Virtuelle Maschinen erstellen und ausführen und dient als Abstraktionsebene, unabhängig von der Hardware auf denen die VMs laufen.
+\\
+\\
+Eine leichgewichtige Alternative zur Hypervisor-basierten Virtualisierung ist die containergestützte Virtualisierung. 
+Diese im Vergleich zu anderen Virtualisierungslösungen eine andere  Abstraktionsebene in Bezug auf Virtualisierung und Isolation. 
+Container implementieren die Isolierung auf OS Ebene und vermeiden so die Virtualisierung von Hardware und Treibern. I
+nsbesondere teilen sich Container denselben Kernel mit dem zugrunde liegenden Hostcomputer. Dies macht Container sehr leichtgewichtigt und flexibel im 
+Gegensatz zu VM. Typischerweise führt ein Container genau ein Service aus, was eine schnelle Migration ermöglicht.
+\\
+\\
+Im Blick auf \textit{MEC} ermöglichen Container eine leichtgewichtige Virtualisierungslösung. So eigenen sich die Container
+als eine portable Laufzeit Umgebung für MEC-Dienste. Einzelne Dienste können in Containern ausgeführt werden und sind so isoliert und können einfach 
+verwaltet und gesteuert werden. Für die Umsetzung bietet sich die mitlerweile weitverbreitete Containerlösung Docker an. Hier stehen mit 
+Kubernetes auch Orchestrierungs und Clustering Tools zur Verfügung  \cite{morabitoConsolidateIoTEdge2018}
 \newpage
 \section{Architekturen}
 \label{sec:Architekturen}
