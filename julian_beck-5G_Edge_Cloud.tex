@@ -152,12 +152,39 @@
 
 \section{Einleitung}
 \label{sec:Einleitung}
+In den letzten zehn Jahren haben Fortschritte im Cloud-Computing einen zentralisierten Ansatz für die Systemadministration und den 
+Systembetrieb verfolgt, während das Wachstum von Mobile Computing, 
+SaaS und dem Internet der Dinge (IoT) das Computing in Richtung einer verteilten Architektur in der Nähe des Anwenders getrieben hat. 
+Mit der Einführung von 5G-und Edge-Computing-Technologien möchten Unternehmen nun beide Ansätze kombinieren.
+\\
+\\
+5G und Edge Computing sind zwei relativ neue Technologien, die aber ähnliche Ziele verfolgen. 
+Beide sind darauf ausgerichtet, die Leistung von Anwendungen zu verbessern 
+und die Verarbeitung von großer Datenmengen in Echtzeit zu ermöglichen. 
+5G erhöht die Geschwindigkeit um das Zehnfache gegenüber 4G, 
+während  Edge Computing die Latenz verringert, indem Rechenfunktionen näher am Endbenutzer in das Netzwerk integriert werden.
+\\
+\\
+Während Telekommunikationsbetreiber berichten, 
+dass 5G im Netzwerkgeschwindigkeiten liefern kann, die mehr als zwanzigmal schneller sind als LTE1, 
+spiegelt dies nicht die Erfahrung eines durchschnittlichen Benutzers wieder. Die Edge Cloud kommt an dieser stelle ins Spiel und verbessert die Latanz und 
+damit auch die Anwendungsmöglichkeiten von 5G.
+Gleichzeitig benötigt 5G das Edge Computing, um die Nachfrage zu steigern. 
 \subsection{Problem}
 \label{subsec:Problem}
+5G Edge Computing bietet sich für folgende Anwendungen an
+\begin{itemize}
+  \item Caching von Anwendungen und Videos
+  \item Rechenressourcen an die Aufgaben übergeben werden können um möbile Endgeräte zu entlasten
+  \item Bearbeitung und Aggregierung von IoT Daten.
+  \item Rendern von Videospielen auf der EDGE Cloud.
+\end{itemize}
+Die Anwendungsbeispiele werden in Kaptiel \ref{sec:Anwendungen} genauer erläutert.
 \section{Benötigte Technologien}
 \label{sec:Benötigte Technologien}
 \subsection{Edge Computing}
 \label{sub:Edge Computing}
+Bei Cloud-Computing werden Rechenressourcen über ein Netzwerk zu Verfügung gestellt.
 Beim Edge Computing wird die Berechnung und Speicherung von Daten in die Nähe der Quelle gebracht,
 an den sogenannten Rand oder \textit{Edge} des Netzwerks. Im Gegensatz zum Cloud Computing werden die Daten
 nicht an zentralen Rechenzentren verarbeitet, sonden an dezentralen Cloud Systemen am Rand des Neztwerks. 
@@ -256,9 +283,12 @@ Im Kontext von MEC kann der SDN-Controller MEC-bezogene VNFs,
 VMs und Container als eine weitere Netzwerkkomponente behandeln, der dynamisch zugewiesen und neu lokalisiert werden kann.
 So kann der SDN flexibel Service anpassen und dynamsich Dienste bereitstellen, indem er VNFs und MEC Dienste verbindet.
 Gleichzeitig kann er die mobilität der Dienste ermöglichen.
+\\
+\\
+Die Kombination von SDNs und NFV erlaubt das erstellen von Network Slices. 
+
 \subsection{Virtuelle Maschinen und Container}
 \label{subsec:Virtuelle Maschinen und Container}
-Bei Cloud-Computing werden Rechenressourcen über ein Netzwerk zu Verfügung gestellt.
 Eine Cloud Platform besteht typischerweise aus einer Anzahl an Maschinen die durch ein Hypervisor zu einer zentralen Maschine zusammen gefasst werden.
 Dieser kann isolierte Virtuelle Maschinen erstellen und ausführen und dient als Abstraktionsebene, unabhängig von der Hardware auf denen die VMs laufen.
 \\
