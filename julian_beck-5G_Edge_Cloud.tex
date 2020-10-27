@@ -321,21 +321,61 @@ Dies ist möglich durch die in Kapitel \ref{sec:Benötigte Technologien} vorgest
 Die Grafik X zeigt die komponenten des Frameworks
 
 \subsubsection{Netzwerk Ebene:}
-Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die 
-Verbindung via lokalen, externen Netzwerk und über \textit{3GPP} Netzwerke, was mobile Telekommunikationstandards
-wie LTE und 5G beschreibt.
-\subsubsection{MEC Host Ebene:}
-Aufbauend auf der Netzwerkebene, ist die Host Ebene die Kernstruktur des Frameworks. 
-Die Ebene besteht aus Zwei Komponenten, dem MEC Host und dem MEC Managment. 
-\subsubsection{MEC System Ebene:}
+Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die verbindung zu dem lokalen und 
+externen Netzwerk.  Die 3GPP Komponente steht für 3rd Generation Partnership Project, was ein überbegriff für die mobieln
+Telecommunikationsstandrads sind wie LTE und 5G. 
+\subsubsection{MEC Host}
+Der MEC Host enthält die MEC Platform und die Infrastruktur auf den die Anwendungen in der Edge Cloud betreiben werden.
+Die Inrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen  virtualisert zu verfügung. Als Virtualisierungslösung kann
+die in Kapitel \ref{subsec:Network-Function Virtualisierung} eingeführte Network-Function Virtualisierung Infrastruktur
+eingesetzt werden. der MEC Host besteht aus zwei weiteren Komponenten:
+\\
+\\
+\textbf{MEC Platform:} Die MEC Platform dient als eine art Registry 
+Anwendungen die auf der MEC Infrastruktur laufen. Die Platform bietet eine Umgebung, in der MEC Anwendungen sich anmelden können,
+andere Anwendungen Anfragen können. Die Platform ist auch für DNS Reccords zuständig. Die MEC Platform nimmt Befehle
+des MEC Platform Managers entgegen und passt die DNS Records, Proxies an. Desweiteren verwältet er auch den Persistent Storage.
+\\
+\\
+\textbf{MEC Anwendungen:} Multi-Access Edge Computing Anwendungen werden in einer Virtuellen Maschine oder Als
+Container auf der Infrastruktur des MEC hosts ausgeführt. Die Anwendungen registireren sich bei der MEC Platform
+Komponente um darüber andere Anwendungen anzufragen und ihren Service zur verfügung zu stellen.
+
+\subsubsection{MEC host level management:}
+Auf der Host Ebene ist auch die MEC Host Level Management Komponente. Ähnlich wie der MEC Host, ist diese in weitere 
+Komponenten aufgeteilt:
+\\
+\\
+\textbf{MEC Platform Manager:} Der Platform Manager ist verwaltet den Lifecycle der Anwendungen. Er startet, stoppt und neustartet diese.
+Gleichzeitig informiert er den Multi-Access edge Orchestrator über wichtige Events der Anwendungen. 
+Eine weitere Aufgabe ist das verwalten und managen von autorisierung und DNS Configurationen und Problemen.
+Desweiteren erhölt der Platform Manager Fehlerberichte und Informationen über die Infrastruktur von dem Virtualiserungs Infrastruktur Manager.
+\\
+\\ 
+\textbf{Virtualization infrastructure manager} Die zweite Komponente in im Host level management ist der Virtualization infrastructure
+manager. Dieser ist für das Zuweisen, Verwalten und Freigeben von virtualisierten (Rechen-, Speicher- und Netzwerkressourcen)
+Ressourcen der Virtualisierungsinfrastruktur zuständig. Der Manager ist dabei auch für das Konfigurieren der Infrastruktur für 
+ein neues Software Image verantwortlich. Dazu gehört das herunterladen und speicheren der Images. Dabei kann der Manager auch 
+Infrastructure-as-a-service Systeme wie Openstack unterstützen. Performance- und Fehlerdaten werden auch der Komponente gesammelt.
+\\
+Kommt es zu einer Verschiebung einer Anwendung, in der eine laufende Anwendung zu einer externen Cloud umgezogen wird,
+iteragiert der Virtualization infrastructure manager mit der externen Cloud um den Handoff an die neue Cloud durchzuführen.
+Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{x} genauer erläutert.
+\subsubsection{MEC system level management:}
+
 
 \subsection{Beispiel einer Anfrage}
 
 \subsection{Weitere Frameworks}
 \label{subsec:Weitere Frameworks}
-\section{Orchestrierung und Mobilität}
-\label{sec:Orchestrierung und Mobilität}
-\subsection{Beispiel eines Handoffs}
+\section{Herausforderungen durch die Mobilität}
+
+\subsection{Verbindung zwischen dem UE und der Anwendung}
+Je nach Anwendung, ist es wichtig, dass die Anwendungen die in der Edge Cloud läuft, 
+\subsection{Application State Herausforderungen}
+\subsection{Umzug einer Anwendung innerhalb der MEC}
+\subsection{Umzug einer Anwendung zu einer externen Cloud}
+
 \subsection{MEC Service Orchestrierung}
 \label{subsec:MEC Service Orchestrierung}
 \subsection{MEC Mobilität}
