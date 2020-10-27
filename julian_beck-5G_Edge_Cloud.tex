@@ -305,10 +305,8 @@ als eine portable Laufzeit Umgebung für MEC-Dienste. Einzelne Dienste können i
 verwaltet und gesteuert werden. Für die Umsetzung bietet sich die mitlerweile weitverbreitete Containerlösung Docker an. Hier stehen mit 
 Kubernetes auch Orchestrierungs und Clustering Tools zur Verfügung  \cite{morabitoConsolidateIoTEdge2018}
 \newpage
-\section{Architekturen}
-\label{sec:Architekturen}
-\subsection{MEC Framework - Referenz Architektur}
-\label{subsec:MEC Framework}
+\section{MEC Framework - Referenz Architektur}
+\label{subsec:MEC Framework - Referenz Architektur}
 Folgendes Kaptiel zeigt die dem European Telecommunications Standards Institute (ETSI) beschriebene
 Referenz Architektur zur Implementation eines \textit{MEC} Systems. 
 \\ 
@@ -316,22 +314,28 @@ Referenz Architektur zur Implementation eines \textit{MEC} Systems.
 \textit{ETSI} beschreibt dabei in ihrer Spezifikation \textit{Multi-access Edge Computing (MEC); 
 Framework and Reference Architecture} \cite{etsiETSIGSMEC} ein Framework und eine 
 Referenz Architektur.
-\subsubsection{Multi-access Edge Computing Framework}
+\subsection{Multi-access Edge Computing Framework}
 Das Framework unterscheidet die einzelnen Komponenten die für die Edge Cloud benötigt werden in drei Ebenen. 
 Die Komponenten werden dabei auf Infrastruktur virtualisiert am Rande des Neztwerks ausgeführt. 
 Dies ist möglich durch die in Kapitel \ref{sec:Benötigte Technologien} vorgestellten Technologien.
+Die Grafik X zeigt die komponenten des Frameworks
 
-\begin{itemize}  
-  \item \textbf{Netzwerk Ebene:} Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die 
-  Verbindung via lokalen, externen Netzwerk und über \textit{3GPP} Netzwerke, was mobile Telekommunikationstandards
-  wie LTE und 5G beschreibt.
-  \item \textbf{MEC Host Ebene:} Aufbauend auf der Netzwerkebene, ist die Host Ebene die Kernstruktur des Frameworks. 
-  Die Ebene besteht aus Zwei Komponenten, dem MEC Host und dem MEC Managment. 
-\end{itemize}
+\subsubsection{Netzwerk Ebene:}
+Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die 
+Verbindung via lokalen, externen Netzwerk und über \textit{3GPP} Netzwerke, was mobile Telekommunikationstandards
+wie LTE und 5G beschreibt.
+\subsubsection{MEC Host Ebene:}
+Aufbauend auf der Netzwerkebene, ist die Host Ebene die Kernstruktur des Frameworks. 
+Die Ebene besteht aus Zwei Komponenten, dem MEC Host und dem MEC Managment. 
+\subsubsection{MEC System Ebene:}
+
+\subsection{Beispiel einer Anfrage}
+
 \subsection{Weitere Frameworks}
 \label{subsec:Weitere Frameworks}
 \section{Orchestrierung und Mobilität}
 \label{sec:Orchestrierung und Mobilität}
+\subsection{Beispiel eines Handoffs}
 \subsection{MEC Service Orchestrierung}
 \label{subsec:MEC Service Orchestrierung}
 \subsection{MEC Mobilität}
