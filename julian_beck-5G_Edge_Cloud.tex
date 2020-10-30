@@ -368,11 +368,32 @@ Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{
 
 \subsection{Weitere Frameworks}
 \label{subsec:Weitere Frameworks}
-\section{Herausforderungen durch die Mobilität}
+\section{Mobilitätsmanagement in Mobile Edge Clouds}
+Die Mobilität von Endgeräte im 3GPP Neztwerken, kann dazu führen, dass ein UE sich von einer 
+Radio Station zu nächsten bewegt. Das Verwalten und AUfrechterhalten dieser Verbindungen in Funknetzen wird
+als Mogilitätsmanagement bezeichnet und ist eine Kernkomponenten von Funknezten. 
+Wird eine aktive Funkverbindung von einer Netzwerkzelle zu einer anderen weitergegeben, wird der Vorgang
+der Übergabe als Handoff oder Handover bezeichent.\\
+Die Mobilität des Engeräges kann dazu führen, 
+dass sich das UE zu einer anderen Zelle bewegt, 
+die einem anderen MEC-Host zugeordnet ist. Dabei muss sichergestellt werden, dass der Netzwerkverkehr
+richtig geroutet wird um das Ziel zu erreichen.
+Entfernt sich das Engerät weiter vom Ort der MEC-Anwendung, 
+kann dies dazu führen, dass die Latenz sich erhöht. Deshalb ist es wichtig, dass je nach Anwendung,
+die laufende Anwendungsinstanz verschoben wird um die Latenz Anforderungen zu erfüllen. \\
+Die Häufigkeit eines Wechsel der MEC Hosts, hängt stark von dem 
+Einsatz ab. Bei der Verwendung von MEC für Autonomes Fahren treten häufiger Handover Envents ein, wie bei
+beispielsweise Smart Factories.\\
+Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen.
 
-\subsection{Verbindung zwischen dem UE und der Anwendung}
-Je nach Anwendung, ist es wichtig, dass die Anwendungen die in der Edge Cloud läuft, 
-\subsection{Application State Herausforderungen}
+\subsection{Verschieben der Anwendung und desen Zustand}
+Bewegt sich das UE im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
+MEC - Host, muss die Anwendung umziehen. Der aktuelle Zustand und Laufzeit der laufenden Anwendungen
+muss auch umgezogen werden. \\
+Läuft die Anwendung noch nicht auf dem Ziel Host, muss diese initalisiert und gestartet werden.
+Nachdem die Anwendung gestartet ist, startet der Umzugsvorgang und der Zustand wird von dem aktuellen 
+Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertrage ist, stoppt die aktuelle Instanz
+und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät.
 \subsection{Umzug einer Anwendung innerhalb der MEC}
 \subsection{Umzug einer Anwendung zu einer externen Cloud}
 
