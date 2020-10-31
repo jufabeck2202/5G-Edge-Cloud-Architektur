@@ -223,7 +223,35 @@ Folgende Vorteile bringt Edge Computing: \cite{labrieTopBenefitsEdge}
 
 \end{itemize}
 \newpage
+\subsection{5G Network}
+\label{subsec:5G Network}
+Das 5G-Netzwerk wurde so entwickelt, um Dienste zu unterstützen, 
+die eine Verwendung durch die Industrie  mithilfe Techniken wie 
+Network-Function Virtualisierung und Software Defined Networking ermöglichen.
+Klassischerweise wurden mobile Netzwere in erster Linie für den Smartphone Geräte konzeptiert. 
+Dies ändert sich bei dem 5G Netzwerk, durch eine Vielzahl von Anwendungen und unterschiedliche Datenanforderungen,
+muss das Netzwerk so konzeptiert sein um alle diese Anforderungen zu erfüllen.
+\\
+\\
+Bei der 5G Architektur sind die die Funktionen der Control Plane (CP) von der User Plane (UP) getrennt, 
+um diese unabhängig skalieren zu können. Dies ermöglichen Netzwerkbetreiber das Anpassen und Skalieren des Neztwerks an die
+Benötigten Anforderungen.
+Beim Entwurf von 5G war die Minimierung der Abhängigkeiten zwischen dem Access Network (AN) und dem Core Network (CN) 
+mit einem konvergierten zugangsunabhängigen Kernnetzwerk mit einer gemeinsamen AN-CN-Schnittstelle, 
+die verschiedene 3GPP- und Nicht-3GPP-Schnittstellen integriert Zugriffstypen.
 
+Folgendes Kapitel bietet einen kurzen Überblick über die einzelnen Komponenten im 5G Netzwerk.
+Die Darstellung zeigt die einzelnen Komponenten in form einer Service basierten Darstellung.  \cite{5GCoreNetwork2017}
+\begin{itemize}
+  \item Authentication Server Function (AUSF)
+  \item Core Access and Mobility Management Function (AMF)
+  \item Network Exposure Function (NEF)
+  \item Session Management Function (SMF)
+  \item Unified Data Management (UDM)
+  \item User plane Function (UPF)
+  \item Policy Control function (PCF)
+  \item Radio Access Network ((R)AN)
+\end{itemize}
 \subsection{5G Edge Computing}
 \label{subsec:5G Edge Computing}
 \subsection{Network-Function Virtualisierung}
@@ -384,19 +412,34 @@ die laufende Anwendungsinstanz verschoben wird um die Latenz Anforderungen zu er
 Die Häufigkeit eines Wechsel der MEC Hosts, hängt stark von dem 
 Einsatz ab. Bei der Verwendung von MEC für Autonomes Fahren treten häufiger Handover Envents ein, wie bei
 beispielsweise Smart Factories.\\
+Die Mobilität eines UEs kann in weitreichenden MEC-Systemen vorhergesagt werden und die einzelnen MEC-Host demnach konfiguriert werden,
+dennoch muss der Zustand der Anwendung übertragen werden.
 Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen.
 
 \subsection{Verschieben der Anwendung und desen Zustand}
 Bewegt sich das UE im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
-MEC - Host, muss die Anwendung umziehen. Der aktuelle Zustand und Laufzeit der laufenden Anwendungen
-muss auch umgezogen werden. \\
+MEC - Host, muss die Anwendung umziehen. Die MEC-Anwendungen werden in zustandslose und zustandsbehaftete Anwendungen eingeteilt.
+Handelt es sich um eine zustandsbehaftete Anwendung, 
+erfordert das Umziehen der Anwendung ein Synchronisieren des Zustands zwischen der aktuellen und der
+verschobenen Anwendungsinstanz, um Kontinuität zu gewährleisten
+muss auch umgezogen werden. 
+\\
+\\
+Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Diese muss so designt sein, 
+dass die Anwendung in mehreren Instanzen auf unterschiedlichen MEC-Hosts betrieben werden kann. 
+Für das Synchronisieren muss die Anwendungen das Feststellen des Zustands und kopieren dessens von einer Quell- Anwendung 
+zu einer Zielanwendung unterstüzen. 
 Läuft die Anwendung noch nicht auf dem Ziel Host, muss diese initalisiert und gestartet werden.
 Nachdem die Anwendung gestartet ist, startet der Umzugsvorgang und der Zustand wird von dem aktuellen 
-Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertrage ist, stoppt die aktuelle Instanz
+Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertragen ist, stoppt die aktuelle Instanz
 und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät.
-\subsection{Umzug einer Anwendung innerhalb der MEC}
-\subsection{Umzug einer Anwendung zu einer externen Cloud}
-
+\\
+Für das Erkennen von UE Mobilität zu einer neuen Zelle, abboniert die MEC Platfor Radio Network Infromationen die von dem RNIS zu
+Verfügung gestellt werden. Mithilfe dieser Informationen können UEs identifizieren werden bei denen eine Zelländerung auftritt 
+und bestimmen werden, ob sie aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
+\subsection{VM Handoff}
+Eine vorgeschlagene Möglichkeit \cite{etsiETSIGSMEC} für das Umziehen laufenden Anwendungen von einem MEC-Host zu einem Ziel MEC-Host, 
+ist der VM Handoff.  \cite{Ha2015AdaptiveVH}
 \subsection{MEC Service Orchestrierung}
 \label{subsec:MEC Service Orchestrierung}
 \subsection{MEC Mobilität}
