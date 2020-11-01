@@ -243,7 +243,6 @@ die verschiedene 3GPP- und Nicht-3GPP-Schnittstellen integriert Zugriffstypen.
 \\
 Die Darstellung zeigt die einzelnen Komponenten in Form einer Service basierten Darstellung.  \cite{5GCoreNetwork2017}
 Das 5g Netzwerk besteht aus sogenannten Netzwerkfunktionen, die meist softwarebasiert sind und so nach Bedarf angepasst werden können.
-. 
 Die 5G CP ist das Kernnetz, das  aus einer Reihe von Netzwerk Funktionen besteht, 
 die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
 \begin{itemize}
@@ -400,6 +399,10 @@ Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{
 \subsubsection{MEC system level:}
 Das Systemlevel ist übergreifend über mehrere MEC Hosts.
 \newpage
+
+
+
+
 \section{Integration von MEC und 5G}
 Das 5G Netzwerk trennt die User Plane (UP) von der Control Plane (CP).  \cite{arnold5GRadioAccess2017} \\
 Die User oder auch Data Plane, ist verantwortlich für das Weiterleiten der Daten von der Quelle zum Zielort.
@@ -422,11 +425,11 @@ die rechte Seite zeigt die MEC-Systemarchitektur wie in Kaptiel \ref{subsec:MEC 
   \label{fig:sba}
 \end{figure}
 \\
-Dieser Abschnitt beschreibt, wie ein Multi Access Edge Cloud System in die 5G-Netzwerkumgebung integriert werden kann und welche Komponenten miteinander
-iteragieren.
+Dieser Abschnitt beschreibt, wie ein Multi Access Edge Cloud System in die 5G-Netzwerkumgebung integriert werden kann 
+und welche Komponenten miteinander iteragieren.
 \\
 \\
-Die Netzwerkfunktionen und die Dienste die diese zurverfügungstellen, werden im 5G System in der Network Resource Funktion (NRF) registriert.
+Die Netzwerkfunktionen und die Dienste die diese zur verfügungstellen, werden im 5G System in der Network Resource Funktion (NRF) registriert.
 Bei dem NRF bietet damit eine Liste mit allen Diensten an. 
 In einem MEC System werden die Dienste die von den MEC- Anwendungen bereitgestellt werden in der Service Registry in der MEC Platform registriert.
 Will eine Netzwerkfunktion im 5G Netzwerk ein Dienst nutzen, kann diese direkt mit der Funktion die den Dienst zurverfügungstellt interagieren,
@@ -437,6 +440,20 @@ auserhalb des 5G-Systems.
 \\
 Für die Integration von MEC in ein 5G Netzwerk, spielt die User Plane Function (UPF) eine wichtige Rolle. Die UPF ist Teil der User Plane
 und ist eine Darstellung der dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrollen und Weiterleitung von Nutzdaten. \cite{Leitfaden5GCampusnetze2020}
+Ist das MEC-System in die 5G Cloud integriert, ist die UPF auch Teil des MEC Systems.
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture2.png}
+  \caption{MEC in 5G}
+  \label{fig:sba2}
+\end{figure}
+\\
+In dem MEC- System auf der rechten Seite, agiert der MEC- Orchestartor auf der MEC- System Ebene. Dieser interagiert mit dem NEF oder
+direkt mit den einzelnen Netzwerkfunktionen des 5G Netzwerks. Auf der MEC- Host Ebene, interagiert die MEC- Platform mit den NF des 5G Netzwerkes.
+Die MEC- Host Ebene sind meistens in der UP des 5G Netzwerks, während der NEF als teil des CP als Systemlevel Funktion zentral eingesetzt wird.
+Wie Abbildung \ref{fig:sba2} zeigt, befindet sich das MEC System auf der Data Control Ebene des 5G Netzwerkes. 
+Die User Plane Function ist verantwortlich für das Weiterleiten der Datenpakete an die MEC zielanwendungen. 
+Das MEC- System kann an verschiedenen Standorten in der nähe der Base Station des 5G Netzwerkes eingesetzt werden. 
+
 
 \newpage
 \section{Mobilitätsmanagement in Mobile Edge Clouds}
