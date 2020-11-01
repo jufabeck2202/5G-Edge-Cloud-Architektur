@@ -242,22 +242,29 @@ die verschiedene 3GPP- und Nicht-3GPP-Schnittstellen integriert Zugriffstypen.
 \\
 \\
 Die Darstellung zeigt die einzelnen Komponenten in Form einer Service basierten Darstellung.  \cite{5GCoreNetwork2017}
-
+Das 5g Netzwerk besteht aus sogenannten Netzwerkfunktionen, die meist softwarebasiert sind und so nach Bedarf angepasst werden können.
+. 
+Die 5G CP ist das Kernnetz, das  aus einer Reihe von Netzwerk Funktionen besteht, 
+die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
 \begin{itemize}
-  \item Authentication Server Function (AUSF)
-  \item Core Access and Mobility Management Function (AMF)
-  \item Network Exposure Function (NEF)
-  \item Session Management Function (SMF)
-  \item Unified Data Management (UDM)
-  \item User plane Function (UPF)
-  \item Policy Control function (PCF)
-  \item Radio Access Network ((R)AN)
+  \item \textbf{Authentication Server Function (AUSF)} dient als Authentifizierungsserver
+  \item \textbf{Core Access and Mobility Management Function (AMF)} ist für die Integrität, Registrierungsmanagement, Verbindungsmanagement,
+  Zugriffs und Securitymanagement zuständig
+  \item \textbf{Network Exposure Function (NEF)} verbreiten von Funktionen und Events, 
+  sichere Bereitstellung von Informationen aus externen Anwendungen für das 3GPP-Netzwerk. Diese Funktion ist vorallem für die Mobilität
+  in der 5G Edge Cloud wichtig, was in Abschnitt \ref{subsec:MEC Mobilität} erläutert wird.
+  \item \textbf{Session Management Function (SMF)} Sitzungsverwaltung, Zuweisung von IP Adressen an die Endgeräte. 
+  \item \textbf{Unified Data Management (UDM)} Generierung von Anmeldeinformationen für Authentifizierungen, 
+  Verwalten der Benutzeridentifikation und Zugriffsautorisierung.
+  \item \textbf{User plane Function (UPF)} Datenrouting und Weiterleitung. Dateninspektionen.
+  \item \textbf{Policy Control function (PCF)} Bereitstellung von Richtlinien für Funktionen, 
+  Zugriff auf Abonnementinformationen
 \end{itemize}
 \subsection{5G Edge Computing}
 \label{subsec:5G Edge Computing}
 \subsection{Network-Function Virtualisierung}
 \label{subsec:Network-Function Virtualisierung}
-Network-Function Virtualisierung (NFV) erlaubt es Netzwerk Funktionen von der Hardware zu entkoppeln.
+Network-Function Virtualisierung (NFV) erlaubt es Netzwerk Functions von 5G von der Hardware zu entkoppeln.
 Dies erlaubt das Verwenden von Gateways, Firewalls, DNS Services und Caching ohne proprietär Hardware.
 \\
 \\
@@ -333,7 +340,6 @@ Im Blick auf \textit{MEC} ermöglichen Container eine leichtgewichtige Virtualis
 als eine portable Laufzeit Umgebung für MEC-Dienste. Einzelne Dienste können in Containern ausgeführt werden und sind so isoliert und können einfach 
 verwaltet und gesteuert werden. Für die Umsetzung bietet sich die mitlerweile weitverbreitete Containerlösung Docker an. Hier stehen mit 
 Kubernetes auch Orchestrierungs und Clustering Tools zur Verfügung  \cite{morabitoConsolidateIoTEdge2018}
-\newpage
 \section{MEC Framework - Referenz Architektur}
 \label{subsec:MEC Framework - Referenz Architektur}
 Folgendes Kaptiel zeigt die dem European Telecommunications Standards Institute (ETSI) beschriebene
@@ -350,12 +356,13 @@ Dies ist möglich durch die in Kapitel \ref{sec:Benötigte Technologien} vorgest
 Die Grafik X zeigt die komponenten des Frameworks
 
 \subsubsection{Netzwerk Ebene:}
-Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die verbindung zu dem lokalen und 
-externen Netzwerk.  Die 3GPP Komponente steht für 3rd Generation Partnership Project, was ein überbegriff für die mobieln
+Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die Verbindung zu dem lokalen und 
+externen Netzwerk. Die 3GPP Komponente steht für 3rd Generation Partnership Project, was ein überbegriff für die mobieln
 Telecommunikationsstandrads sind wie LTE und 5G. 
-\subsubsection{MEC Host}
+\subsubsection{Distributed Host Level}
+Wie der Name schon sagt, gibt es eine mehrere MEC-Hosts die im Netzwerk Verteilt sind.
 Der MEC Host enthält die MEC Platform und die Infrastruktur auf den die Anwendungen in der Edge Cloud betreiben werden.
-Die Inrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen  virtualisert zu verfügung. Als Virtualisierungslösung kann
+Die Inrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen  virtualisert zu Verfügung. Als Virtualisierungslösung kann
 die in Kapitel \ref{subsec:Network-Function Virtualisierung} eingeführte Network-Function Virtualisierung Infrastruktur
 eingesetzt werden. der MEC Host besteht aus zwei weiteren Komponenten:
 \\
@@ -390,13 +397,48 @@ Infrastructure-as-a-service Systeme wie Openstack unterstützen. Performance- un
 Kommt es zu einer Verschiebung einer Anwendung, in der eine laufende Anwendung zu einer externen Cloud umgezogen wird,
 iteragiert der Virtualization infrastructure manager mit der externen Cloud um den Handoff an die neue Cloud durchzuführen.
 Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{x} genauer erläutert.
-\subsubsection{MEC system level management:}
+\subsubsection{MEC system level:}
+Das Systemlevel ist übergreifend über mehrere MEC Hosts.
+\newpage
+\section{Integration von MEC und 5G}
+Das 5G Netzwerk trennt die User Plane (UP) von der Control Plane (CP).  \cite{arnold5GRadioAccess2017} \\
+Die User oder auch Data Plane, ist verantwortlich für das Weiterleiten der Daten von der Quelle zum Zielort.
+Die CP steuert die UP beispielsweise für das einstellen des Routingpfads für ein Datenpaket oder für Radio Resssourcemanagement.
+Die CP ist auch verantwortlich für Verbindungs- und Mogilitätsmanagement sowie Authentifizierungen und das Verbreiten von 
+Systeminformationen. 
+\\
+\\
+In der 5G-Systemspezifikation stehen zwei Optionen für die Architektur zur Verfügung. 
+Eine mit dem traditionellen Interface Ansatz und eine weitere 
+bei der die Netzwerkfunktionen des Kernnetzes mithilfe einer Service Based Architecture (SBA) verbunden sind. 
+Hier wird die Service Based Architecture betrachtet. Bei SBA können die Netzwerkfunktionen Dienste bereitstellen oder konsumieren, eine
+Funktion kann auch mehrere Dienste anbieten. 
+Für die effiziente Nutzng der Dienste, ist eine Registrierung, Service Discovery, Abmeldung sowie Authentifizierung und Autorisierung erforderlich.
+Die Abbildung \ref{fig:sba} zeigt auf linken Seite ein 5G System in Form von SBA, 
+die rechte Seite zeigt die MEC-Systemarchitektur wie in Kaptiel \ref{subsec:MEC Framework - Referenz Architektur}.
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture.png}
+  \caption{5G Servicebasierte Architektur und MEC Systemarchitektur \cite{arnold5GRadioAccess2017} \cite{etsiETSIGSMEC}}
+  \label{fig:sba}
+\end{figure}
+\\
+Dieser Abschnitt beschreibt, wie ein Multi Access Edge Cloud System in die 5G-Netzwerkumgebung integriert werden kann und welche Komponenten miteinander
+iteragieren.
+\\
+\\
+Die Netzwerkfunktionen und die Dienste die diese zurverfügungstellen, werden im 5G System in der Network Resource Funktion (NRF) registriert.
+Bei dem NRF bietet damit eine Liste mit allen Diensten an. 
+In einem MEC System werden die Dienste die von den MEC- Anwendungen bereitgestellt werden in der Service Registry in der MEC Platform registriert.
+Will eine Netzwerkfunktion im 5G Netzwerk ein Dienst nutzen, kann diese direkt mit der Funktion die den Dienst zurverfügungstellt interagieren,
+wenn diese au­then­ti­fi­zie­rt ist. Die Network Exposure Function (NEF) im 5G System stellt auch Dienste an nicht au­then­ti­fi­zie­rte Komponenten 
+zur Verfügung. Die NEF ist damit sehr wichtig für die Bereitstellung von Servicen, sie ist verantwortlich für die Autorisierung aller Anfragen
+auserhalb des 5G-Systems. 
+\\
+\\
+Für die Integration von MEC in ein 5G Netzwerk, spielt die User Plane Function (UPF) eine wichtige Rolle. Die UPF ist Teil der User Plane
+und ist eine Darstellung der dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrollen und Weiterleitung von Nutzdaten. \cite{Leitfaden5GCampusnetze2020}
 
-
-\subsection{Beispiel einer Anfrage}
-
-\subsection{Weitere Frameworks}
-\label{subsec:Weitere Frameworks}
+\newpage
 \section{Mobilitätsmanagement in Mobile Edge Clouds}
 Die Mobilität von Endgeräte im 3GPP Neztwerken, kann dazu führen, dass ein UE sich von einer 
 Radio Station zu nächsten bewegt. Das Verwalten und AUfrechterhalten dieser Verbindungen in Funknetzen wird
