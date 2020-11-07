@@ -400,7 +400,7 @@ Eine weitere Aufgabe ist das Verwalten, Managen und Autorisierung von DNS Config
 Desweiteren erhält der Platform Manager Fehlerberichte und Informationen über die Infrastruktur von dem Virtualiserungs Infrastruktur Manager.
 \\
 \\ 
-\textbf{Virtualization Infrastruktur Manager} Eine weitere Komponente in im Host level management ist der Virtualization Infrastruktur
+\textbf{Virtualization Infrastruktur Manager:} Eine weitere Komponente in im Host level management ist der Virtualization Infrastruktur
 Manager. Dieser ist für das Zuweisen, Verwalten und Freigeben von virtualisierten (Rechen-, Speicher- und Netzwerkressourcen)
 Ressourcen der Virtualisierungsinfrastruktur zuständig. Der Manager ist dabei auch für das Konfigurieren der Infrastruktur für 
 ein neues Software Image verantwortlich. Dazu gehört das herunterladen und speicheren der Images. Dabei kann der Manager auch 
@@ -409,10 +409,28 @@ Infrastructure-as-a-service Systeme wie Openstack unterstützen. Performance- un
 Kommt es zu einer Verschiebung einer Anwendung, in der eine laufende Anwendung umgezogen wird,
 interagiert der Virtualization Infrastruktur Manager mit dem MEC-Host zusammen um den Handoff an die neue Cloud durchzuführen.
 Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{x} genauer erläutert.
-\subsubsection{MEC system level:}
-Das Systemlevel ist übergreifend über mehrere MEC Hosts.
-TODO
+\subsubsection{MEC System Level}
+Das Systemlevel ist übergreifend über mehrere MEC Hosts. 
+\\
+\\
+\textbf{MEC - Orchestrator:}
+Der MEC-Orchestrator spielt eine zentrale Rolle, 
+da er die Ressourcen und Funktionen des gesamten MEC-Systems im Blick hat. 
+In vielerlei Hinsicht ähnelt dieser dem ETSI Network Functions Virtualization Orchestrator und hat ähnliche 
+Aufgaben wie Orchestierung und Kontrolle der Instanziierung, Lösung von Ressourcenkonflikten usw. 
+Der MEC Orchestrator ist jedoch auch für die Verwaltung der MEC-Anwendungen verantwortlich. 
+Der MEC - Orchestartor ist verantwortlich für das initalisieren, terminieren der Anwendungen, sowie das prüfen
+der Integrität und Authentizität. Der Orchestrators stellt sicher, 
+dass ein MEC - Host der die Anforderungen an die Awendung wie Latenz und Verfügbaren Resourcen erfüllt, ausgewählt wird.
+Ist dies nicht der Fall ist es auch Aufgabe des Orchestartor, ein besseren Host zu finden und die Anwendungen umzuziehen.
+\\
+\\
+\textbf{Operations Support System:}
+
+\subsubsection{MEC Services}
+
 \newpage
+
 
 
 
