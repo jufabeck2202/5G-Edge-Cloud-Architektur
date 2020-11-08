@@ -384,9 +384,9 @@ eingesetzt werden. Der MEC Host beinhaltet zwei weitere Komponenten:
 \\
 \\
 \textbf{MEC Platform:} Die MEC Platform dient als eine art Registry für  
-Anwendungen die auf der MEC Infrastruktur laufen. Die Platform bietet eine Umgebung, in der MEC Anwendungen sich anmelden können,
-andere Anwendungen Anfragen können. Die MEC Platform ist auch für DNS Reccords zuständig. Sie nimmt Befehle
-des MEC Platform Managers entgegen und passt die DNS Records, Proxies an. Desweiteren verwaltet auch den Persistent Storage.
+Anwendungen die auf der MEC Infrastruktur laufen. Die Platform bietet eine Umgebung, in der MEC Anwendungen sich registieren,
+andere Anwendungen Anfragen stellen können. Die MEC Platform ist auch für DNS Reccords zuständig. Sie nimmt Befehle
+des MEC Platform Managers entgegen und passt die DNS Records, Proxies an. Desweiteren verwaltet diese auch den Persistent Storage.
 \\
 \\
 \textbf{MEC Anwendungen:} Multi-Access Edge Computing Anwendungen werden in einer Virtuellen Maschine oder als
@@ -413,7 +413,7 @@ Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{
 Das Systemlevel ist übergreifend über mehrere MEC Hosts. 
 \\
 \\
-\textbf{MEC - Orchestrator:}
+\textbf{MEC- Orchestrator:}
 Der MEC-Orchestrator spielt eine zentrale Rolle, 
 da er die Ressourcen und Funktionen des gesamten MEC-Systems im Blick hat. 
 In vielerlei Hinsicht ähnelt dieser dem ETSI Network Functions Virtualization Orchestrator und hat ähnliche 
@@ -426,14 +426,64 @@ Ist dies nicht der Fall ist es auch Aufgabe des Orchestartor, ein besseren Host 
 \\
 \\
 \textbf{Operations Support System:}
-Das Operation Support System (OSS)
-\subsubsection{MEC Services}
+Das Operation Support System (OSS) ist die höchste Ebene, die eine Anwendung bei der Ausführung an einem Standort unterstützt. 
+Das OSS empfängt Anforderungen zum Instanziieren und Beenden der mobilen Edge-Anwendungen von dem Customer Facing Service (CFS) und von den Endgeräten.
+Um diese zu erfüllen kommuniziert das Operation Support System mit dem MEC-Orchestartor.
+\\
+\\
+\textbf{Customer Facing Service:}
+Der Customer Facing Service (CFS) dient als Schnittstelle für Drittanbieter und ähnlet Portalen wie bei Cloud-Plattformen. 
+Dieser kommuniziert mit dem (OSS)
+\\
+\\
+\textbf{User App Lifecycle Management Proxy:} 
+Der User App Lifecycle Management Proxy (User App LCM Proxy) ist eine Funktion, die Endgeräte Anfordern können für Onboarding, Initalisierung und Terminierung der auf der
+Edge Cloud laufenden Services. Stellt eine Endgerät eine Anfrage, autorisiert der Proxy die Anfrage und leitet diese an das OSS und den MEC- Orchestrator weiter. 
+Die Endgeräte können so mit dem MEC- System über den Proxy kommunizieren und so auch beispielsweise das Umzienen einer Anwendung von 
+einer externen Cloud in das MEC-System starten. Der User App LCM Proxy kann nur von dem Mobilen Netzwerk erreicht werden.
+\subsubsection{MEC-Services}
+In einem MEC-System ist ein MEC-Service, ein Service der von der MEC-Platform oder von einer MEC-Anwendung konsumiert oder zur Verfügung geestellt wird. 
+Wird der MEC-Service von einer Anwendung bereitgestellt, muss ideser sich in die Liste der Services auf der MEC-Platform registieren. MEC-Anwendungen können 
+Services abonniert um Informationen zu erhalten. 
+\\
+\\
+\textbf{Funknetz Informationsservice:}
+An dem Funknetz Informationsservice können autorisiert Anwendungen Informationen über das Funknetz abfragen.
+Abonniert eine Anwendung diesen Service, erhält sie Informationen über den aktuellen Zustand des Funknetz und der User Plane. Die Anwendung erhält über den Service,
+die Infromationen in regelmäßigen Agständen.
+\\
+\\
+\textbf{Standort und Bandbreiten Service:}
+Über den Standort Service stellt Informiert Anwendungen über den Standort von Endgeräten, 
+die derzeit von den dem MEC-Host zugeordneten Funkknoten bedient werden. Es können auch eine Liste aller Endgeräte an einem Standort abgefragt werden, sowie der Standort aller
+Funkknoten die dem MEC-Hostzugerodnet sind. Diese Informationen sind wichtig für die Entscheidung, ob ein eine MEC-Anwendung zu einem dem Engerät näheren MEC-Host wechseln soll.
+\\
+Der Bandbreiten Service ermöglicht das Erhöhen der Bandbreite für bestimmten Datenverkehr von MEC-Anwendungen und damit die Priorisierung wichtiger Daten.
+\subsection{Zusammenfassung}
+Dieses Unterkapitel beschreibt wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten.
+\begin{enumerate}
+  \item Die UE Anwendung stellt eine Anfrage für das Starten einer neuen Anewendung auf dem MEC-System. Die Anfrage wird läuft über den 
+  User App LCM Proxy. Dieser leitet die Anfrage an das Operation Support System weiter.
+  \item Das OSS gibt die Anfrage an den MEC- Orchestartor weiter.
+  \item Die Anfrage für das Starten einer neuen MEC- Anwendung enthält Informationen über 
+  die Anwendung und andere Informationen, wie der Ort an dem die Anwendung ausgeführt werden soll, 
+  andere Anwendungsregeln und -anforderungen sowie den Speicherort des Anwendungsimage, 
+  falls dieses noch nicht im MEC-System vorhanden ist. 
+  \item Anhand folgender Informationen wählt der MEC-Orchestartor ein geigneten MEC-Host aus:
+  \begin{itemize}
+    \item Latenzanforderungen an die Anwendung
+    \item Anforderung an den Ort (möglichst ist der Nähe des Engerätes)
+    \item Benötigte Speicher- und Rechenressourcen
+    \item MEC-Services die für die Anwendung benötigt werden
+    \item Mobilitätsanforderungen (muss die Anwendung umziehen, muss der Zustand der Anwendung umziehen)
+    \item Art des Hostens der Anwendung (Handelt es sich um eine Instanz pro Benutzer eine Instanz pro MEC-Host)
+    \item Informationen über dan Netzwbetreiber des MEC-Hosts (Kosten, Funknetztopologie)
+  \end{itemize}
+  Der MEC-Orchestrator wählt anhand dieser Informationen ein oder mehrere MEC-Hosts aus und started das Initalisieren der Anwendungen
+  \item
+\end{enumerate}
 
 \newpage
-
-
-
-
 
 \section{Integration von MEC und 5G}
 Das 5G Netzwerk trennt die User Plane (UP) von der Control Plane (CP).  \cite{arnold5GRadioAccess2017} \\
@@ -508,6 +558,7 @@ Die Mobilität eines UEs kann in weitreichenden MEC-Systemen vorhergesagt werden
 dennoch muss der Zustand der Anwendung übertragen werden.
 Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen.
 
+
 \subsection{Verschieben der Anwendung und desen Zustand}
 Bewegt sich das UE im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
 MEC - Host, muss die Anwendung umziehen. Die MEC-Anwendungen werden in zustandslose und zustandsbehaftete Anwendungen eingeteilt.
@@ -539,9 +590,11 @@ ist der VM Handoff.  \cite{Ha2015AdaptiveVH}
 \label{subsec:MEC Mobilität}
 \subsection{MEC Deployment}
 \label{subsec:MEC Deployment}
+\newpage
 
+\section{Multi-Access Edge Computing Scenarios}
 
-\section{Anwendungen}
+\cite{patelContributorHuaweiVice}
 \label{sec:Anwendungen}
 \subsection{Internet of Things}
 \label{subsec:Internet of Things}
@@ -549,12 +602,18 @@ ist der VM Handoff.  \cite{Ha2015AdaptiveVH}
 \label{subsec:Smart Factory}
 \subsection{Autonomes Fahren}
 \label{subsec:Autonomes Fahren}
+\newpage
+
 \section{Fazit und Ausblick}
-Multi Access Edge Cloud Computing ist eine neue Technologie, die die Vorteile von
-Edge Clouds und 5G optimial kombiniert und eine neue Platform zur Verfügung stellt.
+Früher als Mobile Edge Computing bekannt, ist Multi-Access Edge Computing wichtigsten Säulen für 5G und 
+definitiv eine der vielversprechendsten Technologien, 
+um Cloud-basierte Anwendungen und Dienste in das Geschäft von Netzbetreibern zu integrieren.
 MEC ist ist eine der wichtigsten neuen Technologien für 5G-Systeme, 
 da es zur einer geringen Latenz und zur Kapazitätsverbesserung im Backhaul- und Kernnetzwerk führt. 
-Der Erfolg von MEC hängt im Wesentlichen von der Ausrichtung der Technologie auf ETSI NFV ISG ab.
+Der Erfolg von MEC hängt im Wesentlichen von der Ausrichtung der Technologie auf ETSI NFV ISG ab. 
+\\
+\\
+In diesem Bei
 \subsection{Fazit}
 \subsection{Ausblick}
 Neben dem Ausbau des 5G Netzes, ist bei der Einführung von \textit{MEC} Systemen, 
@@ -570,6 +629,8 @@ die Standardisierung sehr wichtig.
 % Normaler LNCS Zitierstil
 %\bibliographystyle{splncs}
 \printbibliography[heading=bibintoc]
-
+TODO: 
+- Funkknoten
+- Einheitliche Fromatierung von Begriffen.
 
 \end{document}
