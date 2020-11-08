@@ -487,8 +487,8 @@ Referenz Architektur. Wird eine neue MEC- Anwendung auf gestartet werden folgend
   \item Der MEC-Platform Manager kommuniziert mit dem Virtualization Infrastruktur Manager um die benötigten virtualisierten Ressourcen 
   bereitzustellen. der Infrastruktur Manager läd das benötigte Image für die Anwendung runter wenn dieses noch nicht Verfügbar ist.
   \item Anschlißend kommuniziert der MEC- Platform Manager mit der MEC- Platform um die Anwendung zu konfigurieren.
-  \item Die MEC- Platform konfiguriert das Routing des Datenverkerhs auf der Data-Plane der Virtuellen Infrastruktur.
-  \item Der MEC- Platform Manager startet die Anwendung auf.
+  \item Die MEC- Platform konfiguriert das Routing des Datenverkerhs auf der Data-Plane der virtuellen Infrastruktur.
+  \item Der MEC- Platform Manager startet die Anwendung auf der virtuellen Infrastruktur.
   \item Die Anwendung registriert sich bei der MEC-Platform in der Service Registry. Die MEC- Platform konfiguriert die DNS Regeln der 
   Anwendung und verwaltet den Zugriff auf Persistenten Speicher.
 \end{enumerate}
@@ -590,10 +590,30 @@ und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät.
 Für das Erkennen von UE Mobilität zu einer neuen Zelle, abboniert die MEC Platfor Radio Network Infromationen die von dem RNIS zu
 Verfügung gestellt werden. Mithilfe dieser Informationen können UEs identifizieren werden bei denen eine Zelländerung auftritt 
 und bestimmen werden, ob sie aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
-TODO -> RNIS
+\subsection{Aktualisierung des Routings für Mobilitätsupport}
+Das MEC-System ist in der Lage flexibel User Plane Functions anzupassen je nach den Anforderungen oder Regeln des MEC-Systems 
+und dem Zustand des Netzwerkes. Für das Mobilitätsmanagement ermöglicht dies das flexible lenken des Datenverkehrs auf der U-Plane
+um die Verbindung zwischen dem Endgerät und der Anwendungsinstanz auf dem MEC-Host aufrecht zu halten. Soll die Anwendungsinstanz
+beispielsweise zu einem neuen MEC-Host umgezogen werden und dieser ist nicht in der Lage die Instanz zu hosten, kann der aktuelle
+MEC-Host noch einen zufriedenstellenden Service anbieten.
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/Verschieben_Instanz.png}
+  \caption{Handover vom MEC-Host zum Ziel-MEC-Host}
+  \label{fig:Verschieben_Instanz}
+\end{figure}
+\\
+Bewegt sich das Engerät kann es zu einem gNB Handover kommen, was zur Änderungen in der UPFs Ebene führt. 
+Bei Bedarf wird der Zustand zu der Instanz in dem Ziel-MEC-Host übertragen und das Routing wird für das Endgerät angepasst, 
+was in der Grafik \ref{fig:Verschieben_Instanz} zu sehen ist.
+
+
+\subsection{Ping-Pong Handover}
+Ping-Pong-Übergaben treten auf, wenn ein Engerät von einer Zelle zur nächsten wechselt, dann aber wieder in die uhrsprüngliche 
+Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, das es zwischen den zwei HOSTCHANGe
+hin und herspringt. Daher die Bezeichnung Ping-Pong Handover
 \subsection{VM Handoff}
 Eine vorgeschlagene Möglichkeit \cite{etsiETSIGSMEC} für das Umziehen laufenden Anwendungen von einem MEC-Host zu einem Ziel MEC-Host, 
-ist der VM Handoff.  \cite{Ha2015AdaptiveVH}
+ist der VM Handoff. \cite{Ha2015AdaptiveVH}
 \subsection{MEC Service Orchestrierung}
 \label{subsec:MEC Service Orchestrierung}
 \subsection{MEC Mobilität}
@@ -642,5 +662,7 @@ die Standardisierung sehr wichtig.
 TODO: 
 - Funkknoten
 - Einheitliche Fromatierung von Begriffen.
-
+- User Plane FUnction besser erklären
+- Abkürzungen Next Generation NodeB 
+- Besser ekrlären das die Instanz bereits läuft.
 \end{document}
