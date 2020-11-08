@@ -460,7 +460,8 @@ Funkknoten die dem MEC-Hostzugerodnet sind. Diese Informationen sind wichtig fü
 \\
 Der Bandbreiten Service ermöglicht das Erhöhen der Bandbreite für bestimmten Datenverkehr von MEC-Anwendungen und damit die Priorisierung wichtiger Daten.
 \subsection{Zusammenfassung}
-Dieses Unterkapitel beschreibt wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten.
+Dieses Unterkapitel beschreibt wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten. Die Grafik \ref{x} zeigt die 
+Referenz Architektur. Wird eineneue MEC- Anwendung auf gestartet werden folgende Schritte durchgeführt:
 \begin{enumerate}
   \item Die UE Anwendung stellt eine Anfrage für das Starten einer neuen Anewendung auf dem MEC-System. Die Anfrage wird läuft über den 
   User App LCM Proxy. Dieser leitet die Anfrage an das Operation Support System weiter.
@@ -479,8 +480,17 @@ Dieses Unterkapitel beschreibt wie die zuvor erläuterten Komponenten des MEC-Sy
     \item Art des Hostens der Anwendung (Handelt es sich um eine Instanz pro Benutzer eine Instanz pro MEC-Host)
     \item Informationen über dan Netzwbetreiber des MEC-Hosts (Kosten, Funknetztopologie)
   \end{itemize}
-  Der MEC-Orchestrator wählt anhand dieser Informationen ein oder mehrere MEC-Hosts aus und started das Initalisieren der Anwendungen
-  \item
+  Der MEC-Orchestrator wählt anhand dieser Informationen ein oder mehrere MEC-Hosts aus und started das Initalisieren der Anwendungen.
+  \item Für das Abfragen der verfügbaren Ressourcen kommuniziert der MEC-Orchestartor mit dem Virtualization Infrastruktur Manager.
+  \item Wurde ein passender MEC-Host gefunden, started der MEC Platform Manager die Anwendung. der MEC-Platform Manager erhält von dem 
+  MEC-Orchestartor die Anfroderderungen der Anwendung.
+  \item Der MEC-Platform Manager kommuniziert mit dem Virtualization Infrastruktur Manager um die benötigten virtualisierten Ressourcen 
+  bereitzustellen. der Infrastruktur Manager läd das benötigte Image für die Anwendung runter wenn dieses noch nicht Verfügbar ist.
+  \item Anschlißend kommuniziert der MEC- Platform Manager mit der MEC- Platform um die Anwendung zu konfigurieren.
+  \item Die MEC- Platform konfiguriert das Routing des Datenverkerhs auf der Data-Plane der Virtuellen Infrastruktur.
+  \item Der MEC- Platform Manager startet die Anwendung auf.
+  \item Die Anwendung registriert sich bei der MEC-Platform in der Service Registry. Die MEC- Platform konfiguriert die DNS Regeln der 
+  Anwendung und verwaltet den Zugriff auf Persistenten Speicher.
 \end{enumerate}
 
 \newpage
