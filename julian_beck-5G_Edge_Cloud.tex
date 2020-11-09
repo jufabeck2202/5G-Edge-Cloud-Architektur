@@ -591,6 +591,7 @@ Für das Erkennen von UE Mobilität zu einer neuen Zelle, abboniert die MEC Plat
 Verfügung gestellt werden. Mithilfe dieser Informationen können UEs identifizieren werden bei denen eine Zelländerung auftritt 
 und bestimmen werden, ob sie aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
 \subsection{Aktualisierung des Routings für Mobilitätsupport}
+\subsubsection{Problem}
 Das MEC-System ist in der Lage flexibel User Plane Functions anzupassen je nach den Anforderungen oder Regeln des MEC-Systems 
 und dem Zustand des Netzwerkes. Für das Mobilitätsmanagement ermöglicht dies das flexible lenken des Datenverkehrs auf der U-Plane
 um die Verbindung zwischen dem Endgerät und der Anwendungsinstanz auf dem MEC-Host aufrecht zu halten. Soll die Anwendungsinstanz
@@ -605,8 +606,50 @@ MEC-Host noch einen zufriedenstellenden Service anbieten.
 Bewegt sich das Engerät kann es zu einem gNB Handover kommen, was zur Änderungen in der UPFs Ebene führt. 
 Bei Bedarf wird der Zustand zu der Instanz in dem Ziel-MEC-Host übertragen und das Routing wird für das Endgerät angepasst, 
 was in der Grafik \ref{fig:Verschieben_Instanz} zu sehen ist.
+Kann der Ziel MEC- Host die Anwendung nicht Hosten, weil dieser nicht über ausreichend Ressourcen verfügt oder nicht den gewünschten Service
+erfüllt, kann der Zustand einer laufenden Anwendungsinstanz nicht auf den Ziel-MEC-Host übertragen werden. Ist dies der Fall, muss das Routing
+trotzdem aktualisiert werden. Die Anwendungsdaten werden entweder über den Ziel-MEC-Host (Bild 2 in Abbildung \ref{fig:MEC_ERROR}) 
+oder über die UPFs des Ziel und uhrsprünglichen MEC-Hosts geleited (Bild 3 in Abbildung \ref{fig:MEC_ERROR}).
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/MEC_host_Error.png}
+  \caption{Routing wenn der Ziel-MEC Host die Anwendung nicht hosten kann}
+  \label{fig:MEC_ERROR}
+\end{figure}
+Unabhängig davon, ob die Anwendungsinstanz erfolgreich auf den Ziel-MEC-Host übertragen wurde oder nicht, 
+der Verkehrspfad wird entsprechend aktualisiert.
+\subsubsection{Aktualisieren des Routings}:
+Für das Aktualisieren und Aufrechterhalten der Routen, ist die Application Function verantwortlich.
+Die Application Function (AF) interagiert mit 5G-Control-Pane, 
+um das Routing zu beeinflussen. 
 
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/AF_5G.png}
+  \caption{Application Function in 5G}
+  \label{fig:AF_GG}
+\end{figure}
 
+Die AF erfasst Informationen über das 5G Netzwerk und unterstützt so die Mobilität von Anwendungsinstanzen. 
+Dies ermöglicht in dem 5G-System eine flexiblere Bereitstellung der Data-Plane ermöglichen, um Edge-Computing nativ zu unterstützen.
+Die Abbildung \ref{fig:AF_GG} zeigt die Application Function in einer Service-basierten 5G Netzwerkarchitektur.
+\\
+\\
+ETSI definiert für das Anpassen des Routings mithilfe der AF den sogenannten \textit{Application Function influence on traffic routing} Prozess.
+Startet ein MEC-System diesen Prozess benötigt es Folgende Parameter:
+\begin{itemize}
+  \item UE dentifikator, eindeutig für das Endgerät
+  \item Mögliche Orte für die Anwendung,  Data Network Access Identifier (DNAI) wird benötigt um die Ziel UPFS zu erlangen.
+  \item AF-Transaktionskennung, wird von der AF Funktion generiert
+  \item Beschreigung des Datenverkehrs, dazu gehören IP-Adressen, Zieladressen und Data Network Name (DNN)
+\end{itemize}
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/Datenverkehr_Update.png}
+  \caption{Komponenten für die Aktualisierung des Routings}
+  \label{fig:Datenverkehr_Update}
+\end{figure}
+Mithilfe dieser Parameter kann der Prozess des Umleitens gestartet werden.
+Abbildung \ref{fig:Datenverkehr_Update} Zeigt wie die einzelnen Komponenten zusammenarbeiten um ein benötigte Aktualisierung des Datenverkehrs durchzuführen.
+Die Kommunikation mit dem MEC-System läuft dabei über die Network Exposure Function (NEF). Diese kommuniziert mit dem MEC-Orchestartor welcher
+die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt.
 \subsection{Ping-Pong Handover}
 Ping-Pong-Übergaben treten auf, wenn ein Engerät von einer Zelle zur nächsten wechselt, dann aber wieder in die uhrsprüngliche 
 Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, das es zwischen den zwei HOSTCHANGe
