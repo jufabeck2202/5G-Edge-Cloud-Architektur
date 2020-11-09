@@ -587,7 +587,7 @@ Nachdem die Anwendung gestartet ist, startet der Umzugsvorgang und der Zustand w
 Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertragen ist, stoppt die aktuelle Instanz
 und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät.
 \\
-Für das Erkennen von UE Mobilität zu einer neuen Zelle, abboniert die MEC Platfor Radio Network Infromationen die von dem RNIS zu
+Für das Erkennen von UE Mobilität zu einer neuen Zelle, abonniert die MEC Platfor Radio Network Infromationen die von dem RNIS zu
 Verfügung gestellt werden. Mithilfe dieser Informationen können UEs identifizieren werden bei denen eine Zelländerung auftritt 
 und bestimmen werden, ob sie aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
 \subsection{Aktualisierung des Routings für Mobilitätsupport}
@@ -609,7 +609,7 @@ was in der Grafik \ref{fig:Verschieben_Instanz} zu sehen ist.
 Kann der Ziel MEC- Host die Anwendung nicht Hosten, weil dieser nicht über ausreichend Ressourcen verfügt oder nicht den gewünschten Service
 erfüllt, kann der Zustand einer laufenden Anwendungsinstanz nicht auf den Ziel-MEC-Host übertragen werden. Ist dies der Fall, muss das Routing
 trotzdem aktualisiert werden. Die Anwendungsdaten werden entweder über den Ziel-MEC-Host (Bild 2 in Abbildung \ref{fig:MEC_ERROR}) 
-oder über die UPFs des Ziel und uhrsprünglichen MEC-Hosts geleited (Bild 3 in Abbildung \ref{fig:MEC_ERROR}).
+oder über die UPFs des Ziel und ursprünglichen MEC-Hosts geleited (Bild 3 in Abbildung \ref{fig:MEC_ERROR}).
 \begin{figure}
   \includegraphics[width=\linewidth]{images/MEC_host_Error.png}
   \caption{Routing wenn der Ziel-MEC Host die Anwendung nicht hosten kann}
@@ -650,19 +650,56 @@ Mithilfe dieser Parameter kann der Prozess des Umleitens gestartet werden.
 Abbildung \ref{fig:Datenverkehr_Update} Zeigt wie die einzelnen Komponenten zusammenarbeiten um ein benötigte Aktualisierung des Datenverkehrs durchzuführen.
 Die Kommunikation mit dem MEC-System läuft dabei über die Network Exposure Function (NEF). Diese kommuniziert mit dem MEC-Orchestartor welcher
 die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt.
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/Datenverkehr_Ablauf.png}
+  \caption{Ablauf der Aktualisierung}
+  \label{fig:Datenverkehr_Ablauf}
+\end{figure}
+Für das Aktualisieren des Routings werden folgende Schritte (Abbildung \ref{fig:Datenverkehr_Ablauf}) durchgeführt:
+\begin{enumerate}
+  \item Der MEC- Orchestartor (MEO) abonniert über NEF, UP Event Mittelungen. Der MEO erhält daher eine Mitteilung das sich die UP und DN des
+  UEs aufgrund der Mogilität verändert haben.
+  \item Die Quell-MEC-Plattform (S-MEC-Plattform) abonniert dem UE zugeordnete Zellenänderungsbenachrichtigung. 
+  Nachdem die S-MEC-Plattform eine Nachricht erhalten hat, bestimmt diese, ob das UE die Zelle verlassen hat. 
+  Ist dies der Fall sendet die S-MEC-Plattform eine Mobilitätsanfrage an den MEO.
+  \item Der MEO wählt ein Ziel MEC-Host für die Anwendung aus.
+  \item In dem Fall, in dem der Ziel-MEC-Host aus nicht verfügbar ist, beispielsweise nicht Ziel-MEC-Host nicht ausreichend Ressourcen hat,
+  wird die Anwendungsinstanz auf dem S-MEC-Host fortgesetzt und der UP-Pfad ist vorhanden und wird and den UPF des S-MEC-Host umgeleitet.
+  \item Der MEO sendet eine Aktualisierung an den S-MEC-Plattformmanager dem T-MEC-Plattformmanager
+\end{enumerate}
+Diese Schritte ermöglichen eine Kontinuirliche Verbindung zwischen UE und MEC-Anwendung, unabhängig ob diese sich biem S-MEC-Host oder Z-MEC-Host befindet.
 \subsection{Ping-Pong Handover}
-Ping-Pong-Übergaben treten auf, wenn ein Engerät von einer Zelle zur nächsten wechselt, dann aber wieder in die uhrsprüngliche 
-Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, das es zwischen den zwei HOSTCHANGe
-hin und herspringt. Daher die Bezeichnung Ping-Pong Handover
+\subsubsection{Problem}
+Ping-Pong-Übergaben treten auf, wenn ein Engerät von einer Zelle zur nächsten wechselt, dann aber wieder in die ursprüngliche 
+Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, das es zwischen den zwei Hosts
+hin und herspringt. Daher die Bezeichnung Ping-Pong Handover.
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/pingpong.png}
+  \caption{Ping Pong Handover}
+  \label{fig:pingpong}
+\end{figure}
+\subsubsection{Lösung}
+Für das Lösen des Ping-Pong Problems im MEC- System, schlägt ETSI eine Verringerung der Migrationsevent die vom MEO durchgeführt werden vor.
+\begin{enumerate}
+  \item Der MEO wird Benachrichtigt, wenn es zu einem Ping-Pong Handover kommt, das zahlreiche Migrationen von MEC-Anwendung verursacht. Das
+  Ping-Pong event wird dabei durch eine Vielzahl von Events der UPFS Erkannt.
+  \item Nach dem Erkennen eines Ping-Pong Events, startet der MEO den \textit{Ping-Pong handover migration} Prozess. Dieser verändert die UFPS 
+  so, dass diese sich immer zur MEC-Anwendung verbindet, unabhängig von der Verbindungsqualität des UEs. Dies reduziert die Anzahl der Migrationen
+  zwischen Source-MEC-Host und Target-MEC-Host, auch wenn das UE sich oft zwischen Netzbereichen der Hosts wechselt. Das UE kommuniziert weiterhin
+  mit der Anwendung im S-MEC über die Source-UPF. Abildung \ref{fig:pingpongrouting} zeigt dies.
+  \item Der MEO wartet auf das sogenannte \textit{Ping-Pong recovery event}. Dieses signalisiert, dass das UE sich nicht mehr zwischen zwei
+  Aufgabenbereichen der MEC-Hots befindet.
+  \item  Nach dem \textit{Ping-Pong recovery event} setzt der MEO das Routing im UPFs wieder auf den ursprünglichen Zustand zurück.
+\end{enumerate}
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/pingpongrouting.png}
+  \caption{Angepasstes Routing}
+  \label{fig:pingpongrouting}
+\end{figure}
+
 \subsection{VM Handoff}
 Eine vorgeschlagene Möglichkeit \cite{etsiETSIGSMEC} für das Umziehen laufenden Anwendungen von einem MEC-Host zu einem Ziel MEC-Host, 
 ist der VM Handoff. \cite{Ha2015AdaptiveVH}
-\subsection{MEC Service Orchestrierung}
-\label{subsec:MEC Service Orchestrierung}
-\subsection{MEC Mobilität}
-\label{subsec:MEC Mobilität}
-\subsection{MEC Deployment}
-\label{subsec:MEC Deployment}
 \newpage
 
 \section{Multi-Access Edge Computing Scenarios}
