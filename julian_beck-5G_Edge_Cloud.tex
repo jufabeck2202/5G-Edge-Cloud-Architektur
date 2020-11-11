@@ -53,6 +53,8 @@
 \newacronym{cp}{CP}{Control Pane}
 \newacronym{up}{UP}{User Pane}
 \newacronym{nef}{NEF}{Network Exposure Function}
+\newacronym{nrf}{NRF}{Network Resource Funktion}
+
 \newacronym{smf}{SMF}{Session Management Function}
 \newacronym{udm}{UDM}{Unified Data Management}
 \newacronym{upf}{UPF}{User Plane Function}
@@ -61,6 +63,20 @@
 \newacronym{vnf}{VNF}{Virtualized Network Functions}
 \newacronym{vm}{VM}{Virtuelle Maschine}
 \newacronym{ran}{RAN}{Radio Access Networks}
+\newacronym{3gpp}{3GPP}{3rd Generation Partnership Project}
+\newacronym{oss}{OSS}{Operation Support System}
+\newacronym{cfs}{CFS}{Customer Facing Service}
+\newacronym{ue}{UE}{user equipment}
+\newacronym{dn}{DN}{Data Network}
+\newacronym{sba}{SBA}{Service Based Architecture}
+\newacronym{rnis}{RNIS}{Radio Network Information Service}
+\newacronym{af}{AF}{Application Function}
+\newacronym{meo}{MEO}{MEC- Orchestartor}
+
+
+
+
+
 
 
 \begin{document}
@@ -220,7 +236,7 @@ die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
   \item \textbf{\acrfull{amf}} ist für die Integrität, Registrierungsmanagement, Verbindungsmanagement,
   Zugriffs und Securitymanagement zuständig
   \item \textbf{\acrfull{nef}} verbreiten von Funktionen und Events, 
-  sichere Bereitstellung von Informationen aus externen Anwendungen für das 3GPP-Netzwerk. Diese Funktion ist vorallem für die Mobilität
+  sichere Bereitstellung von Informationen aus externen Anwendungen für das \acrshort{3gpp}-Netzwerk. Diese Funktion ist vorallem für die Mobilität
   in der 5G Edge Cloud wichtig, was in Abschnitt \ref{sec:Mobilitätsmanagement} erläutert wird.
   \item \textbf{\acrfull{smf}} Sitzungsverwaltung, Zuweisung von IP Adressen an die Endgeräte. 
   \item \textbf{\acrfull{udm}} Generierung von Anmeldeinformationen für Authentifizierungen, 
@@ -286,165 +302,195 @@ Software Instanzer in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert
 Neben \acrshort{nfv}, ist auch \acrlong{sdn}s für die Virtualisierung von Netzwerken wichtig..
 Bei einem \acrshort{sdn} ist die Steuerung des Netzwerks von der Hardware getrennt. Es wird zwischen einem Controller, 
 einer Southbound und einer Northbound API unterschieden. 
-Die Southbound APIs führt die Anweisungen nimmt und gibt Informationen des Controllers weiter an Netzwerkgeräte wie Switches,
-Access Points und Router weiter. Der Controller ist das zentrale Element eines \acrshort{sdn} Netzwerkes, 
-er ermöglicht ein zentrales Managen und steuern des 
-Netzwerkes. Die Northbound API gibt Informationen an den Controller weiter. Es ist die Schnittstelle zwischen Anwendungen 
+Die Southbound APIs führt die Anweisungen aus und gibt Informationen des Controllers weiter an Netzwerkgeräte wie Switches,
+Access Points und Router. Der Controller ist das zentrale Element eines \acrshort{sdn} Netzwerkes, 
+er ermöglicht ein zentrales Verwalten und Steuern des 
+Netzwerkes. Die Northbound API gibt Informationen an den Controller weiter. Sie ist die Schnittstelle zwischen Anwendungen 
 und dem \acrshort{sdn} Controller.\cite{SoftwareDefinedNetworkingSDN}
-\\
-\\
-Software Defined Networking kann so \textit{MEC} unterstützen, indem es automatisch und flexibel Servicemanagement durchführt.
-Da bei einem SDN die Daten und Controll Ebene durch die Southbound und Norhtbound API getrennt ist, 
-führt SDN eine zentrale Steuerung ein, 
-mit der virtuelle Netzwerkinstanzen einfach instanziiert und angeboten werden können, 
-indem die zugrunde liegende Netzwerkinfrastruktur abstrahiert wird. \\
-Im Kontext von MEC kann der SDN-Controller MEC-bezogene VNFs, 
-VMs und Container als eine weitere Netzwerkkomponente behandeln, der dynamisch zugewiesen und neu lokalisiert werden kann.
-So kann der SDN flexibel Service anpassen und dynamsich Dienste bereitstellen, indem er VNFs und MEC Dienste verbindet.
+\begin{figure}
+  \includegraphics[width=5cm]{images/SDN-Northbound-and-Southbound-Interfaces-Hong-2014.png}
+  \caption{Aufbau eines SDNs}
+  \label{fig:sdn}
+\end{figure}
+Das \acrlong{sdn} kann ein \acrshort{mec} unterstützen, indem es automatisch und flexibel Servicemanagement durchführt.
+Da bei einem \acrshort{sdn} die Daten und Controll Ebene durch die Southbound und Norhtbound API getrennt sind, 
+führt \acrshort{sdn} eine zentrale Steuerung ein, 
+mit der \acrshort{vnf} einfach gestartet und angeboten werden können. 
+Die zugrunde liegende Netzwerkinfrastruktur wird so abstrahiert. \\
+Im Kontext von \acrshort{mec} kann der \acrshort{sdn}-Controller MEC-bezogene \acrshort{vnf}, 
+\acrshort{vm} und Container als eine weitere Netzwerkkomponente behandeln, die dynamisch zugewiesen und neu lokalisiert werden kann.
+So kann der \acrshort{sdn} flexibel Service anpassen und dynamsich Dienste bereitstellen, indem er \acrshort{vnf}s und  \acrshort{mec} Dienste verbindet.
 Gleichzeitig kann er die mobilität der Dienste ermöglichen.
 \\
 \\
-Die Kombination von SDNs und NFV erlaubt zusammen das Erstellen von Network Slices. 
+Die Kombination von \acrshort{sdn}s und \acrshort{nfv} erlaubt zusammen das Erstellen von \textit{Netowrk slices}. 
 
 \subsection{Virtuelle Maschinen und Container}
 \label{subsec:Virtuelle Maschinen und Container}
-Eine Cloud Platform besteht typischerweise aus einer Anzahl von Maschinen an, 
+Eine Cloud Platform besteht typischerweise aus einer Anzahl von Maschinen, 
 die durch ein Hypervisor zu einer zentralen Maschine zusammen gefasst werden.
-Dieser kann isolierte virtuelle Maschinen erstellen und ausführen und dient als Abstraktionsebene, 
-unabhängig von der Hardware auf denen die VMs laufen.
+Dieser kann isoliert virtuelle Maschinen erstellen und ausführen und dient als Abstraktionsebene, 
+unabhängig von der Hardware auf denen die \acrshort{vm}s laufen.
 \\
 \\
 Eine leichgewichtige Alternative zur Hypervisor-basierten Virtualisierung ist die Containergestützte Virtualisierung. 
-Diese im Vergleich zu virtuelle Maschinen, eine andere Abstraktionsebene in Bezug auf Virtualisierung und Isolation verwendet. 
+Diese verwendet im Vergleich zu virtuelle Maschinen, eine andere Abstraktionsebene in Bezug auf Virtualisierung und Isolation. 
 Container implementieren die Isolierung auf OS Ebene und vermeiden so die Virtualisierung von Hardware und Treibern. 
 Insbesondere teilen sich Container denselben Kernel mit dem zugrunde liegenden Hostcomputer. 
 Dies macht Container sehr leichtgewichtigt und flexibel im 
 Gegensatz zu VMs. Typischerweise führt ein Container genau ein Service aus, was eine schnelle Migration ermöglicht.
 \\
 \\
-Im Blick auf \textit{MEC} ermöglichen Container eine leichtgewichtige Virtualisierungslösung. So eigenen sich die Container
+Im Blick auf \acrshort{mec} ermöglichen Container eine leichtgewichtige Virtualisierungslösung. So eigenen sich die Container
 als eine portable Laufzeit Umgebung für MEC-Dienste. 
 Einzelne Dienste können in Containern ausgeführt werden, sind so isoliert und können einfach 
-verwaltet und gesteuert werden. Für die Umsetzung bietet sich die mitlerweile weitverbreitete Containerlösung Docker an. Hier stehen mit 
-Kubernetes auch Orchestrierungs und Clustering Tools zur Verfügung  \cite{morabitoConsolidateIoTEdge2018}
+verwaltet und gesteuert werden. Für die Umsetzung bietet sich die mittlerweile weitverbreitete Containerlösung Docker an. Hier stehen mit 
+Kubernetes auch Orchestrierungs und Clustering Tools zur Verfügung \cite{morabitoConsolidateIoTEdge2018}
 
-\section{MEC Framework - Referenz Architektur}
+
+
+\newpage
+\section{MEC Framework und Referenz Architektur}
 \label{subsec:MEC Framework - Referenz Architektur}
-Folgendes Kaptiel zeigt die vom European Telecommunications Standards Institute (ETSI) beschriebene
-Referenz Architektur zur Implementation eines \textit{MEC} Systems. 
+Folgendes Kaptiel zeigt die vom \acrfull{etsi} beschriebene
+Referenz Architektur zur Implementation eines \acrshort{mec} Systems. 
 \\ 
 \\
-\textit{ETSI} beschreibt dabei in ihrer Spezifikation \textit{Multi-access Edge Computing (MEC); 
+\acrshort{etsi} beschreibt dabei in ihrer Spezifikation \textit{Multi-access Edge Computing (MEC); 
 Framework and Reference Architecture} \cite{etsiETSIGSMEC} ein Framework und eine 
-Referenz Architektur.
-\subsection{Multi-access Edge Computing Framework}
+Referenz Architektur. Die Grafik \ref{fig:MecFramework} zeigt das MecFramework. Dieses virtualisert die essenziellen Komponenten eines 
+MEC Systems.
+
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/MecFramework.png}
+  \caption{Multi-access Edge Computing Framework}
+  \label{fig:MecFramework}
+\end{figure}
+
+\subsection{Multi-access Edge Referenz Architektur}
 Die Komponenten werden dabei auf Infrastruktur virtualisiert am Rande des Neztwerks ausgeführt. 
 Dies ist möglich durch die in Kapitel \ref{sec:Benötigte Technologien} vorgestellten Technologien.
-Die Grafik X zeigt die komponenten des Frameworks
-
-\subsubsection{Netzwerk Ebene:}
+Die Grafik \ref{fig:mecarchitecture} zeigt die komponenten der Referenz Architecture.
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/mecarchitecture.png}
+  \caption{Multi-access edge system reference architecture }
+  \label{fig:mecarchitecture}
+\end{figure}
+Die einzelen Komponenten der MEC Framework und Referenz Architektur sind in folgende Ebenen unterteilt:
+\subsubsection{Netzwerk Ebene}
 Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die Verbindung zu dem lokalen und 
-externen Netzwerk. Die 3GPP Komponente steht für 3rd Generation Partnership Project, was ein überbegriff für die mobilen
-Telecommunikationsstandrads sind wie LTE und 5G. 
+externen Netzwerk. Die \acrshort{3gpp} Komponente steht für \acrlong{3gpp}, was ein Überbegriff für mobilen
+Telecommunications Standards wie LTE und 5G ist. 
 \subsubsection{Distributed Host Level}
-Wie der Name schon sagt, gibt es mehrere MEC-Hosts, die im Netzwerk Vvrteilt sind.
-Der MEC Host enthält die MEC Platform und die Infrastruktur auf den die Anwendungen, in der Edge Cloud, betreiben werden.
+Wie der Name schon sagt, gibt es mehrere MEC-Hosts, die im Netzwerk Verteilt sind.
+Der MEC Host enthält die MEC Platform und die Infrastruktur auf denen die Anwendungen, in der Edge Cloud, betreiben werden.
 Die Inrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen virtualisert zu Verfügung. Als Virtualisierungslösung kann
-die in Kapitel \ref{subsec:Network Function Virtualization} eingeführte Network Function Virtualization Infrastruktur
-eingesetzt werden. Der MEC Host beinhaltet zwei weitere Komponenten:
+die in Kapitel \ref{subsec:Network Function Virtualization} eingeführte \acrlong{nfvi}
+eingesetzt werden. Der MEC.Host beinhaltet zwei weitere Komponenten:
 \\
 \\
 \textbf{MEC Platform:} Die MEC Platform dient als eine art Registry für  
 Anwendungen die auf der MEC Infrastruktur laufen. Die Platform bietet eine Umgebung, in der MEC Anwendungen sich registieren,
-andere Anwendungen Anfragen stellen können. Die MEC Platform ist auch für DNS Reccords zuständig. Sie nimmt Befehle
-des MEC Platform Managers entgegen und passt die DNS Records, Proxies an. Desweiteren verwaltet diese auch den Persistent Storage.
+und anderen Anwendungen Anfragen stellen können. Die MEC Platform ist auch für DNS Reccords zuständig. Sie nimmt Befehle
+des MEC Platform Managers entgegen und passt die DNS Records und Proxies an. Desweiteren verwaltet diese auch den Persistenten Speicher
 \\
 \\
 \textbf{MEC Anwendungen:} Multi-Access Edge Computing Anwendungen werden in einer Virtuellen Maschine oder als
-Container auf der Infrastruktur des MEC hosts ausgeführt. Die Anwendungen registireren sich bei der MEC Platform
-Komponente, um darüber andere Anwendungen anzufragen und ihren Dienste zur Verfügung zu stellen.
+Container auf der Infrastruktur des MEC-Hosts ausgeführt. Die Anwendungen registireren sich bei der MEC Platform
+Komponente, um darüber andere Anwendungen anzufragen und ihren Dienste zur verfügung zu stellen.
 \\
 \\
-\textbf{MEC Platform Manager:} Der Platform Manager ist verwaltet den Lifecycle der Anwendungen. Er startet, stoppt und startet diesee neu.
+\textbf{MEC Platform Manager:} Der Platform Manager verwaltet den Lifecycle der Anwendungen. Er startet, stoppt und startet diese neu.
 Gleichzeitig informiert er den MEC- Orchestrator über wichtige Events der Anwendungen. 
 Eine weitere Aufgabe ist das Verwalten, Managen und Autorisierung von DNS Configurationen.
 Desweiteren erhält der Platform Manager Fehlerberichte und Informationen über die Infrastruktur von dem Virtualiserungs Infrastruktur Manager.
 \\
 \\ 
-\textbf{Virtualization Infrastruktur Manager:} Eine weitere Komponente in im Host level management ist der Virtualization Infrastruktur
+\textbf{Virtualization Infrastruktur Manager:} Eine weitere Komponente im Host Level, ist der Virtualization Infrastruktur
 Manager. Dieser ist für das Zuweisen, Verwalten und Freigeben von virtualisierten (Rechen-, Speicher- und Netzwerkressourcen)
 Ressourcen der Virtualisierungsinfrastruktur zuständig. Der Manager ist dabei auch für das Konfigurieren der Infrastruktur für 
-ein neues Software Image verantwortlich. Dazu gehört das herunterladen und speicheren der Images. Dabei kann der Manager auch 
-Infrastructure-as-a-service Systeme wie Openstack unterstützen. Performance- und Fehlerdatende der Komponente werden von diesem gesammelt.
+ein neues Software Image verantwortlich. Dazu gehört das Herunterladen und Speicheren der Images. Dabei kann der Manager auch 
+Infrastructure-as-a-service Systeme wie Openstack unterstützen. Performance- und Fehlerdatende der Komponente werden von dem Manager gesammelt und weitergeleitet.
 \\
-Kommt es zu einer Verschiebung einer Anwendung, in der eine laufende Anwendung umgezogen wird,
+Kommt es zu einer Verschiebung einer Anwendung, wenn eine laufende Anwendung umgezogen wird,
 interagiert der Virtualization Infrastruktur Manager mit dem MEC-Host zusammen um den Handoff an die neue Cloud durchzuführen.
-Wie so ein Handoff zwischen zwei Edge Clouds ablaufen kann wird in Kaptiel \ref{x} genauer erläutert.
+Wie so ein Handoff zwischen zwei MEC-Host abläuftwird in Kaptiel \ref{sec:Mobilitätsmanagement} genauer erläutert.
+
 \subsubsection{MEC System Level}
 Das Systemlevel ist übergreifend über mehrere MEC Hosts. 
-\\
-\\
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/mec-System-Level.png}
+  \caption{MEC-System Level}
+  \label{fig:mec-System-Level}
+\end{figure}
 \textbf{MEC- Orchestrator:}
 Der MEC-Orchestrator spielt eine zentrale Rolle, 
 da er die Ressourcen und Funktionen des gesamten MEC-Systems im Blick hat. 
 In vielerlei Hinsicht ähnelt dieser dem ETSI Network Functions Virtualization Orchestrator und hat ähnliche 
-Aufgaben wie Orchestierung und Kontrolle der Instanziierung, Lösung von Ressourcenkonflikten usw. 
-Der MEC Orchestrator ist jedoch auch für die Verwaltung der MEC-Anwendungen verantwortlich. 
-Der MEC - Orchestartor ist verantwortlich für das initalisieren, terminieren der Anwendungen, sowie das prüfen
+Aufgaben wie Orchestierung und Kontrolle der Instanziierung, Lösung von Ressourcenkonflikten.
+Der MEC- Orchestartor ist verantwortlich für das initalisieren, terminieren der Anwendungen, sowie das prüfen
 der Integrität und Authentizität. Der Orchestrators stellt sicher, 
-dass ein MEC - Host der die Anforderungen an die Awendung wie Latenz und Verfügbaren Resourcen erfüllt, ausgewählt wird.
-Ist dies nicht der Fall ist es auch Aufgabe des Orchestartor, ein besseren Host zu finden und die Anwendungen umzuziehen.
+dass ein MEC- Host der die Anforderungen an die Awendung wie Latenz und Verfügbaren Resourcen erfüllt, ausgewählt wird.
+Ist dies nicht der Fall ist es auch Aufgabe des Orchestartor, ein besseren Host zu finden und die Anwendungen zu migrieren.
 \\
 \\
 \textbf{Operations Support System:}
-Das Operation Support System (OSS) ist die höchste Ebene, die eine Anwendung bei der Ausführung an einem Standort unterstützt. 
-Das OSS empfängt Anforderungen zum Instanziieren und Beenden der mobilen Edge-Anwendungen von dem Customer Facing Service (CFS) und von den Endgeräten.
+Das \acrfull{oss} ist die höchste Ebene, die eine Anwendung bei der Ausführung an einem Standort unterstützt. 
+Das \acrshort{oss} empfängt Anforderungen zum Instanziieren und Beenden der mobilen Edge-Anwendungen von dem \acrfull{cfs} und von den Endgeräten.
 Um diese zu erfüllen kommuniziert das Operation Support System mit dem MEC-Orchestartor.
 \\
 \\
 \textbf{Customer Facing Service:}
-Der Customer Facing Service (CFS) dient als Schnittstelle für Drittanbieter und ähnlet Portalen wie bei Cloud-Plattformen. 
-Dieser kommuniziert mit dem (OSS)
+Der \acrfull{cfs} dient als Schnittstelle für Drittanbieter und ähnlet Portalen wie bei Cloud-Plattformen. 
+Dieser kommuniziert mit dem \acrshort{oss}.
 \\
 \\
 \textbf{User App Lifecycle Management Proxy:} 
-Der User App Lifecycle Management Proxy (User App LCM Proxy) ist eine Funktion, die Endgeräte Anfordern können für Onboarding, Initalisierung und Terminierung der auf der
-Edge Cloud laufenden Services. Stellt eine Endgerät eine Anfrage, autorisiert der Proxy die Anfrage und leitet diese an das OSS und den MEC- Orchestrator weiter. 
+Der User App Lifecycle Management Proxy (User App LCM Proxy) ist eine Funktion, die Endgeräte anfordern können für Onboarding, Initalisierung und Terminierung der auf der
+Edge-Cloud laufenden Services. Stellt eine Endgerät eine Anfrage, autorisiert der Proxy die Anfrage und leitet diese an das \acrshort{oss} und den MEC- Orchestrator weiter. 
 Die Endgeräte können so mit dem MEC- System über den Proxy kommunizieren und so auch beispielsweise das Umzienen einer Anwendung von 
 einer externen Cloud in das MEC-System starten. Der User App LCM Proxy kann nur von dem Mobilen Netzwerk erreicht werden.
 \subsubsection{MEC-Services}
-In einem MEC-System ist ein MEC-Service, ein Service der von der MEC-Platform oder von einer MEC-Anwendung konsumiert oder zur Verfügung geestellt wird. 
-Wird der MEC-Service von einer Anwendung bereitgestellt, muss ideser sich in die Liste der Services auf der MEC-Platform registieren. MEC-Anwendungen können 
-Services abonniert um Informationen zu erhalten. 
+In einem MEC-System ist ein MEC-Service, ein Service der von der MEC-Platform oder von einer MEC-Anwendung konsumiert oder zur Verfügung geestellt werden kann. 
+Wird der MEC-Service von einer Anwendung bereitgestellt, muss dieser sich in die Liste der Services auf der MEC-Platform registieren. MEC-Anwendungen können 
+Services abonniert um Informationen zu erhalten. Biepsielsweise gibt es Servies die eine Anwendung benachrichtigen, wenn sich der Nuzer aus dem Funkbereich wegbewegt.
 \\
 \\
-\textbf{Funknetz Informationsservice:}
+\textbf{Funknetz Informationsservice}
 An dem Funknetz Informationsservice können autorisiert Anwendungen Informationen über das Funknetz abfragen.
-Abonniert eine Anwendung diesen Service, erhält sie Informationen über den aktuellen Zustand des Funknetz und der User Plane. Die Anwendung erhält über den Service,
+Abonniert eine Anwendung diesen Service, erhält sie Informationen über den aktuellen Zustand des Funknetz und der \acrshort{up}. Die Anwendung erhält über den Service,
 die Infromationen in regelmäßigen Agständen.
 \\
 \\
-\textbf{Standort und Bandbreiten Service:}
-Über den Standort Service stellt Informiert Anwendungen über den Standort von Endgeräten, 
-die derzeit von den dem MEC-Host zugeordneten Funkknoten bedient werden. Es können auch eine Liste aller Endgeräte an einem Standort abgefragt werden, sowie der Standort aller
-Funkknoten die dem MEC-Hostzugerodnet sind. Diese Informationen sind wichtig für die Entscheidung, ob ein eine MEC-Anwendung zu einem dem Engerät näheren MEC-Host wechseln soll.
+\textbf{Standort und Bandbreiten Service}
+Der Standort Service informiert Anwendungen über den Standort von Endgeräten, 
+die derzeit von dem MEC-Host zugeordneten Funkknoten bedient werden. 
+Es kann auch eine Liste aller Endgeräte an einem Standort abgefragt werden, sowie der Standort aller
+Funkknoten die dem MEC-Host zugerodnet sind. 
+Diese Informationen sind wichtig für die Entscheidung, ob ein eine MEC-Anwendung zu einem dem Engerät näheren MEC-Host wechseln soll.
 \\
 Der Bandbreiten Service ermöglicht das Erhöhen der Bandbreite für bestimmten Datenverkehr von MEC-Anwendungen und damit die Priorisierung wichtiger Daten.
 \subsection{Zusammenfassung}
-Dieses Unterkapitel beschreibt wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten. Die Grafik \ref{x} zeigt die 
-Referenz Architektur. Wird eine neue MEC- Anwendung auf gestartet werden folgende Schritte durchgeführt:
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/mecarchitecture.png}
+  \caption{Schritte für das starten einer MEC Anwendungen}
+  \label{fig:ablaufmec}
+\end{figure}
+Dieses Unterkapitel beschreibt wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten. Die Grafik \ref{ablaufmec} zeigt die 
+Referenz Architektur. Wird eine neue MEC-Anwendung gestartet werden folgende Schritte durchgeführt:
 \begin{enumerate}
-  \item Die UE Anwendung stellt eine Anfrage für das Starten einer neuen Anwendung auf dem MEC-System. Die Anfrage wird läuft über den 
-  User App LCM Proxy. Dieser leitet die Anfrage an das Operation Support System weiter.
-  \item Das OSS gibt die Anfrage an den MEC- Orchestartor weiter.
+  \item Die \acrshort{ue} Anwendung stellt eine Anfrage für das Starten einer neuen Anwendung auf dem MEC-System. Die Anfrage läuft über den 
+  User App LCM Proxy. Dieser leitet diese an das \acrlong{oss} weiter.
+  \item Das \acrshort{oss} gibt die Anfrage an den MEC- Orchestartor weiter.
   \item Die Anfrage für das Starten einer neuen MEC- Anwendung enthält Informationen über 
-  die Anwendung und andere Informationen, wie der Ort an dem die Anwendung ausgeführt werden soll, 
-  andere Anwendungsregeln und -anforderungen sowie den Speicherort des Anwendungsimage, 
+  die Anwendung und andere Informationen. Dies beinhaltet der Ort an dem die Anwendung ausgeführt werden soll, 
+  andere Anwendungsregeln und Anforderungen sowie den Speicherort des Anwendungsimage, 
   falls dieses noch nicht im MEC-System vorhanden ist. 
   \item Anhand folgender Informationen wählt der MEC-Orchestartor ein geigneten MEC-Host aus:
   \begin{itemize}
     \item Latenzanforderungen an die Anwendung
-    \item Anforderung an den Ort (möglichst ist der Nähe des Engerätes)
+    \item Anforderung an den Ort (möglichst in der Nähe des \acrshort{ue})
     \item Benötigte Speicher- und Rechenressourcen
     \item MEC-Services die für die Anwendung benötigt werden
     \item Mobilitätsanforderungen (muss die Anwendung umziehen, muss der Zustand der Anwendung umziehen)
@@ -457,30 +503,23 @@ Referenz Architektur. Wird eine neue MEC- Anwendung auf gestartet werden folgend
   MEC-Orchestartor die Anfroderderungen der Anwendung.
   \item Der MEC-Platform Manager kommuniziert mit dem Virtualization Infrastruktur Manager um die benötigten virtualisierten Ressourcen 
   bereitzustellen. der Infrastruktur Manager läd das benötigte Image für die Anwendung runter wenn dieses noch nicht Verfügbar ist.
-  \item Anschlißend kommuniziert der MEC- Platform Manager mit der MEC- Platform um die Anwendung zu konfigurieren.
+  \item Anschließend kommuniziert der MEC- Platform Manager mit der MEC- Platform um die Anwendung zu konfigurieren.
   \item Die MEC- Platform konfiguriert das Routing des Datenverkerhs auf der Data-Plane der virtuellen Infrastruktur.
   \item Der MEC- Platform Manager startet die Anwendung auf der virtuellen Infrastruktur.
-  \item Die Anwendung registriert sich bei der MEC-Platform in der Service Registry. Die MEC- Platform konfiguriert die DNS Regeln der 
-  Anwendung und verwaltet den Zugriff auf Persistenten Speicher.
+  \item Die Anwendung registriert sich bei der MEC-Platform in der Service Registry. Die MEC-Platform konfiguriert die DNS Regeln der 
+  Anwendung und verwaltet den Zugriff auf den Persistenten Speicher.
 \end{enumerate}
 
 \newpage
 
 \section{Integration von MEC und 5G}
-Das 5G Netzwerk trennt die User Plane (UP) von der Control Plane (CP).  \cite{arnold5GRadioAccess2017} \\
-Die User oder auch Data Plane, ist verantwortlich für das Weiterleiten der Daten von der Quelle zum Zielort.
-Die CP steuert die UP beispielsweise für das Einstellen des Routingpfads für ein Datenpaket oder für Radio Resssourcemanagement.
-Die CP ist auch verantwortlich für Verbindungs- und Mogilitätsmanagement sowie Authentifizierungen und das Verbreiten von 
-Systeminformationen. 
-\\
-\\
 In der 5G-Systemspezifikation stehen zwei Optionen für die Architektur zur Verfügung. 
 Eine mit dem traditionellen Interface Ansatz und eine weitere 
-bei der die Netzwerkfunktionen des Kernnetzes mithilfe einer Service Based Architecture (SBA) verbunden sind. 
-Hier wird die Service Based Architecture betrachtet. Bei SBA können die Netzwerkfunktionen Dienste bereitstellen oder konsumieren, eine
+bei der die Netzwerkfunktionen des Kernnetzes mithilfe einer \acrfull{sba} verbunden sind. 
+Hier wird die Service Based Architecture betrachtet. Bei \acrshort{sba} können die Netzwerkfunktionen Dienste bereitstellen oder konsumieren, eine
 Funktion kann auch mehrere Dienste anbieten. 
 Für die effiziente Nutzng der Dienste, ist eine Registrierung, Service Discovery, Abmeldung sowie Authentifizierung und Autorisierung erforderlich.
-Die Abbildung \ref{fig:sba} zeigt auf linken Seite ein 5G System in Form von SBA, 
+Die Abbildung \ref{fig:sba} zeigt auf linken Seite ein 5G-System in Form von \acrshort{sba}, 
 die rechte Seite zeigt die MEC-Systemarchitektur wie in Kaptiel \ref{subsec:MEC Framework - Referenz Architektur}.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture.png}
@@ -488,34 +527,35 @@ die rechte Seite zeigt die MEC-Systemarchitektur wie in Kaptiel \ref{subsec:MEC 
   \label{fig:sba}
 \end{figure}
 \\
-Dieser Abschnitt beschreibt, wie ein Multi Access Edge Cloud System in die 5G-Netzwerkumgebung integriert werden kann 
+Dieser Abschnitt beschreibt, wie \acrfull{mec} in die 5G-Netzwerkumgebung integriert werden kann 
 und welche Komponenten miteinander iteragieren.
 \\
 \\
-Die Netzwerkfunktionen und die Dienste die diese zur verfügungstellen, werden im 5G System in der Network Resource Funktion (NRF) registriert.
-Bei dem NRF bietet damit eine Liste mit allen Diensten an. 
+Die Netzwerkfunktionen und die Dienste die diese zu verfügungstellen, werden im 5G System in der \acrfull{nrf} registriert.
+Die \acrshort{nrf} bietet damit eine Liste mit allen Diensten an. 
 In einem MEC System werden die Dienste die von den MEC- Anwendungen bereitgestellt werden in der Service Registry in der MEC Platform registriert.
 Will eine Netzwerkfunktion im 5G Netzwerk ein Dienst nutzen, kann diese direkt mit der Funktion die den Dienst zurverfügungstellt interagieren,
-wenn diese au­then­ti­fi­zie­rt ist. Die Network Exposure Function (NEF) im 5G System stellt auch Dienste an nicht au­then­ti­fi­zie­rte Komponenten 
-zur Verfügung. Die NEF ist damit sehr wichtig für die Bereitstellung von Servicen, sie ist verantwortlich für die Autorisierung aller Anfragen
-auserhalb des 5G-Systems. 
+wenn diese au­then­ti­fi­zie­rt ist. Die \acrfull{nef} im 5G System stellt auch Dienste an nicht au­then­ti­fi­zie­rte Komponenten 
+zur Verfügung. Die \acrshort{nef} ist damit sehr wichtig für die Bereitstellung von Servicen, da sie Anfragen von nciht authentifizierten Komponenten
+entgegennimmt.
 \\
 \\
-Für die Integration von MEC in ein 5G Netzwerk, spielt die User Plane Function (UPF) eine wichtige Rolle. Die UPF ist Teil der User Plane
+Für die Integration von MEC in ein 5G Netzwerk, spielt die \acrfull{upf} eine wichtige Rolle. Die \acrshort{upf} ist Teil der User Plane
 und ist eine Darstellung der dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrollen und Weiterleitung von Nutzdaten. 
 Die \acrshort{upf} ist Verbindungspunkt für die mobile Infrastruktur und das Data Network (DN). Beispielsweise ist es für das packen und entpacken von 
-getunnelten Daten verandtortlich. Darüberhinaus dient die UPF auch als Anker für die Mobilität, was besonders für das Mobilitätsmanagement wichtig ist.
+getunnelten Daten verandtortlich. Darüberhinaus dient die \acrshort{upf}auch als Anker für die Mobilität, was besonders für das Mobilitätsmanagement wichtig ist.
 \cite{Leitfaden5GCampusnetze2020}
-Ist das MEC-System in die 5G Cloud integriert, ist die UPF auch Teil des MEC Systems.
+Ist das MEC-System in die 5G Cloud integriert, ist die \acrshort{upf} auch Teil des MEC Systems.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture2.png}
   \caption{MEC in 5G}
   \label{fig:sba2}
 \end{figure}
 \\
-In dem MEC- System auf der rechten Seite, agiert der MEC- Orchestartor auf der MEC- System Ebene. Dieser interagiert mit dem NEF oder
-direkt mit den einzelnen Netzwerkfunktionen des 5G Netzwerks. Auf der MEC- Host Ebene, interagiert die MEC- Platform mit den NF des 5G Netzwerkes.
-Die MEC- Host Ebene sind meistens in der UP des 5G Netzwerks, während der NEF als teil des CP als Systemlevel Funktion zentral eingesetzt wird.
+In dem MEC- System auf der rechten Seite, agiert der MEC- Orchestartor auf der MEC- System Ebene. Dieser interagiert üver die \acrshort{nef} oder
+direkt mit den einzelnen Netzwerkfunktionen des 5G Netzwerks. Auf der MEC- Host Ebene, interagiert die MEC- Platform mit den Neutzwerkfunktionen  des 5G Netzwerkes.
+Die MEC- Host Ebene ist meistens auf der \acrshort{up} des 5G Netzwerks, während der \acrshort{nef} als Teil des \acrshort{cp} als Systemlevel 
+Funktion zentral eingesetzt wird.
 Wie Abbildung \ref{fig:sba2} zeigt, befindet sich das MEC System auf der Data Control Ebene des 5G Netzwerkes. 
 Die User Plane Function ist verantwortlich für das Weiterleiten der Datenpakete an die MEC zielanwendungen. 
 Das MEC- System kann an verschiedenen Standorten in der nähe der Base Station des 5G Netzwerkes eingesetzt werden. 
@@ -524,53 +564,51 @@ Das MEC- System kann an verschiedenen Standorten in der nähe der Base Station d
 \newpage
 \section{Mobilitätsmanagement in Mobile Edge Clouds}
 \label{sec:Mobilitätsmanagement}
-Die Mobilität von Endgeräte im 3GPP Neztwerken, kann dazu führen, dass ein UE sich von einer 
+Die Mobilität von Endgeräte im \acrshort{3gpp} Neztwerken, kann dazu führen, dass ein \acrshort{ue} sich von einer 
 Radio Station zu nächsten bewegt. Das Verwalten und Aufrechterhalten dieser Verbindungen in Funknetzen wird
 als Mobilitätsmanagement bezeichnet und ist eine Kernkomponenten von Funknezten. 
 Wird eine aktive Funkverbindung von einer Netzwerkzelle zu einer anderen weitergegeben, wird der Vorgang
 der Übergabe als Handoff oder Handover bezeichent.\\
 Die Mobilität des Engeräges kann dazu führen, 
-dass sich das UE zu einer anderen Zelle bewegt, 
-die einem anderen MEC-Host zugeordnet ist. Dabei muss sichergestellt werden, dass der Netzwerkverkehr
+dass sich das \acrshort{ue} zu einer anderen Zelle bewegt, 
+die einem anderen MEC-Host zugeordnet ist. Es muss sichergestellt werden, dass der Datenverkehr
 richtig geroutet wird um das Ziel zu erreichen.
 Entfernt sich das Engerät weiter vom Ort der MEC-Anwendung, 
-kann dies dazu führen, dass die Latenz sich erhöht. Deshalb ist es wichtig, dass je nach Anwendung,
-die laufende Anwendungsinstanz verschoben wird um die Latenz Anforderungen zu erfüllen. \\
-Die Häufigkeit eines Wechsel der MEC Hosts, hängt stark von dem 
+kann dies dazu führen, dass die Latenz sich erhöht und die Deshalb ist es wichtig, dass je nach Anwendung,
+die laufende Anwendungsinstanz verschoben wird um die Latenz Anforderungen weiterhin zuerfüllen. \\
+Die Häufigkeit eines wechsel der MEC Hosts, hängt stark von dem 
 Einsatz ab. Bei der Verwendung von MEC für Autonomes Fahren treten häufiger Handover Envents ein, wie bei
-beispielsweise Smart Factories.\\
-Die Mobilität eines UEs kann in weitreichenden MEC-Systemen vorhergesagt werden und die einzelnen MEC-Host demnach konfiguriert werden,
+beispielsweise in dem Szenario einer Smart Factory.\\
+Die Mobilität eines \acrshort{ue}s kann in weitreichenden MEC-Systemen vorhergesagt werden und die einzelnen MEC-Host demnach konfiguriert werden,
 dennoch muss der Zustand der Anwendung übertragen werden.
 Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen.
 
-
 \subsection{Verschieben der Anwendung und desen Zustand}
-Bewegt sich das UE im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
-MEC - Host, muss die Anwendung umziehen. Die MEC-Anwendungen werden in zustandslose und zustandsbehaftete Anwendungen eingeteilt.
+Bewegt sich das \acrshort{UE}im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
+MEC- Host, muss die Anwendung umziehen. Die MEC-Anwendungen werden in zustandslose und zustandsbehaftete Anwendungen eingeteilt.
 Handelt es sich um eine zustandsbehaftete Anwendung, 
-erfordert das Umziehen der Anwendung ein Synchronisieren des Zustands zwischen der aktuellen und der
-verschobenen Anwendungsinstanz, um Kontinuität zu gewährleisten
-muss auch umgezogen werden. 
+erfordert das Umziehen der Anwendung, ein synchronisieren des Zustands zwischen der aktuellen und der
+verschobenen Anwendungsinstanz, um Kontinuität zu gewährleisten zu können.
 \\
 \\
-Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Diese muss so designt sein, 
+Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Diese muss so designt werden, 
 dass die Anwendung in mehreren Instanzen auf unterschiedlichen MEC-Hosts betrieben werden kann. 
-Für das Synchronisieren muss die Anwendungen das Feststellen des Zustands und kopieren dessens von einer Quell- Anwendung 
+Für das Synchronisieren muss die Anwendungen das einfrieren des Zustands und kopieren dessens von einer Quell- Anwendung 
 zu einer Zielanwendung unterstüzen. 
 Läuft die Anwendung noch nicht auf dem Ziel Host, muss diese initalisiert und gestartet werden.
 Nachdem die Anwendung gestartet ist, startet der Umzugsvorgang und der Zustand wird von dem aktuellen 
 Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertragen ist, stoppt die aktuelle Instanz
 und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät.
 \\
-Für das Erkennen von UE Mobilität zu einer neuen Zelle, abonniert die MEC Platfor Radio Network Infromationen die von dem RNIS zu
-Verfügung gestellt werden. Mithilfe dieser Informationen können UEs identifizieren werden bei denen eine Zelländerung auftritt 
-und bestimmen werden, ob sie aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
+Für das Erkennen von \acrshort{ue} Mobilität zu einer neuen Zelle, abonniert die MEC Platform Radio Network Infromationen die von dem \acrfull{rnis} zu
+Verfügung gestellt werden. Mithilfe dieser Informationen können \acrshort{ue}s identifizieren werden, bei denen eine Zelländerung auftritt 
+und bestimmen es kann bestimmt werden, ob diese sich aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
 \subsection{Aktualisierung des Routings für Mobilitätsupport}
 \subsubsection{Problem}
-Das MEC-System ist in der Lage flexibel User Plane Functions anzupassen je nach den Anforderungen oder Regeln des MEC-Systems 
-und dem Zustand des Netzwerkes. Für das Mobilitätsmanagement ermöglicht dies das flexible lenken des Datenverkehrs auf der U-Plane
+Das MEC-System ist in der Lage flexibel \acrlong{up} Funktionen anzupassen je nach den Anforderungen oder Regeln des MEC-Systems 
+und dem Zustand des Netzwerkes. Für das Mobilitätsmanagement ermöglicht dies, das flexible lenken des Datenverkehrs auf der \acrshort{up}
 um die Verbindung zwischen dem Endgerät und der Anwendungsinstanz auf dem MEC-Host aufrecht zu halten. Soll die Anwendungsinstanz
-beispielsweise zu einem neuen MEC-Host umgezogen werden und dieser ist nicht in der Lage die Instanz zu hosten, kann der aktuelle
+beispielsweise zu einem neuen MEC-Host migriert werden und dieser ist nicht in der Lage die Instanz zu hosten, kann der aktuelle
 MEC-Host noch einen zufriedenstellenden Service anbieten.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/Verschieben_Instanz.png}
@@ -578,24 +616,24 @@ MEC-Host noch einen zufriedenstellenden Service anbieten.
   \label{fig:Verschieben_Instanz}
 \end{figure}
 \\
-Bewegt sich das Engerät kann es zu einem gNB Handover kommen, was zur Änderungen in der UPFs Ebene führt. 
+Bewegt sich das Engerät kann es zu einem gNB Handover kommen, was zu einer Änderungen in der \acrshort{upf}s Ebene führt. 
 Bei Bedarf wird der Zustand zu der Instanz in dem Ziel-MEC-Host übertragen und das Routing wird für das Endgerät angepasst, 
 was in der Grafik \ref{fig:Verschieben_Instanz} zu sehen ist.
 Kann der Ziel MEC- Host die Anwendung nicht Hosten, weil dieser nicht über ausreichend Ressourcen verfügt oder nicht den gewünschten Service
-erfüllt, kann der Zustand einer laufenden Anwendungsinstanz nicht auf den Ziel-MEC-Host übertragen werden. Ist dies der Fall, muss das Routing
-trotzdem aktualisiert werden. Die Anwendungsdaten werden entweder über den Ziel-MEC-Host (Bild 2 in Abbildung \ref{fig:MEC_ERROR}) 
-oder über die UPFs des Ziel und ursprünglichen MEC-Hosts geleited (Bild 3 in Abbildung \ref{fig:MEC_ERROR}).
+erfüllt, kann der Zustand einer laufenden Anwendungsinstanz nicht von dem S-MEC-Host zum Ziel-MEC-Host übertragen werden. 
+Wenn dies der Fall, muss das Routing
+trotzdem aktualisiert werden. Die Anwendungsdaten werden entweder über den Ziel-MEC-Host (Bild 2 in Abbildung \ref{fig:mecerror}) 
+oder über die \acrshort{upf}s des Ziel und ursprünglichen MEC-Hosts geleited (Bild 3 in Abbildung \ref{fig:mecerror}).
 \begin{figure}
   \includegraphics[width=\linewidth]{images/MEC_host_Error.png}
   \caption{Routing wenn der Ziel-MEC Host die Anwendung nicht hosten kann}
-  \label{fig:MEC_ERROR}
+  \label{fig:mecerror}
 \end{figure}
 Unabhängig davon, ob die Anwendungsinstanz erfolgreich auf den Ziel-MEC-Host übertragen wurde oder nicht, 
 der Verkehrspfad wird entsprechend aktualisiert.
 \subsubsection{Aktualisieren des Routings}:
-Für das Aktualisieren und Aufrechterhalten der Routen, ist die Application Function verantwortlich.
-Die Application Function (AF) interagiert mit 5G-Control-Pane, 
-um das Routing zu beeinflussen. 
+Für das Aktualisieren und Aufrechterhalten der Routen, ist die \acrlong{af} verantwortlich.
+Die \acrfull{af} interagiert mit \acrshort{cp},  um das Routing zu beeinflussen. 
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/AF_5G.png}
@@ -603,17 +641,17 @@ um das Routing zu beeinflussen.
   \label{fig:AF_GG}
 \end{figure}
 
-Die AF erfasst Informationen über das 5G Netzwerk und unterstützt so die Mobilität von Anwendungsinstanzen. 
-Dies ermöglicht in dem 5G-System eine flexiblere Bereitstellung der Data-Plane ermöglichen, um Edge-Computing nativ zu unterstützen.
-Die Abbildung \ref{fig:AF_GG} zeigt die Application Function in einer Service-basierten 5G Netzwerkarchitektur.
+Die \acrfull{af} erfasst Informationen über das 5G Netzwerk und unterstützt so die Mobilität von Anwendungsinstanzen. 
+Dies ermöglicht in einem 5G-System eine flexiblere Bereitstellung der Data-Plane, um Edge-Computing nativ zu unterstützen. ????
+Die Abbildung \ref{fig:AF_GG} zeigt die \acrshort{af} in einer \acrlong{sba}.
 \\
 \\
-ETSI definiert für das Anpassen des Routings mithilfe der AF den sogenannten \textit{Application Function influence on traffic routing} Prozess.
-Startet ein MEC-System diesen Prozess benötigt es Folgende Parameter:
+\acrshort{etsi} definiert für das Anpassen des Routings mithilfe der \acrshort{af} den sogenannten \textit{Application Function influence on traffic routing} Prozess.
+Startet ein MEC-System diesen Prozess benötigt es folgende Parameter:
 \begin{itemize}
-  \item UE dentifikator, eindeutig für das Endgerät
-  \item Mögliche Orte für die Anwendung,  Data Network Access Identifier (DNAI) wird benötigt um die Ziel UPFS zu erlangen.
-  \item AF-Transaktionskennung, wird von der AF Funktion generiert
+  \item \acrshort{ue} Identifikator, eindeutig für das Endgerät
+  \item Mögliche Orte für die Anwendung, Data Network Access Identifier (DNAI) wird benötigt um die Ziel UPFS zu erlangen.
+  \item AF-Transaktionskennung, wird von der \acrshort{af} generiert
   \item Beschreigung des Datenverkehrs, dazu gehören IP-Adressen, Zieladressen und Data Network Name (DNN)
 \end{itemize}
 \begin{figure}
@@ -621,9 +659,9 @@ Startet ein MEC-System diesen Prozess benötigt es Folgende Parameter:
   \caption{Komponenten für die Aktualisierung des Routings}
   \label{fig:Datenverkehr_Update}
 \end{figure}
-Mithilfe dieser Parameter kann der Prozess des Umleitens gestartet werden.
-Abbildung \ref{fig:Datenverkehr_Update} Zeigt wie die einzelnen Komponenten zusammenarbeiten um ein benötigte Aktualisierung des Datenverkehrs durchzuführen.
-Die Kommunikation mit dem MEC-System läuft dabei über die Network Exposure Function (NEF). Diese kommuniziert mit dem MEC-Orchestartor welcher
+Mithilfe dieser Parameter kann der Prozess des umleiten gestartet werden.
+Abbildung \ref{fig:Datenverkehr_Update} zeigt wie die einzelnen Komponenten zusammenarbeiten um ein benötigte aktualisierung des Datenverkehrs durchzuführen.
+Die Kommunikation mit dem MEC-System läuft dabei über die \acrshort{nef}. Diese kommuniziert mit dem MEC-Orchestartor welcher
 die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/Datenverkehr_Ablauf.png}
@@ -632,17 +670,18 @@ die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt.
 \end{figure}
 Für das Aktualisieren des Routings werden folgende Schritte (Abbildung \ref{fig:Datenverkehr_Ablauf}) durchgeführt:
 \begin{enumerate}
-  \item Der MEC- Orchestartor (MEO) abonniert über NEF, UP Event Mittelungen. Der MEO erhält daher eine Mitteilung das sich die UP und DN des
-  UEs aufgrund der Mogilität verändert haben.
-  \item Die Quell-MEC-Plattform (S-MEC-Plattform) abonniert dem UE zugeordnete Zellenänderungsbenachrichtigung. 
-  Nachdem die S-MEC-Plattform eine Nachricht erhalten hat, bestimmt diese, ob das UE die Zelle verlassen hat. 
-  Ist dies der Fall sendet die S-MEC-Plattform eine Mobilitätsanfrage an den MEO.
-  \item Der MEO wählt ein Ziel MEC-Host für die Anwendung aus.
-  \item In dem Fall, in dem der Ziel-MEC-Host aus nicht verfügbar ist, beispielsweise nicht Ziel-MEC-Host nicht ausreichend Ressourcen hat,
-  wird die Anwendungsinstanz auf dem S-MEC-Host fortgesetzt und der UP-Pfad ist vorhanden und wird and den UPF des S-MEC-Host umgeleitet.
-  \item Der MEO sendet eine Aktualisierung an den S-MEC-Plattformmanager dem T-MEC-Plattformmanager
+  \item Der \acrfull{meo} abonniert über \acrshort{nef}, \acrshort{up} Event Mittelungen. 
+  Der \acrshort{meo} erhält daher eine Mitteilung das sich die \acrshort{ue} und \acrshort{dn} des
+  \acrshort{ue}s aufgrund der Mogilität verändert haben.
+  \item Die Quell-MEC-Plattform (S-MEC-Plattform) abonniert dem \acrshort{ue} zugeordnete Zellenänderungsbenachrichtigung. 
+  Nachdem die S-MEC-Plattform eine Nachricht erhalten hat, bestimmt diese, ob das \acrshort{ue} die Zelle verlassen hat. 
+  Ist dies der Fall sendet die S-MEC-Plattform eine Mobilitätsanfrage an den \acrshort{meo}.
+  \item Der \acrshort{meo} wählt ein Ziel-MEC-Host für die Anwendung aus.
+  \item In dem Fall, in dem der Ziel-MEC-Host aus nicht verfügbar ist, beispielsweise nicht ausreichend Ressourcen hat,
+  wird die Anwendungsinstanz auf dem S-MEC-Host fortgesetzt und der vorhandene pfad wird mittels der \acrshort{upf} zum S-MEC-Host umgeleitet.
+  \item Der \acrshort{meo} sendet eine Aktualisierung an den S-MEC-Plattformmanager dem T-MEC-Plattformmanager
 \end{enumerate}
-Diese Schritte ermöglichen eine Kontinuirliche Verbindung zwischen UE und MEC-Anwendung, unabhängig ob diese sich biem S-MEC-Host oder Z-MEC-Host befindet.
+Diese Schritte ermöglichen eine kontinuirliche Verbindung zwischen \acrshort{ue} und MEC-Anwendung, unabhängig ob diese sich biem S-MEC-Host oder Z-MEC-Host befindet.
 \subsection{Ping-Pong Handover}
 \subsubsection{Problem}
 Ping-Pong-Übergaben treten auf, wenn ein Engerät von einer Zelle zur nächsten wechselt, dann aber wieder in die ursprüngliche 
@@ -654,17 +693,17 @@ hin und herspringt. Daher die Bezeichnung Ping-Pong Handover.
   \label{fig:pingpong}
 \end{figure}
 \subsubsection{Lösung}
-Für das Lösen des Ping-Pong Problems im MEC- System, schlägt ETSI eine Verringerung der Migrationsevent die vom MEO durchgeführt werden vor.
+Für das Lösen des Ping-Pong Problems im MEC- System, schlägt \acrshort{etsi} eine verringerung der Migrationsevent die vom MEO durchgeführt werden vor.
 \begin{enumerate}
-  \item Der MEO wird Benachrichtigt, wenn es zu einem Ping-Pong Handover kommt, das zahlreiche Migrationen von MEC-Anwendung verursacht. Das
+  \item Der \acrshort{meo} wird Benachrichtigt, wenn es zu einem Ping-Pong Handover kommt, das zahlreiche Migrationen von MEC-Anwendung verursacht. Das
   Ping-Pong event wird dabei durch eine Vielzahl von Events der UPFS Erkannt.
-  \item Nach dem Erkennen eines Ping-Pong Events, startet der MEO den \textit{Ping-Pong handover migration} Prozess. Dieser verändert die UFPS 
-  so, dass diese sich immer zur MEC-Anwendung verbindet, unabhängig von der Verbindungsqualität des UEs. Dies reduziert die Anzahl der Migrationen
-  zwischen Source-MEC-Host und Target-MEC-Host, auch wenn das UE sich oft zwischen Netzbereichen der Hosts wechselt. Das UE kommuniziert weiterhin
+  \item Nach dem Erkennen eines Ping-Pong Events, startet der \acrshort{meo} den \textit{Ping-Pong handover migration} Prozess. Dieser verändert die \acrshort{upf}
+  so, dass diese sich immer zur S-MEC-Anwendung verbindet, unabhängig von der Verbindungsqualität des UEs. Dies reduziert die Anzahl der Migrationen
+  zwischen Source-MEC-Host und Target-MEC-Host, auch wenn das \acrshort{ue} sich oft zwischen Netzbereichen der Hosts wechselt. Das \acrshort{ue} kommuniziert weiterhin
   mit der Anwendung im S-MEC über die Source-UPF. Abildung \ref{fig:pingpongrouting} zeigt dies.
-  \item Der MEO wartet auf das sogenannte \textit{Ping-Pong recovery event}. Dieses signalisiert, dass das UE sich nicht mehr zwischen zwei
+  \item Der \acrshort{meo} wartet auf das sogenannte \textit{Ping-Pong recovery event}. Dieses signalisiert, dass das \acrshort{ue} sich nicht mehr zwischen zwei
   Aufgabenbereichen der MEC-Hots befindet.
-  \item  Nach dem \textit{Ping-Pong recovery event} setzt der MEO das Routing im UPFs wieder auf den ursprünglichen Zustand zurück.
+  \item Nach dem \textit{Ping-Pong recovery event} setzt der \acrshort{meo} das Routing im UPFs wieder auf den ursprünglichen Zustand zurück.
 \end{enumerate}
 \begin{figure}
   \includegraphics[width=\linewidth]{images/pingpongrouting.png}
@@ -683,7 +722,7 @@ Folgendes Kapitel beschreibt unterschiedliche Use-Cases und Szenarios für die V
 \subsection{Cloud-Gaming, Remote Desktop}
 \label{subsec:Cloud-Gaming}
 Computer Spiele werden immer populärer, aber die meisten Online Multiplayer Spiele benötigen eine geringe 
-Latenz über das Netzwerk. Dies ist meistens nicht für mobile Endgeräte möglich, da sich die Server nicht im RAN gefinden und so
+Latenz über das Netzwerk. Dies ist meistens nicht für mobile Endgeräte möglich, da sich die Server nicht im \acrshort{ran} befindet und so
 nicht in der Nähe des RAN.
 \\
 \\
@@ -707,9 +746,9 @@ Gerade bei Spielen reichen dann \textit{Thin Clients} aus und es werden keine le
 Dies ermöglicht das spielen von Online-Spielen auf Smartphones.
 \\
 \\
-Wenn sich ein UE mit einem Funkknoten verbindet, der nicht demselben MEC-Host zugeordnet ist, 
+Wenn sich ein \acrshort{ue} mit einem Funkknoten verbindet, der nicht demselben MEC-Host zugeordnet ist, 
 auf dem die Anwendung ausgeführt wird (z. B. nachdem sich das Engerät von dem wegbewegt hat), 
-muss sichergestellt sein, dass die Konnektivität zwischen dem UE und der Anwendung aufrechterhalten wird. 
+muss sichergestellt sein, dass die Konnektivität zwischen dem \acrshort{ue} und der Anwendung aufrechterhalten wird. 
 Um die Latenzanforderungen und damit eine gute Benuzererfahrung aufrechtzuerhalten, 
 muss das MEC-Management die Anwendung auf einen anderen MEC-Host, der in der Nähe des UEs ist, verscheiben. 
 Dabei ist es wichtig, dass die Verbindung aufrechterhalten wird. Gerade bei dem mobilen spielen von Online-Spielen
