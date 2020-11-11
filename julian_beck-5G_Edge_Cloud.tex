@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumerate}
+\usepackage{nameref}
 % fuer die aktuelle Zeit
 \usepackage{listings}
 \usepackage{textcomp}
@@ -43,7 +44,20 @@
 
 \makeglossaries
 \newacronym{mec}{MEC}{Multi-Access Edge Computing}
-\newacronym{lcm}{LCM}{Least Common Multiple}
+\newacronym{etsi}{ETSI}{European Telecommunications Standards Institute}
+\newacronym{sdn}{SDN}{Software-Defined Networking}
+\newacronym{nfv}{NFV}{Network Functions Virtualization}
+\newacronym{amf}{AMF}{Core Access and Mobility Management Function}
+\newacronym{ausf}{AUSF}{Authentication Server Function}
+\newacronym{cp}{CP}{Control Pane}
+\newacronym{up}{UP}{User Pane}
+\newacronym{nef}{NEF}{Network Exposure Function}
+\newacronym{smf}{SMF}{CSession Management Function}
+\newacronym{udm}{UDM}{Unified Data Management}
+\newacronym{upf}{UPF}{User Plane Function}
+\newacronym{pcf}{PCF}{Policy Control function}
+
+
 
 \begin{document}
 \let\oldaddcontentsline\addcontentsline
@@ -74,93 +88,123 @@
 \section{Einleitung}
 \label{sec:Einleitung}
 In den letzten zehn Jahren haben Fortschritte im Cloud-Computing einen zentralisierten Ansatz für die Systemadministration und den 
-Systembetrieb verfolgt, während das Wachstum von Mobile Computing, 
-SaaS und dem Internet der Dinge (IoT) das Computing in Richtung einer verteilten Architektur in der Nähe des Anwenders getrieben hat. 
-Mit der Einführung von 5G-und Edge-Computing-Technologien werden beide Ansätze kombiniert.
+Systembetrieb verfolgt. Edge Computing gilt dabei als eine Evolution der von Cloud Computing, in dem es das Hosten von Anwendung an den
+Netzwerkrandes bringt, näher an den Benuzer und die Anwendungen die Daten generierten. 
+Das Edge Computing ist eine der Schlüsseltechnologien der 5G-Mobilfunktechnik. 
+Im Gegensatz zu den Mobilfunknetzwerken der dritten oder vierten Generation (3G oder 4G) ist die Unterstützung einer Edge Cloud 
+von Beginn an in den 5G-Standards berücksichtigt und integriert wurden.
 \\
 \\
-5G und Edge Computing sind zwei relativ neue Technologien, die aber ähnliche Ziele verfolgen. 
-Beide sind darauf ausgerichtet, die Leistung von Anwendungen zu verbessern 
-und die Verarbeitung von großer Datenmengen in Echtzeit zu ermöglichen. 
-5G erhöht die Geschwindigkeit um das Zehnfache gegenüber 4G, 
-während  Edge Computing die Latenz verringert, indem Rechenfunktionen näher am Endbenutzer in das Netzwerk integriert werden.
+Die Abkürzungen MEC steht für Multi Access Edge Computing. Dabei handelt es sich um eine Computer Architektur,
+die die Bereitstellung verteilter Services und Ressourcen an den Rand des Netzwerks verlegt. \acrshort{mec} wird vom
+\acrfull{etsi} vorangetrieben und etwickelt. 
 \\
 \\
-Während Telekommunikationsbetreiber berichten, 
-dass 5G im Netzwerkgeschwindigkeiten erhöht
-spiegelt dies nicht die Erfahrung eines durchschnittlichen Benutzers wieder. 
-Die Edge Cloud kommt an dieser stelle ins Spiel und verbessert die Latenz und 
-damit auch die Anwendungsmöglichkeiten von 5G.
-Gleichzeitig benötigt 5G das Edge Computing, um die Nachfrage zu erhöhen und somit den Ausbau zu beschleunigen
-\subsection{Problem}
-\label{subsec:Problem}
-5G Edge Computing bietet sich für folgende Anwendungen an:
+Im Zentrum der Technologie steht der MEC-Host. 
+Er wird am Rande des Netzwerks (in der Nähe eines 5G Funkmast) installiert und stellt so Speicherplatz, 
+Rechenleistung für Anwendungen zur Verfügung. Dies Vorteil wie:
 \begin{itemize}
-  \item Caching von Anwendungen und Videos
-  \item Rechenressourcen an die Aufgaben übergeben werden können um möbile Endgeräte zu entlasten
-  \item Bearbeitung und Aggregierung von IoT Daten.
-  \item Rendern von Videospielen auf der EDGE Cloud.
+  \item Reduzierter Datenverkehr im Kernnetzwerk
+  \item Geringe Latzenz und Datenverarbeitungszeit wegen dank der kurzen Distanz
+  \item Hohe Verfügbarkeit
+  \item Unterstützung für Echtzeitanwendungen.
 \end{itemize}
-Die Anwendungsbeispiele werden in Kaptiel \ref{sec:Anwendungen} genauer erläutert.
+Das Erfassen und Verarbeiten von Daten in der Nähe des Entgerät verbessert so 
+die Latenz und eine Echtzeitleistung für Anwendungen mit hoher Bandbreite.
+\\
+\\
+MEC ist eine Schlüsseltechnologie für 5G. 
+Indem es die Latenzzeit signifikant reduziert, ist es für 5G-Szenarien so erfolgskritisch. 
+Deshalb wurde in das 5G-Gesamtkonzept von Anfang an die Unterstützung des MEC-Konzepts integriert. 
+Nur dank MEC lassen sich die verschiedenen 5G Anwendungen in vollem Umfang verwirklichen.
+\\
+\\
+Mit der Hilfe des \acrfull{mec} verwandelt sich das 5G Mobilefunktnetz in eine Vielseitige Plattform zur Erbringung 
+einer Vielzahl von Services. So ermöglicht MEC die Realisierung einer Vielzahl von Anwenudngen:
+\begin{itemize}
+  \item Smart Cities
+  \item Vehicle to Vehcile, Vehicle to Infrastructure
+  \item Smart Factories
+  \item Cloud Gaming 
+  \item Edge Video Caching
+\end{itemize}
+In dieser Arbeit wird in erster Linie auf die von \acrshort{etsi} veröffentlichte Architektur für ein MEC-System eingegangen.
+\subsection{Aufbau der Seminararbeit}
+Das zweite Kapitel dieser Seminararbeit \textbf{\nameref{sec:Benötigte Technologien} \ref{sec:Benötigte Technologien}} beschreibt
+grundlegenden Technologien die für ein MEC System benötigt werden. Dazu zählt \acrfull{nfv}, \acrfull{sdn} aber auch die einzlenen Komponenten in einem 5G System.
+\\
+\\
+Das dritte Kapitel beschreibt die vom \acrlong{etsi} definierte Architektur eines MEC-Systems und die einzelnen Komponenten.
+\\
+\\
+Im vierte Kapitel wird erläutert wie das MEC-System in 5G integriert wird und wie die einzelnen Komponenten mit einander kommunizieren.
+\\
+\\
+Einer der wichtigsten Aspekte in einem Mobilen Netzwerk ist das Mobilitätsmanagement. Das vierte Kapitel beschreibt wie ein MEC-System mit der Mobilität von
+Nuzern umgeht.
+\\
+\\
+Das sechste Kapitel zeigt Szenarien in denen MEC eingesetht werden kann. Es wird beispielsweise der eines MEC Systems in einer Smart Factory und die daraus entstehnden
+Vorteil erläutert.
+\\
+\\
+Das letzte Kapitel zieht ein Fazit zum \acrlong{mec} und gibt ein Ausblick über die Zukunft der Technologie. 
+Desweiteren wird auf die aktuellen Probleme für das einsetzen von \acrshort{mec} eingegangen.
+
+
+
 \newpage
-
-
-
 \section{Benötigte Technologien}
 \label{sec:Benötigte Technologien}
 Dieses Kapitel bietet eine kurze Einführung in die Kerntechnologien die die Anwendung eines 5G Netzwerkes erforderlich sind.
 \subsection{Edge Computing}
 \label{sub:Edge Computing}
 Bei Cloud-Computing werden Rechenressourcen über ein Netzwerk zur Verfügung gestellt.
-Beim Edge Computing wird die Berechnung und Speicherung von Daten in die Nähe der Quelle gebracht,
-an den sogenannten Rand oder \textit{Edge} des Netzwerks. Im Gegensatz zum Cloud Computing werden die Daten
-nicht an zentralen Rechenzentren verarbeitet, sonden an dezentralen Cloud Systemen am Rand des Neztwerks. 
-Folgende Vorteile bringt Edge Computing: \cite{labrieTopBenefitsEdge}
+Beim Edge-Computing wird die Berechnung und Speicherung von Daten in die Nähe der Quelle gebracht,
+an den sogenannten Rand oder \textit{Edge} des Netzwerks. Im Gegensatz zum Cloud-Computing werden die Daten
+nicht in zentralen Rechenzentren verarbeitet, sonden an dezentralen Cloud Systemen am Rand des Neztwerks. 
+Edge-Computing bietet dabei folgende Vorteile: \cite{labrieTopBenefitsEdge}
 \begin{itemize}
   \item \textbf{Geschwindigkeit und Latenz:} Abhängig von der Anwendungen spielt die Zeit der Datenverarbeitung eine
-  entscheidende Rolle. Beispielsweise bei Autonomen Fahrzeugen ist es wichtig, dass innerhalb von Millisekunden die Daten
+  entscheidende Rolle. Beispielsweise bei autonomen Fahrzeugen ist es wichtig, dass innerhalb von Millisekunden die Daten
   verarbeitet werden. Auch bei digitalen Fabriken ist es meist zu langsam die Daten zu einer zentralen Cloud und zurück
   zu senden. 
   Wenn die Datenverarbeitung auf den Rand des Netzwerks verlegt wird, wird die Latenz des Netzwerks verringert und schneller
-  auf Anfragen geantwortet.
+  auf Anfragen geantwortet. 
   \item \textbf{Netzlast:} Da das die Daten nicht zu einer zentralen Cloud gesendet werden, sonder am Rand des Netzwerks 
   verarbeitet werden, verringert sich nicht nur die Latenz, sondern auch die Netzlast des gesamten Netzwerks. 
   Die Daten müssen nicht weitreichend weiter gesendet werden, stattdessen werden sie 
   dezentral in der Nähe der Anwendungen verarbeitet.
-  \item \textbf{Security:} Wenn Daten an einem zentralen Cloud verarbietet werden ist dies unter bestimmten Umständen anfälliger
+  \item \textbf{Security:} Wenn Daten in einer zentralen Cloud verarbietet werden ist dies unter bestimmten Umständen anfälliger
   für ein Ausfall.
-  So kann beispielsweise ein DDoS-Angriff den gesammten Betrieb eines Unternehmens stören, wenn alle Systeme mit einer zentralen
-  Cloud arbeiten. Da bei Edge Computing kein einziges Zentrales Systeme existiert, verringert sich die Auswirkung eines solchen
+  So kann beispielsweise ein DDoS-Angriff den gesammten Betrieb eines Unternehmens blockieren, wenn alle Systeme mit einer zentralen
+  Cloud arbeiten. Da bei Edge-Computing kein einziges zentrales Systeme existiert, verringert sich die Auswirkung eines solchen
   Angriffes für das ganze Unternehmen.  
   Edge Computing hilft Unternehmen auch dabei, die Probleme der lokalen Compliance- und Datenschutzbestimmungen zu überwinden,
   da die Daten auf lokalen Systemen verarbeitet werden.
   \item \textbf{Kosteneinsparungen:} Durch Internet Off Things Geräte oder durch eine Smart Factories werden
   eine Vielzahl an Daten generiert. Nicht alle Daten sind dabei kritisch für die Operation der Systeme. Edge Computing erlaubt
   das Kategorisieren der Daten. In dem ein Großteil der Verarbeitung am Rand des Netzwerks stattfindet wird Bandbreite gespart.
-  Dies optimiert den Datenfluss von lokalen Anwendungen und minimiert somit die Betriebskosten einer zentralen Cloud.
+  Dies optimiert den Datenfluss von lokalen Anwendungen und minimiert so die Betriebskosten einer zentralen Cloud.
   \item \textbf{Zuverlässigkeit:} Wenn Edge-Geräte Daten lokal speichern und verarbeiten können, verbessert dies die Zuverlässigkeit.
-  Ein Unternehmen ist nicht auf die Verbindung auf zur zentralen Cloud angewiesen und eine eine vorübergehende Unterbrechungen der 
-  Verbingung hat keine Auswirkungen auf den Betrieb von Geräte, nur weil sie die Verbindung zur Cloud verloren haben.
+  Ein Unternehmen ist nicht auf die Verbindung auf zur zentralen Cloud angewiesen und eine vorübergehende Unterbrechungen der 
+  Verbingung hat keine Auswirkungen auf den Betrieb von Geräte, wenn diese die Verbindung zur Cloud verloren haben.
   \item \textbf{Skalierbarkeit:}
   Bei Cloud-Computing-Architekturen müssen Daten in den meisten Fällen zunächst an ein zentral gelegenes Rechenzentrum
-  weitergeleitet werden. Das Erweitern oder sogar nur das Ändern dedizierter Rechenzentren ist eine teure Angelegenheit. 
-  Darüber hinaus können IoT-Geräte zusammen mit ihren Verarbeitungs- und Datenverwaltungstools am Rande einer einzelnen 
-  Implantation bereitgestellt werden, 
-  anstatt auf die Koordination der Bemühungen von Mitarbeitern an mehreren Standorten zu warten.
-
+  weitergeleitet werden. Das Erweitern oder das Ändern dedizierter Rechenzentren ist verursacht kosten. 
 \end{itemize}
 \newpage
 \subsection{5G Network}
 \label{subsec:5G Network}
-Das 5G-Netzwerk wurde  entwickelt, um Dienste zu unterstützen, 
+Das 5G-Netzwerk wurde entwickelt, um Dienste zu unterstützen, 
 die eine Verwendung durch die Industrie mithilfe Techniken wie 
-Netzwekrsfunktions Virtualisierung und Software Defined Networking ermöglicht.
+Network Function Virtualization und Software Defined Networking ermöglicht.
 Klassischerweise wurden mobile Netzwere in erster Linie für den Smartphone Geräte konzeptiert. 
 Dies ändert sich bei dem 5G Netzwerk, durch eine Vielzahl von Anwendungen und unterschiedliche Datenanforderungen,
 muss das Netzwerk so konzeptiert sein um alle diese Anforderungen zu erfüllen.
 \\
 \\
-Bei der 5G Architektur sind die Netzwerkfunktionen der Control Plane (CP) von der User Plane (UP) getrennt, 
+Bei der 5G Architektur sind die Netzwerkfunktionen der \acrfull{cp} von der \acrfull{up} getrennt, 
 um diese unabhängig skalieren zu können. Dies ermöglichen Netzwerkbetreiber das Anpassen und Skalieren des Neztwerks an die
 benötigten Anforderungen.
 \\
@@ -170,30 +214,30 @@ Das 5G Netzwerk besteht aus sogenannten Netzwerkfunktionen, die meist softwareba
 Die 5G CP ist das Kernnetz, dass aus einer Reihe von Netzwerkfunktionen besteht, 
 die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
 \begin{itemize}
-  \item \textbf{Authentication Server Function (AUSF)} dient als Authentifizierungsserver
-  \item \textbf{Core Access and Mobility Management Function (AMF)} ist für die Integrität, Registrierungsmanagement, Verbindungsmanagement,
+  \item \textbf{\acrfull{ausf}} dient als Authentifizierungsserver
+  \item \textbf{\acrfull{amf}} ist für die Integrität, Registrierungsmanagement, Verbindungsmanagement,
   Zugriffs und Securitymanagement zuständig
-  \item \textbf{Network Exposure Function (NEF)} verbreiten von Funktionen und Events, 
+  \item \textbf{\acrfull{nef}} verbreiten von Funktionen und Events, 
   sichere Bereitstellung von Informationen aus externen Anwendungen für das 3GPP-Netzwerk. Diese Funktion ist vorallem für die Mobilität
-  in der 5G Edge Cloud wichtig, was in Abschnitt \ref{subsec:MEC Mobilität} erläutert wird.
-  \item \textbf{Session Management Function (SMF)} Sitzungsverwaltung, Zuweisung von IP Adressen an die Endgeräte. 
-  \item \textbf{Unified Data Management (UDM)} Generierung von Anmeldeinformationen für Authentifizierungen, 
+  in der 5G Edge Cloud wichtig, was in Abschnitt \ref{sec:Mobilitätsmanagement} erläutert wird.
+  \item \textbf{\acrfull{smf}} Sitzungsverwaltung, Zuweisung von IP Adressen an die Endgeräte. 
+  \item \textbf{\acrfull{udm}} Generierung von Anmeldeinformationen für Authentifizierungen, 
   Verwalten der Benutzeridentifikation und Zugriffsautorisierung.
-  \item \textbf{User plane Function (UPF)} Datenrouting und Weiterleitung. Dateninspektionen.
-  \item \textbf{Policy Control function (PCF)} Bereitstellung von Richtlinien für Funktionen, 
+  \item \textbf{\acrfull{upf}} Datenrouting und Weiterleitung. Dateninspektionen.
+  \item \textbf{\acrfull{pcf}} Bereitstellung von Richtlinien für Funktionen, 
   Zugriff auf Abonnementinformationen
 \end{itemize}
 \subsection{5G Edge Computing}
 \label{subsec:5G Edge Computing}
-\subsection{Netzwekrsfunktions Virtualisierung}
-\label{subsec:Netzwekrsfunktions Virtualisierung}
-Netzwekrsfunktions Virtualisierung (NFV) erlaubt es Netzwerkfunktionen, von der Hardware zu entkoppeln.
+\subsection{Network Function Virtualization}
+\label{subsec:Network Function Virtualization}
+Network Function Virtualization (NFV) erlaubt es Netzwerkfunktionen, von der Hardware zu entkoppeln.
 Dies ermöglicht das Verwenden von Gateways, Firewalls, DNS Services und Caching ohne proprietär Hardware.
 \\
 \\
 Um ein neues Netwzerk zu erstellen, wird eine Vielzahl von verschieden Hardware Komponenten benötigt. 
 Diese benötigen Platz, Energy und müssen von qualifizierten Personal überwacht und gewartet werden. 
-Netzwekrsfunktions Virtualisierung will diese Probleme lösen, in dem Virtualisierungstechniken auf standard
+Network Function Virtualization will diese Probleme lösen, in dem Virtualisierungstechniken auf standard
 Server Hardware Komponenten betrieben werden. 
 Foldgende Vorteile werden durch NFV erziehlt und sind Relevant 5G Edge Clouds: \cite{nfv_wp}
 \begin{itemize}
@@ -216,7 +260,7 @@ Der \textit{NFV MANO} (NFV Managment und Orchestrierung) Layer verwaltet die Inf
 Der VM Lifecycle wird von \textit{NFV MANO} verwaltet, wenn eine VM abstürtzt wird sie durch diesen neugestartet.
 
 \subsubsection{5G Edge Cloud und NFV:}
-Die Netzwekrsfunktions Virtualisierung spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
+Die Network Function Virtualization spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
 \textit{NFV} erlaubt \textit{Network Slicing}, ein Aspekt der virtuellen Netzwerkarchitektur, 
 mit dem mehrere virtuelle Netzwerke auf einer gemeinsam genutzten Infrastruktur bereitgestellt werden können.
 \\
@@ -300,7 +344,7 @@ Telecommunikationsstandrads sind wie LTE und 5G.
 Wie der Name schon sagt, gibt es mehrere MEC-Hosts, die im Netzwerk Vvrteilt sind.
 Der MEC Host enthält die MEC Platform und die Infrastruktur auf den die Anwendungen, in der Edge Cloud, betreiben werden.
 Die Inrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen virtualisert zu Verfügung. Als Virtualisierungslösung kann
-die in Kapitel \ref{subsec:Netzwekrsfunktions Virtualisierung} eingeführte Netzwekrsfunktions Virtualisierung Infrastruktur
+die in Kapitel \ref{subsec:Network Function Virtualization} eingeführte Network Function Virtualization Infrastruktur
 eingesetzt werden. Der MEC Host beinhaltet zwei weitere Komponenten:
 \\
 \\
@@ -470,6 +514,7 @@ Das MEC- System kann an verschiedenen Standorten in der nähe der Base Station d
 
 \newpage
 \section{Mobilitätsmanagement in Mobile Edge Clouds}
+\label{sec:Mobilitätsmanagement}
 Die Mobilität von Endgeräte im 3GPP Neztwerken, kann dazu führen, dass ein UE sich von einer 
 Radio Station zu nächsten bewegt. Das Verwalten und Aufrechterhalten dieser Verbindungen in Funknetzen wird
 als Mobilitätsmanagement bezeichnet und ist eine Kernkomponenten von Funknezten. 

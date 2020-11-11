@@ -30,4 +30,7 @@
             ]
           }
     ],
+    "files.associations": {
+        "*.yaml": "home-assistant"
+    },
 }
