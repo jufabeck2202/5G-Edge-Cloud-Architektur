@@ -46,17 +46,21 @@
 \newacronym{mec}{MEC}{Multi-Access Edge Computing}
 \newacronym{etsi}{ETSI}{European Telecommunications Standards Institute}
 \newacronym{sdn}{SDN}{Software-Defined Networking}
-\newacronym{nfv}{NFV}{Network Functions Virtualization}
+\newacronym{nfv}{NFV}{Network Function Virtualization}
+\newacronym{nfvi}{NFVi}{Network Function Virtualization Infrastructure}
 \newacronym{amf}{AMF}{Core Access and Mobility Management Function}
 \newacronym{ausf}{AUSF}{Authentication Server Function}
 \newacronym{cp}{CP}{Control Pane}
 \newacronym{up}{UP}{User Pane}
 \newacronym{nef}{NEF}{Network Exposure Function}
-\newacronym{smf}{SMF}{CSession Management Function}
+\newacronym{smf}{SMF}{Session Management Function}
 \newacronym{udm}{UDM}{Unified Data Management}
 \newacronym{upf}{UPF}{User Plane Function}
-\newacronym{pcf}{PCF}{Policy Control function}
-
+\newacronym{cups}{CUPS}{Control-/User Plane Separation}
+\newacronym{pcf}{PCF}{Policy Control Function}
+\newacronym{vnf}{VNF}{Virtualized Network Functions}
+\newacronym{vm}{VM}{Virtuelle Maschine}
+\newacronym{ran}{RAN}{Radio Access Networks}
 
 
 \begin{document}
@@ -196,21 +200,19 @@ Edge-Computing bietet dabei folgende Vorteile: \cite{labrieTopBenefitsEdge}
 \newpage
 \subsection{5G Network}
 \label{subsec:5G Network}
-Das 5G-Netzwerk wurde entwickelt, um Dienste zu unterstützen, 
-die eine Verwendung durch die Industrie mithilfe Techniken wie 
-Network Function Virtualization und Software Defined Networking ermöglicht.
-Klassischerweise wurden mobile Netzwere in erster Linie für den Smartphone Geräte konzeptiert. 
-Dies ändert sich bei dem 5G Netzwerk, durch eine Vielzahl von Anwendungen und unterschiedliche Datenanforderungen,
-muss das Netzwerk so konzeptiert sein um alle diese Anforderungen zu erfüllen.
+Das 5G-Netzwerk wurde entwickelt um auch von der Industrie genutzt zu werden.
+Dies wird durch Techniken wie \acrlong{nfv} und \acrlong{sdn} ermöglicht.
+Klassischerweise wurden mobile Netzwere in erster Linie für Endgeräte wie Smartphones und Laptop konzipiert. 
+Dies ändert sich bei dem 5G Netzwerk. Durch eine Vielzahl von Anwendungen und unterschiedliche Anforderungen,
+muss das Netzwerk so designt sein, dass es alle Forderungen der Industire und des Endverbrauchers erfüllt. 
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/ServiceBased5g.png}
+  \caption{Service basierte Architektur}
+  \label{fig:ServiceBased5g}
+\end{figure}
 \\
-\\
-Bei der 5G Architektur sind die Netzwerkfunktionen der \acrfull{cp} von der \acrfull{up} getrennt, 
-um diese unabhängig skalieren zu können. Dies ermöglichen Netzwerkbetreiber das Anpassen und Skalieren des Neztwerks an die
-benötigten Anforderungen.
-\\
-\\
-Die Darstellung zeigt die einzelnen Komponenten in Form einer Service basierten Darstellung.  \cite{5GCoreNetwork2017}
-Das 5G Netzwerk besteht aus sogenannten Netzwerkfunktionen, die meist softwarebasiert sind und so nach Bedarf angepasst/skaliert werden können.
+Die Darstellung \ref{fig:ServiceBased5g} zeigt die einzelnen Komponenten in Form einer Service basierten Architektur.  \cite{5GCoreNetwork2017}
+Das 5G Netzwerk besteht aus sogenannten Netzwerkfunktionenen, die meist softwarebasiert sind und so nach Bedarf angepasst/skaliert werden können.
 Die 5G CP ist das Kernnetz, dass aus einer Reihe von Netzwerkfunktionen besteht, 
 die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
 \begin{itemize}
@@ -223,68 +225,72 @@ die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
   \item \textbf{\acrfull{smf}} Sitzungsverwaltung, Zuweisung von IP Adressen an die Endgeräte. 
   \item \textbf{\acrfull{udm}} Generierung von Anmeldeinformationen für Authentifizierungen, 
   Verwalten der Benutzeridentifikation und Zugriffsautorisierung.
-  \item \textbf{\acrfull{upf}} Datenrouting und Weiterleitung. Dateninspektionen.
+  \item \textbf{\acrfull{upf}} Datenrouting und Weiterleitung. Dateninspektionen. Die \acrshort{upf}s spielt eine zentrale Rolle für das Mobilitätsmanagement, was in 
+  Kapitel \ref{sec:Mobilitätsmanagement}  erkleutert wird.
   \item \textbf{\acrfull{pcf}} Bereitstellung von Richtlinien für Funktionen, 
   Zugriff auf Abonnementinformationen
+Bei der 5G Architektur sind die Netzwerkfunktionen der \acrfull{cp} von der \acrfull{up} getrennt, was als \acrfull{cups} bezeichnet wird.
+Aufgaben der \acrshort{cp} ist das Verwalten der Benuzerverbindungen, Richtlinien soweie AUthentifizierung während die\acrshort{up} für die 
+Weiterleitung des Datenverkehrs zuständig ist.
+Die Motivation hinter \acrshort{cups} ist die unabhängige Skalierung der \acrlong{up}, um den Netzwerkbetreibung eine flexible Dimensionierung
+des Netzwerks zu ermöglichen. Wenn beispielsweise der Datenverkehr zunimmt, können \acrlong{upf} hinzugefügt werden, ohne die \acrlong{cp} zu beinträchtigen.
+Teile der \acrshort{cp} Netzwerkfunktionen wie \acrshort{ausf}, \acrshort{pcf}, \acrshort{udm}, \acrshort{amf} und \acrshort{smf}. 
+Zu der \acrshort{up} gehöret die \acrshort{upf}. 
 \end{itemize}
 \subsection{5G Edge Computing}
 \label{subsec:5G Edge Computing}
 \subsection{Network Function Virtualization}
 \label{subsec:Network Function Virtualization}
-Network Function Virtualization (NFV) erlaubt es Netzwerkfunktionen, von der Hardware zu entkoppeln.
+\acrfull{nfv} erlaubt es Netzwerkfunktionen, von der Hardware zu entkoppeln.
 Dies ermöglicht das Verwenden von Gateways, Firewalls, DNS Services und Caching ohne proprietär Hardware.
 \\
 \\
-Um ein neues Netwzerk zu erstellen, wird eine Vielzahl von verschieden Hardware Komponenten benötigt. 
-Diese benötigen Platz, Energy und müssen von qualifizierten Personal überwacht und gewartet werden. 
-Network Function Virtualization will diese Probleme lösen, in dem Virtualisierungstechniken auf standard
+Um ein neues Netwzerk zu erstellen, wird in der Regel eine Vielzahl von verschieden Hardware Komponenten benötigt. 
+Diese benötigen Platz, Energie und müssen von qualifizierten Personal überwacht und gewartet werden. 
+\acrlong{nfv} will dieses Problem lösen, indem mithilfe von Virtualisierungstechniken, Netzwerkfunktionen auf standard
 Server Hardware Komponenten betrieben werden. 
-Foldgende Vorteile werden durch NFV erziehlt und sind Relevant 5G Edge Clouds: \cite{nfv_wp}
+Foldgende Vorteile werden durch NFV erziehlt: \cite{nfv_wp}
 \begin{itemize}
   \item \textbf{Skalierbarkeit und Flexibilität:} Die Virtualisierung erlaubt eine einfache Skalierung der Ressourcen.
-  So kann bei einer großen Nachfrage die Services skalliert werden. Es können auch schnell mehrere Instanzen einer Netzwerkfunktion gestartet werden.
+  Bei einer großen Nachfrage eines Services kann dieser skalliert werden. Es können auch schnell weitere Instanzen einer Netzwerkfunktion gestartet werden.
   \item \textbf{Kosteneinsparungen:} Durch die Verwendung von Standard Komponenten werden die Kosten und der Energieverbrauch minimiert.
-  \item \textbf{Anpassungsfähigkeit:} Die Virtualisierung erlaubt eine schnelle Anpassung an Anforderungen eines Kunden. 
-  Die Server können durch der Virtualiserung von mehreren Nuzern gleichzeitig verwendet werden und gleichzeitig die Anforderungen des jeweiligen
-  Kunden erfüllen.
-  \item \textbf{Verbesserte Effizienz durch homogene Systeme:}
+  \item \textbf{Anpassungsfähigkeit:} Die Virtualisierung erlaubt eine schnelle Anpassung an die Anforderungen eines Kunden. 
+  Die Server können durch der Virtualiserung von mehreren Nuzern gleichzeitig verwendet werden und die Anforderungen des jeweiligen
+  Kunden erfüllen. Dies wird auch als Network Slicing bezeichnet.
 \end{itemize}
 
 
 \subsubsection{NFV Architektur und Orchestration Framework:}
-Das Europäische Institut für Telekommunikationsnormen \textit{ETSI} hat ein Standard für ein NFV Framework veröffentlicht.
-Dieser Standard definiert sogenannte Virtualized Network Functions \textit{VNF}, welche Neztwek Funktionen in Software abbilden.
-Die \textit{VNFs} werden in der \textit{NFV} Infrastruktur \textit{NFVI} deployed. Die \textit{NFV} Infrastruktur besteht aus den
-den Hardware Komponenten wie CPU und Speicher, aber einem Virtualisierungslayer. \\
+Das Europäische Institut für Telekommunikationsnormen \acrshort{etsi} hat ein Standard für ein \acrshort{nfv} Framework veröffentlicht.
+Dieser Standard definiert sogenannte \acrfull{vnf}, welche Netzwerkfunktionen in Software abbilden.
+Die \acrshort{vnf} werden in der \acrfull{nfvi} veräfentlicht. Die \acrshort{nfvi} besteht aus gewöhnlichen
+den Hardware Komponenten wie CPU und Speicher, aber acuh einem Virtualisierungslayer. \\
 Der \textit{NFV MANO} (NFV Managment und Orchestrierung) Layer verwaltet die Infrastruktur und passt diese an die Anforderungen an.
-Der VM Lifecycle wird von \textit{NFV MANO} verwaltet, wenn eine VM abstürtzt wird sie durch diesen neugestartet.
+Der \acrfull{vm} Lifecycle wird von \textit{NFV MANO} verwaltet, wenn eine \acrshort{vm} abstürtzt wird sie durch diesen neugestartet.
 
-\subsubsection{5G Edge Cloud und NFV:}
-Die Network Function Virtualization spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
-\textit{NFV} erlaubt \textit{Network Slicing}, ein Aspekt der virtuellen Netzwerkarchitektur, 
+\subsubsection{5G Edge Cloud und NFV}
+Die \acrlong{nfv} spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
+\acrshort{nfv} erlaubt \textit{Network Slicing}, ein Aspekt der virtuellen Netzwerkarchitektur, 
 mit dem mehrere virtuelle Netzwerke auf einer gemeinsam genutzten Infrastruktur bereitgestellt werden können.
 \\
 \\
-\textit{NFV} ermöglicht die 5G-Virtualisierung, sodass physische Netzwerk in mehrere virtuelle Netzwerke unterteilt werden können. 
-Dies erlaubt es unterschiedliche Radio Access Networks (\textit{RAN}) 
-oder verschiedene Arten von Diensten gleichzeitig anzubieten. Der Anwender merkt dabei kein Unterschied, da die Network Slices
-voneinander isoliert arbeiten. 
-\textit{NFV} ist für die Skalierbarkeit, Flexibilität und Migration in einer 5G Edge Cloud wichtig. Wenn die Anfragen an eine
-Anwendung steigt, kann nicht nur die Ressourcen für die Anwendung an sich einfach skaliert werden, sondern auch durch das hinzufügen einer neuen
-Software Instanz in der \textit{NFVI}, kann auch die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV} 
-
+\acrshort{nfv} ermöglicht die 5G-Virtualisierung, sodass physische Netzwerk in mehrere virtuelle Netzwerke unterteilt werden können. 
+Dies erlaubt es unterschiedliche \acrfull{ran} verschiedene Arten von Diensten gleichzeitig anzubieten. 
+Der Anwender merkt dabei kein Unterschied, da die \textit{Network Slicies}voneinander isoliert arbeiten. 
+\acrshort{nfv} ist für die Skalierbarkeit, Flexibilität und Migration in einer 5G Edge Cloud wichtig. Wenn Anfragen an eine
+Anwendung steigen, kann nicht nur die Ressourcen für diese Anwendung skaliert werden, sondern es kan nauch durch das hinzufügen weiterer
+Software Instanzer in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV} 
 
 \subsection{Software-defined Networking}
 \label{subsec:Software-defined Networking}
-Neben \textit{NFV}, ist auch Software Defined Networking \textit{(SDN)} wichtig für Virtualisierung von Netzwerken.
-Bei einem \textit{SDN} ist die Steuerung des Netzwerks von der Hardware getrennt. Es wird zwischen einem Controller, 
-einer Southbound und einer
-Northbound API unterschieden. 
+Neben \acrshort{nfv}, ist auch \acrlong{sdn}s für die Virtualisierung von Netzwerken wichtig..
+Bei einem \acrshort{sdn} ist die Steuerung des Netzwerks von der Hardware getrennt. Es wird zwischen einem Controller, 
+einer Southbound und einer Northbound API unterschieden. 
 Die Southbound APIs führt die Anweisungen nimmt und gibt Informationen des Controllers weiter an Netzwerkgeräte wie Switches,
-Access Points und Router weiter. Der Controller ist das zentrale Element eines \textit{SDN} Netzwerkes, 
+Access Points und Router weiter. Der Controller ist das zentrale Element eines \acrshort{sdn} Netzwerkes, 
 er ermöglicht ein zentrales Managen und steuern des 
 Netzwerkes. Die Northbound API gibt Informationen an den Controller weiter. Es ist die Schnittstelle zwischen Anwendungen 
-und dem \textit{SDN} Controller.\cite{SoftwareDefinedNetworkingSDN}
+und dem \acrshort{sdn} Controller.\cite{SoftwareDefinedNetworkingSDN}
 \\
 \\
 Software Defined Networking kann so \textit{MEC} unterstützen, indem es automatisch und flexibel Servicemanagement durchführt.
@@ -496,7 +502,10 @@ auserhalb des 5G-Systems.
 \\
 \\
 Für die Integration von MEC in ein 5G Netzwerk, spielt die User Plane Function (UPF) eine wichtige Rolle. Die UPF ist Teil der User Plane
-und ist eine Darstellung der dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrollen und Weiterleitung von Nutzdaten. \cite{Leitfaden5GCampusnetze2020}
+und ist eine Darstellung der dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrollen und Weiterleitung von Nutzdaten. 
+Die \acrshort{upf} ist Verbindungspunkt für die mobile Infrastruktur und das Data Network (DN). Beispielsweise ist es für das packen und entpacken von 
+getunnelten Daten verandtortlich. Darüberhinaus dient die UPF auch als Anker für die Mobilität, was besonders für das Mobilitätsmanagement wichtig ist.
+\cite{Leitfaden5GCampusnetze2020}
 Ist das MEC-System in die 5G Cloud integriert, ist die UPF auch Teil des MEC Systems.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture2.png}
