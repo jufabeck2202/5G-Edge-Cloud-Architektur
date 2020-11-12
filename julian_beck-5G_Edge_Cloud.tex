@@ -72,6 +72,10 @@
 \newacronym{rnis}{RNIS}{Radio Network Information Service}
 \newacronym{af}{AF}{Application Function}
 \newacronym{meo}{MEO}{MEC- Orchestartor}
+\newacronym{wan}{WAN}{Wide Area Network}
+\newacronym{iot}{iot}{Internet of tTings}
+
+
 
 
 
@@ -584,7 +588,7 @@ dennoch muss der Zustand der Anwendung übertragen werden.
 Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen.
 
 \subsection{Verschieben der Anwendung und desen Zustand}
-Bewegt sich das \acrshort{UE}im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
+Bewegt sich das \acrshort{ue} im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geigneter als der aktuelle
 MEC- Host, muss die Anwendung umziehen. Die MEC-Anwendungen werden in zustandslose und zustandsbehaftete Anwendungen eingeteilt.
 Handelt es sich um eine zustandsbehaftete Anwendung, 
 erfordert das Umziehen der Anwendung, ein synchronisieren des Zustands zwischen der aktuellen und der
@@ -723,44 +727,47 @@ Folgendes Kapitel beschreibt unterschiedliche Use-Cases und Szenarios für die V
 \label{subsec:Cloud-Gaming}
 Computer Spiele werden immer populärer, aber die meisten Online Multiplayer Spiele benötigen eine geringe 
 Latenz über das Netzwerk. Dies ist meistens nicht für mobile Endgeräte möglich, da sich die Server nicht im \acrshort{ran} befindet und so
-nicht in der Nähe des RAN.
+nicht in der Nähe des Engerätes.
 \\
 \\
-Bringt man die Spielserver in die Nähe des Funknetzes, macht dies Spiele die eine geringe Latenz benötigen
-möglich für mobile Nutzer. 
+Bringt man die Spielserver in die Nähe des Funknetzes, ermöglicht dies das spielen von Spielen die eine geringe Latenz benötigen
+für mobile Nutzer. 
 Die Verwendung ist dabei nicht auf Spiele beschränkt und kann auch für andere Anwendungen von Vorteil sein, 
 die eine geringe Latenz erfordern. Beispielsweise können durch die geringe Latenz mobile Endgeräte mit \textit{Remote Dektop} auf
 Virtuelle Machinen zugreifen und benötigen so keine lokale Rechenressourcen. Dies erlaubt Tablets mit wenig Rechenleistung als 
-\textit{Thin Client} sich mit geringer Latenz mit einer VM zu verbinden.
-Dies ermöglicht das Verbinden von einzelnen oder mehrere Nuzern mit einem server oder VM. Der Nutzer startet für das Verbinden
+\textit{Thin Client} sich mit geringer Latenz mit einer \acrshort{vm} zu verbinden.
+Es kann sich ein oder mehrere Nuzer mit der VM auf dem Server verbinden. 
+Der Nutzer startet für das Verbinden
 die Awendung lokal auf dem Endgerät und diese Verbindet sich mit der Cloud. Nutzen mehrere Benuzter eine Anwendungs Instanz auf dem 
-gleichen MEC-HOST, ist die Latenz auch unter den Nutzern geringer. So ist bei einem Onlinespiel die Verzögerung zwischen zwei Spielern
-geringer und bei einem Remote Desktop von zwei Nutzern in dem gleichen MEC-Host ist die Latenz geringer die Bandbreite größer. 
-So können zu kolaborativen Zwecke Beispielsweise große Datein mit hoher bandbreite geteilt werden, oder kolaborative Programme wie
+gleichen MEC-HOST, ist die Latenz auch unter den Nutzern geringer. Bei einem Onlinespiel ist die Verzögerung zwischen zwei Spielern
+auf dem gleichen Server sehr gering. Wird eine Remote-Desktop anwendung von mehreren Nuzern in dem gleichen MEC-Host verwendet, 
+ist die Latenz gering und die Bandbreite groß. 
+So können zu für kolaborative Arbeiten beispielsweise große Datein mit hoher Bandbreite geteilt werden, oder kolaborative Programme wie
 ein geteiltes Whiteboard mit geringer Latenz genutzt werden, auch wenn die Nutzer mobil sind.
 \\
 \\
 Benötigen die Anwendungen eine geringe Latenz, kann auch das Rendern der Videospiele oder Virtuellen Maschine auf dem MEC-Host 
-durchgeführt werden. Die Endgeräte decodieren dann nur den Videostream der MEC-Anwendungen und senden die Eingaben in die Cloud.
+durchgeführt werden. Die Endgeräte decodieren dann nur den Videostream der MEC-Anwendungen und senden die Steuerungseingaben in die Cloud.
 Gerade bei Spielen reichen dann \textit{Thin Clients} aus und es werden keine leistungsstarke lokale Ressourcen benötigt. 
-Dies ermöglicht das spielen von Online-Spielen auf Smartphones.
+Dies ermöglicht das spielen von grafikintensiven Online-Spielen auf Smartphones.
 \\
 \\
 Wenn sich ein \acrshort{ue} mit einem Funkknoten verbindet, der nicht demselben MEC-Host zugeordnet ist, 
 auf dem die Anwendung ausgeführt wird (z. B. nachdem sich das Engerät von dem wegbewegt hat), 
 muss sichergestellt sein, dass die Konnektivität zwischen dem \acrshort{ue} und der Anwendung aufrechterhalten wird. 
 Um die Latenzanforderungen und damit eine gute Benuzererfahrung aufrechtzuerhalten, 
-muss das MEC-Management die Anwendung auf einen anderen MEC-Host, der in der Nähe des UEs ist, verscheiben. 
+muss der \acrshort{meo} die Anwendung auf einen anderen MEC-Host, der in der Nähe des \acrshort{ue}s ist, verscheiben. 
 Dabei ist es wichtig, dass die Verbindung aufrechterhalten wird. Gerade bei dem mobilen spielen von Online-Spielen
-ist dieser Schritt sehr wichtig, da es sonst frustrierende Benuzererfahrungen geben kann.
+ist dieser Schritt sehr wichtig, da es zu frustrierenden Benuzung kommt.
 \\
 \\
-Aktuell wird Cloug-Gaming-Services wie Googles \textit{Stadia} immer verbreiteter. Aktuell ist das Streamen von Videospielen
-allerdings nur im Heimnetzwerk möglich. 5G und MEC könnten es ermöglichen auch mobil diese Services zu Nutzen.
+Aktuell werden Cloud-Gaming-Services wie Googles \textit{Stadia} immer verbreiteter. Das Streamen von Videospielen ist
+allerdings nur im Heimnetzwerk möglich. 5G und MEC könnten es ermöglichen auch von Mobilen Endgeräten Cloud-Gaming-Servies zu Nutzen,
+und die Latzenz zu verbessern
 \subsection{Smart Cities}
 \label{subsec:Smart Cities}
 In einer Smart City werden Technologien aus den Bereichen Energie, Mobilität, Stadtplanung, 
-Verwaltung und Kommunikation so miteinander vernetzt, dass sich die Lebensqualität für die Bewohner steigert. 
+Verwaltung und Kommunikation so miteinander vernetzt, dass sich die Lebensqualität für die Bewohner verbessert. 
 Gleichzeitig profitiert die Nachhaltigkeit der Stadt. Dies wird immer wichtiger, da die Bevölkerungszahlen in 
 Städten immer weiter zunehmen.
 Darüber hinaus wird der Bevölkerungsanstieg die städtische Infrastruktur aufgrund einer 
@@ -768,72 +775,75 @@ exponentiellen Zunahme der Daten, die von verschiedenen Geräten wie Smartphones
 vor weitere Herausforderungen stellen. 
 \\
 \\
-Die Vielzahl von Daten die von einer Smart-City generiert werden müssen verarbeitet und ausgewertet werden. Dies kann lokalen Rechenressourcen
-direkt durchgeführt werden, was aber sehr teuer ist. 
-Um die Notwendigkeit von dedizierter teurer Computerhardware zu beseitigen, wurde Cloud-Computing eingeführt. Cloud-Computing führt
-zu einer hohen Latenz was gerade im Kontext von Smart-Cities die vielzahl von Echtzeitdaten generieren nicht Optimal ist.
+Die Vielzahl von Daten die von einer Smart-City generiert werden müssen verarbeitet und ausgewertet werden. Dies kann durch lokalen Rechenressourcen
+direkt an der Datenquelle durchgeführt werden, was aber sehr teuer ist und praktikabel ist. 
+Um die Notwendigkeit von dedizierter teurer Computerhardware zu beseitigen, wurde Cloud-Computing eingeführt. Cloud-Computing führt allerdings
+zu einer hohen Latenz was gerade im Kontext von Smart-Cities die Vielzahl von Echtzeitdaten generieren nicht optimal ist.
 Desweiteren belastet Cloud-Computing das gesammte Netzwerk der Stadt. 
-Wenn die Rechenleistung näher an den Geräten lieg, könenn die daten mithilfe von Edge-Computing und 5G schneller analysieren 
-und auf Anfragen antworten, ohne das gesmmmte Netz zu belasten.
+Wenn die Rechenleistung näher an der Datenquelle liegt, könenn die Daten mithilfe von Edge-Computing und 5G schneller analysieret
+und auf Anfragen geantwortet werden, ohne das gesmmmte Netz zu belasten.
 \\
 \\
-Das Einsetzen von Kameras in einer Smart-City ist vorallem durch die Verfügbar Bandbreite eingeschränkt. 
+Die Verwendung von Kameras in einer Smart-City ist vorallem durch die Verfügbar Bandbreite eingeschränkt. 
 Hochauflösende Lifestreams von Kameras erfordern viele Ressourcen für die Analyse und viel Speicherplatz. 
 Dies macht das Einsetzen von HD-Kameras unter den gegenwärtigen Bedingungen schwierig.
-Das einsetzen von MEC kann dies ändern. Das einsetzen eines MEC-Systems ermöglicht so das schnelle analysieren und ausgewerten von
-Videoinformationen und Speichern im MEC-HOST, in der Nähe der Kamera. Das Einsetzen von 5G ermöglicht eine geringe Latenz und eine 
+Das Einsetzen von \acrlong{mec} kann dies ändern. Ein MEC-Systems ermöglicht das schnelle analysieren und auswerten von
+Videoinformationen und Speichern im MEC-HOST, in der Nähe der Kamera. Gleichzeitig ermöglicht  5G eine geringe Latenz und eine 
 hohe Datenrate. Durch die gewonnene Mobilität, ist es beispielsweise möglich das Kameras von Polizisten und Plizistinnen über das 5G Netz
-übertragen und in Echtzeit ausgewertet werden. Die Firma \textit{Dragon Law Enforcement} Arbeitet aktuell an einer Spracherkennung.
+übertragen und in Echtzeit ausgewertet werden. Die Firma \textit{Dragon Law Enforcement} arbeitet aktuell an einer Spracherkennung.
 Diese passt sich den Akzenten an und reduziert den Lärm, um den Beamten dabei zu helfen, 
-Protokolle mit sehr genau und effiient zu erstellen. 
+Protokolle sehr genau und effizient zu erstellen.
 \\
 \\
-Ein weiter USE-Case im Bereich Smart-City ist die \textit{Vehicle-to-Infrastructure} Kommunikation.
-Bei der Vehicle-to-Infrastructure werden Daten vom Fahrzeug und Sensoren an der Straße verwendet um die Sicherheit zu erhöhen und 
+Ein weiter Use Case im Bereich Smart-City ist die \textit{Vehicle-to-Infrastructure} Kommunikation.
+Bei der Vehicle-to-Infrastructure werden Daten vom Fahrzeug und Sensoren an eine Infrastruktur gesendet, um die Sicherheit zu erhöhen und 
 Risikosituatonen frühzeitig zu erkennen. 
 Die Kommunikation zwischen Fahrzeug und der Infrastruktur erfordert eine geringe Latenz, 
 die je nach Anwenungsfall unter 10 ms liegen muss. 
-Gefharenmeldungen wie Unfälle, stehengebliebene Fahrzeuge oder ein Stau können in in Echtzeit über 5G übertragen werden.
-MEC kann verwendet werden, um die Fahrzeuge mit einer verteilten Cloud zu verbinden. So können MEC Anwendungen auf den MEC-Host 
+Gefahrenmeldungen wie Unfälle, stehengebliebene Fahrzeuge oder ein Stau können in in Echtzeit über 5G übertragen werden.
+MEC kann hier eingesetzt werden, um die Fahrzeuge mit einer verteilten Cloud zu verbinden. So können MEC Anwendungen auf den MEC-Host 
 gehostet werden, die Daten aus Fahrzeugen und Sensoren analysiert. Wird eine Gefahr erkannt, kann der MEC-Host dies mit einer
 geringen Latenz an andere Fahrzeuge Broadcasten. 
-Dies ermöglicht einem Smarten-Auto innerhalb von Millisekunden Daten zu empfangen, 
+Dies ermöglicht einem smarten Auto innerhalb von Millisekunden Daten zu empfangen, 
 sodass der Fahrer auf eine Gefahr reagieren und ausweichen kann.
 \\
 \\
 Besonders für die \textit{Vehicle-to-Infrastructure} Kommunikation eignet sich ein MEC-System. Da Fahrzeuge mobil sind, wechesln sie
-oft den Netzwerkknoten. Das MEC-System ist für so eine Mobilitätsaufgabe ausgelegt. Gerade bei diesem USE-Case betreibt 
-jeder MEC-Host die gleiche Anwendung, beispielsweise eine Anwendung zur analyse der Fahrzeugdaten. Dies macht das wechseln von MEC-Hosts sehr effizient,
+oft den Netzwerkknoten. Das MEC-System ist für so eine Mobilitätsaufgabe ausgelegt. Gerade bei diesem Use Case betreibt 
+jeder MEC-Host die gleiche Anwendung. Beispielsweise eine Anwendung zur analyse der Fahrzeugdaten. Das macht das wechseln von MEC-Hosts sehr effizient,
 da kein Image geladen werden muss und die Anwendung auf dem Ziel-MEC schon läuft. Bei einer Gefahrensituation ist es wichtig, dass die
 umliegenden Fahrzeuge schnell Benachrichtigt werden. Da aufgrund der geographischen Lage die Fahrzeuge mit dem gleichen MEC-Host
-kommunizieren, wie das Fahrzeug das eine Gefahr erkann hat, ist dies mit sehr geringer Latzenz möglich. 
+kommunizieren, wie das Fahrzeug das eine Gefahr erkannt hat, ist das Benachrichtigen mit einer geringer Latzenz möglich. 
 \\
 \\
-Auch für die \textit{Vehicle-to-Vehicle} Kommunikation eignet sich MEe. Die Daten eines Fahzeuges können mit geringer Latzenz
+Auch für die \textit{Vehicle-to-Vehicle} Kommunikation eignet sich MEC. Die Daten eines Fahzeuges können mit geringer Latzenz
 an einen MEC-Host gesendet werden, analysiert und an andere Fahrzeuge im gleichen MEC-host weitergeleitet werden.
 \subsection{Smart-Factory}
-Die Smart Factory steht im Mittelpunkt der Industrie 4.0 und bezeichnet eine Produktionsumgebung, die sich selbst organisiert. 
+Die Smart-Factory steht im Mittelpunkt der Industrie 4.0 und bezeichnet eine Produktionsumgebung, die sich selbst organisiert. 
 Zur Produktionsumgebung gehören die Fertigungsanlagen und die Logistiksysteme. Die Produktionsumgebung ist automatisiert und erfordert
 nicht das Eingreifen eines Menschens. 
 Im Mittelpunkt einer Smartfactory steht die intelligente Vernetzung von Maschinen und das hergestellte Produkt. 
 Das Produkt teilt die für die Fertigung benötigten Informationen der Smart Factory mit. 
-Anhand dieser Informationen stellen sich die Maschinen automatisch ein um das gewünschte Produkt zu fertigen. 
+Anhand dieser Informationen stellen sich die Maschinen automatisch ein, um das gewünschte Produkt zu fertigen. 
 In vielen Fällen findet dafür eine drahtlose Kommunikation zwischen Produkten und Anlagen statt. 
 \\
 \\
 Für die Smart-Factoy bietet sich ein MEC-System an. 5G besitzt die Möglichkeit eines Privaten Netzes. 
-So kann ein Netzwerk on-permise zu Verfügung gestellt werden. Maschinen und Produkte können Daten via 5G an MEC-Hosts senden.
-Ein Smart Factory besteht aus einer Vielzahl von Internet-Of-Things Geräten. Diese Menge an Daten die dadruch 
-generiert wird, kann nicht über das WAN zu einer zentralen Cloud gesendet werden. Ein MEC-System ist reduziert die Latzenz
+So kann ein Netzwerk \textit{On-permise} bie einem Unternehmen zu Verfügung gestellt werden. 
+Maschinen und Produkte können Daten via 5G an MEC-Hosts senden.
+Ein Smart Factory besteht aus einer Vielzahl von \acrfull{iot} Geräten. Dide Menge an Daten die dadruch 
+generiert wird, kann nicht über das \acrshort{wan} zu einer zentralen Cloud gesendet werden. Ein MEC-System ist reduziert die Latzenz
 und die Auswirkungen auf das Netzwerk. Desweiteren wird die Sicherheit erhöht, da die Daten lokal bleiben und nicht über 
-das WAN versendet werden. Auf dem MEC-Host können die Daten der IoT Geräte in Echtzeit analysiert werden. Beispielsweise können
-Maschine Learning Modelle für die Optimierung der Produktion eingesetzt werden. 
+das \acrshort{wan} versendet werden. Auf dem MEC-Host können die Daten der \acrshort{iot} Geräte in Echtzeit analysiert werden. Beispielsweise können
+Maschine Learning Modelle für die Optimierung der Produktion eingesetzt werden. Der MEC-Host, kann die ankommenden Daten auch filtern und Entscheidungen über
+die Relevanz der ankommenden Daten treffen. Nur die relevanten Daten können dann zu einer zentralen Cloud weitergeleitet werden. Das vVrauswahl der Daten entlastet
+das Netz und verursacht weniger kosten.
 \\
 \\
-Eine mögliche Anwendung für MEC in einer Smart-Factory ist das einsetzen von Kameras zur Qualitätssicherung.
-Für der Erkennen von Fehlern in Produktionsteile müssen Hochauflösende Kamereas verwendet werden, damit diese sichtbar sind.  Der hohe Datenstrom
+Eine mögliche Anwendung für MEC in einer Smart-Factory ist das Einsetzen von Kameras zur Qualitätssicherung.
+Für das Erkennen von Fehlern in Produktionsteilen, müssen hochauflösende Kamereas verwendet werden. Der hohe Datenstrom
 kann über 5G an den MEC-Host gesendet werden. Dieser analyisiert das Bildmaterial auf Fehler. Wird ein Fehler erkannt,
-kann der MEC-Host eine andere Maschine benachrichtigen, die das beschädigte Teil entfernt. Je nach der Geschwindigkeit der Produktion,
+kann der MEC-Host andere Maschine benachrichtigen, die das beschädigte Teil entfernt. Je nach der Geschwindigkeit der Produktion,
 es wichtig das dies mit einer geringen Latzenz passiert. 
 \\
 \\
