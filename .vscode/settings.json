@@ -4,7 +4,9 @@
             "name": "pdflatex, makeglossaries, pdflatex (2x)",
             "tools": [
                 "pdflatex",
+                "biber",
                 "makeglossaries",
+
                 "pdflatex",
                 "pdflatex"
             ],
@@ -28,7 +30,14 @@
             "args": [
               "%DOCFILE%"
             ]
-          }
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
     ],
     "files.associations": {
         "*.yaml": "home-assistant"

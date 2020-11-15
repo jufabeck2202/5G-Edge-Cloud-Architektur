@@ -127,7 +127,7 @@ die die Bereitstellung verteilter Services und Ressourcen an den Rand des Netzwe
 \\
 Im Zentrum der Technologie steht der MEC-Host. 
 Er wird am Rande des Netzwerks (in der Nähe eines 5G Funkmast) installiert und stellt so Speicherplatz, 
-Rechenleistung für Anwendungen zur Verfügung. Dies Vorteil wie:
+Rechenleistung für Anwendungen zur Verfügung \ref{fig:mec-and-5g}. Dies hat folgende Vorteile: \cite{etsiETSIGSMEC}\cite{samikekkiwalterfeatherstoneyonggangfangpekkakuurealicelianuragranjanETSIMultiaccessEdge}
 \begin{itemize}
   \item Reduzierter Datenverkehr im Kernnetzwerk
   \item Geringe Latenz und Datenverarbeitungszeit wegen dank der kurzen Distanz
@@ -145,7 +145,7 @@ Nur dank MEC lassen sich die verschiedenen 5G Anwendungen in vollem Umfang verwi
 \\
 \\
 Mit der Hilfe des \acrfull{mec} verwandelt sich das 5G Mobilfunknetz in eine vielseitige Plattform zur Erbringung 
-einer Vielzahl von Services. So ermöglicht MEC die Realisierung einer Vielzahl von Anwendungen:
+einer Vielzahl von Services. So ermöglicht MEC die Realisierung einer Vielzahl von Anwendungen: \cite{talebMultiAccessEdgeComputing23}\cite{depellegriniCompetitiveCachingContents2017}\cite{etsiMultiaccessEdgeComputing}
 \begin{itemize}
   \item Smart Cities
   \item Vehicle-to-Vehcile, Vehicle-to-Infrastructure
@@ -153,6 +153,11 @@ einer Vielzahl von Services. So ermöglicht MEC die Realisierung einer Vielzahl 
   \item Cloud Gaming 
   \item Edge Video Caching
 \end{itemize}
+\begin{figure}
+  \includegraphics[width=\linewidth]{images/mec-and-5g.png}
+  \caption{MEC und 5G}
+  \label{fig:mec-and-5g}
+\end{figure}
 In dieser Arbeit wird in erster Linie auf die von \acrshort{etsi} veröffentlichte Architektur für ein MEC-System eingegangen.
 \subsection{Aufbau der Seminararbeit}
 Das zweite Kapitel dieser Seminararbeit \textbf{\nameref{sec:Benötigte Technologien} \ref{sec:Benötigte Technologien}} beschreibt
@@ -188,7 +193,7 @@ Bei Cloud-Computing werden Rechenressourcen über ein Netzwerk zur Verfügung ge
 Beim Edge-Computing wird die Berechnung und Speicherung von Daten in die Nähe der Quelle gebracht,
 an den sogenannten Rand oder \textit{Edge} des Netzwerks. Im Gegensatz zum Cloud-Computing werden die Daten
 nicht in zentralen Rechenzentren verarbeitet, sondern an dezentralen Cloud Systemen am Rand des Netzwerks. 
-Edge-Computing bietet dabei folgende Vorteile: \cite{labrieTopBenefitsEdge}
+Edge-Computing bietet dabei folgende Vorteile: \cite{inproceedings} \cite{labrieTopBenefitsEdge} 
 \begin{itemize}
   \item \textbf{Geschwindigkeit und Latenz:} Abhängig von der Anwendungen spielt die Zeit der Datenverarbeitung eine
   entscheidende Rolle. Beispielsweise bei autonomen Fahrzeugen ist es wichtig, dass innerhalb von Millisekunden die Daten
@@ -218,11 +223,10 @@ Edge-Computing bietet dabei folgende Vorteile: \cite{labrieTopBenefitsEdge}
   Bei Cloud-Computing-Architekturen müssen Daten in den meisten Fällen zunächst an ein zentral gelegenes Rechenzentrum
   weitergeleitet werden. Das Erweitern oder das Ändern dedizierter Rechenzentren ist verursacht kosten. 
 \end{itemize}
-\newpage
 \subsection{5G Network}
 \label{subsec:5G Network}
 Das 5G-Netzwerk wurde entwickelt um auch von der Industrie genutzt zu werden.
-Dies wird durch Techniken wie \acrlong{nfv} und \acrlong{sdn} ermöglicht.
+Dies wird durch Techniken wie \acrlong{nfv} und \acrlong{sdn} ermöglicht. \cite{BARAKABITZE2020106984}
 Klassischerweise wurden mobile Netzwekre in erster Linie für Endgeräte wie Smartphones und Laptop konzipiert. 
 Dies ändert sich bei dem 5G Netzwerk. Durch eine Vielzahl von Anwendungen und unterschiedliche Anforderungen,
 muss das Netzwerk so designt sein, dass es alle Forderungen der Industrie und des Endverbrauchers erfüllt. 
@@ -232,7 +236,7 @@ Um den neuen 5G-Anforderungen 10 Gbit/s Datenrate, 1 ms End-to-End-Latenz,  und 
 Serviceverfügbarkeit gerecht zu werden setzt 5G auf Technologien wie \acrfull{cups}, \acrfull{nfv} und MEC.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/ServiceBased5g.png}
-  \caption{Service basierte Architektur}
+  \caption{Service Basierte Architektur}
   \label{fig:ServiceBased5g}
 \end{figure}
 \\
@@ -260,7 +264,7 @@ Weiterleitung des Datenverkehrs zuständig ist.
 Die Motivation hinter \acrshort{cups} ist die unabhängige Skalierung der \acrlong{up}, um den Netzwerkbetreibung eine flexible Dimensionierung
 des Netzwerks zu ermöglichen. Wenn beispielsweise der Datenverkehr zunimmt, können \acrlong{upf} hinzugefügt werden, ohne die \acrlong{cp} zu beinträchtigen.
 Teile der \acrshort{cp} Netzwerkfunktionen wie \acrshort{ausf}, \acrshort{pcf}, \acrshort{udm}, \acrshort{amf} und \acrshort{smf}. 
-Zu der \acrshort{up} gehöret die \acrshort{upf}. 
+Zu der \acrshort{up} gehöret die \acrshort{upf}. \cite{5GCoreNetwork2017} \cite{5GCoreNetwork}
 \end{itemize}
 
 
@@ -274,7 +278,7 @@ Um ein neues Netwzerk zu erstellen, wird in der Regel eine Vielzahl von verschie
 Diese benötigen Platz, Energie und müssen von qualifizierten Personal überwacht und gewartet werden. 
 \acrlong{nfv} will dieses Problem lösen, indem mithilfe von Virtualisierungstechniken, Netzwerkfunktionen auf Standard
 Server Hardware Komponenten betrieben werden. 
-Folgende Vorteile werden durch NFV erziehlt: \cite{nfv_wp}
+Folgende Vorteile werden durch NFV erziehlt: \cite{nfv_wp} \cite{etsiNetworkFunctionsVirtualisation}
 \begin{itemize}
   \item \textbf{Skalierbarkeit und Flexibilität:} Die Virtualisierung erlaubt eine einfache Skalierung der Ressourcen.
   Bei einer großen Nachfrage eines Services kann dieser skaliert werden. Es können auch schnell weitere Instanzen einer Netzwerkfunktion gestartet werden.
@@ -292,11 +296,12 @@ Die \acrshort{vnf} werden in der \acrfull{nfvi} veräfentlicht. Die \acrshort{nf
 den Hardware Komponenten wie CPU und Speicher, aber auch einem Virtualisierungslayer. \\
 Der \textit{NFV MANO} (NFV Management und Orchestrierung) Layer verwaltet die Infrastruktur und passt diese an die Anforderungen an.
 Der \acrfull{vm} Lifecycle wird von \textit{NFV MANO} verwaltet, wenn eine \acrshort{vm} abstürzt wird sie durch diesen neugestartet.
+\cite{etsiNetworkFunctionsVirtualisation}
 
 \subsubsection{5G Edge Cloud und NFV}
 Die \acrlong{nfv} spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
 \acrshort{nfv} erlaubt \textit{Network Slicing}, ein Aspekt der virtuellen Netzwerkarchitektur, 
-mit dem mehrere virtuelle Netzwerke auf einer gemeinsam genutzten Infrastruktur bereitgestellt werden können.
+mit dem mehrere virtuelle Netzwerke auf einer gemeinsam genutzten Infrastruktur bereitgestellt werden können. \cite{suzhiSpaceEdgeCloud2019}
 \\
 \\
 \acrshort{nfv} ermöglicht die 5G-Virtualisierung, sodass physische Netzwerk in mehrere virtuelle Netzwerke unterteilt werden können. 
@@ -304,38 +309,50 @@ Dies erlaubt es unterschiedliche \acrfull{ran} verschiedene Arten von Diensten g
 Der Anwender merkt dabei kein Unterschied, da die \textit{Network Slicies} voneinander isoliert arbeiten. 
 \acrshort{nfv} ist für die Skalierbarkeit, Flexibilität und Migration in einer 5G Edge Cloud wichtig. Wenn Anfragen an eine
 Anwendung steigen, kann nicht nur die Ressourcen für diese Anwendung skaliert werden, sondern es kann auch durch das Hinzufügen weiterer
-Software Instanzen in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV} 
-
+Software Instanzen in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV} \cite{etsiNetworkFunctionsVirtualisation}
+\newpage
 \subsection{Software-defined Networking}
 \label{subsec:Software-defined Networking}
-Neben \acrshort{nfv}, ist auch \acrlong{sdn}s für die Virtualisierung von Netzwerken wichtig.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=6cm]{images/SDN.png}
+  \caption{SDN Aufbau mit Northbound und Southbound API}
+  \label{sdn1}
+\end{figure}
+Neben \acrshort{nfv}, ist auch \acrlong{sdn} für die Virtualisierung von Netzwerken wichtig.
 Bei einem \acrshort{sdn} ist die Steuerung des Netzwerks von der Hardware getrennt. Es wird zwischen einem Controller, 
-einer Southbound und einer Northbound API unterschieden. 
-Die Southbound APIs führt die Anweisungen aus und gibt Informationen des Controllers weiter an Netzwerkgeräte wie Switches,
-Access Points und Router. Der Controller ist das zentrale Element eines \acrshort{sdn} Netzwerkes, 
+einer Southbound und einer Northbound API unterschieden. Die Northbound API, kommuniziert mit dem Application Layer,
+die Southbound API mit dem Infrastruktur Layer,was in \ref{sdn1} zu sehen ist.
+Die Southbound APIs führt die Anweisungen aus und gibt Informationen des Controllers an Netzwerkgeräte wie Switches,
+Access Points und Router weiter. Der Controller ist das zentrale Element eines \acrshort{sdn} Netzwerkes, 
 er ermöglicht ein zentrales Verwalten und Steuern des 
 Netzwerkes. Die Northbound API gibt Informationen an den Controller weiter. Sie ist die Schnittstelle zwischen Anwendungen 
-und dem \acrshort{sdn} Controller.\cite{SoftwareDefinedNetworkingSDN}
-\begin{figure}
-  \includegraphics[width=5cm]{images/SDN-Northbound-and-Southbound-Interfaces-Hong-2014.png}
-  \caption{Aufbau eines SDNs}
-  \label{fig:sdn}
-\end{figure}
+und dem \acrshort{sdn} Controller.\cite{SoftwareDefinedNetworkingSDN} \cite{arnold5GRadioAccess2017}
+\\
+\\
 Das \acrlong{sdn} kann ein \acrshort{mec} unterstützen, indem es automatisch und flexibel Servicemanagement durchführt.
-Da bei einem \acrshort{sdn} die Daten und Controll Ebene durch die Southbound und Norhtbound API getrennt sind, 
+Da bei einem \acrshort{sdn} die \acrfull{up} und \acrfull{cp} durch die Southbound und Norhtbound API getrennt sind, 
 führt \acrshort{sdn} eine zentrale Steuerung ein, 
 mit der \acrshort{vnf} einfach gestartet und angeboten werden können. 
-Die zugrunde liegende Netzwerkinfrastruktur wird so abstrahiert. \\
-Im Kontext von \acrshort{mec} kann der \acrshort{sdn}-Controller MEC-bezogene \acrshort{vnf}, 
-\acrshort{vm} und Container als eine weitere Netzwerkkomponente behandeln, die dynamisch zugewiesen und neu lokalisiert werden kann.
-So kann der \acrshort{sdn}-Controller flexibel Service anpassen und dynamisch Dienste bereitstellen, indem er \acrshort{vnf}s und  \acrshort{mec} Dienste verbindet.
-Gleichzeitig  ermöglicht dieser die Mobilität der Dienste.
-\\
-\\
-Kommt es Beispielsweise zu einer hohen Anfrage in einem 5G Netzwerk, wird das 5G-Netzwerk mittels \acrshort{nfv} Technologien skaliert.
-\acrshort{sdn} hat dabei die Aufgabe des load-balancings ztwischen MEC-Anwendungen und Netzwerkfunktionen. Dies erlaubt das 
-schnelle erstellen und veöfentliche neuer MEC-Komponenten wie MEC-Platform oder MEC-Anwendungen.
-Die Kombination von \acrshort{sdn}s und \acrshort{nfv} erlaubt zusammen das Erstellen von \textit{Netowrk slices}. 
+Die zugrunde liegende Netzwerkinfrastruktur wird so abstrahiert. Die Abstraktion von \acrshort{cp} und \acrshort{up} ermöglicht
+im 5G eine bessere Implementation von \acrfull{cups}. Die Grafik \ref{fig:sdn2} zeigt die Controll-Netzwerkfunktionen von 5G in 
+die über die Northbound API (NBI) mit dem SDN-Controller kommunizieren. Dieser steuert die \acrshort{up} des 5G Netzwerks über
+die Southbound API (SBI).
+Im Kontext von \acrshort{mec} kann der \acrshort{sdn}-Controller MEC bezogene \acrshort{vnf}, 
+\acrshort{vm}s und Container als eine weitere Netzwerkkomponente behandeln, die dynamisch zugewiesen und neu lokalisiert werden können.
+So kann der \acrshort{sdn}-Controller flexibel Services anpassen und dynamisch Dienste bereitstellen, 
+indem er \acrshort{vnf}s und  \acrshort{mec} Dienste verbindet. Dies macht \acrshort{sdn} zu einem zentralen Element für die Virtualisierung
+des MEC-Systems und für die Unterstützung der Mobilität.
+\begin{figure}
+  \centering
+  \includegraphics[width=11cm]{images/sdn2.png}
+  \caption{SDN in einer 5G \acrshort{sba} Architektur}
+  \label{fig:}
+\end{figure}
+Kommt es beispielsweise zu einer hohen Anfrage in einem 5G Netzwerk, wird das 5G-Netzwerk mittels \acrshort{nfv} Technologien skaliert.
+\acrshort{sdn} hat dabei die Aufgabe des Load-balancings zwischen MEC-Anwendungen und Netzwerkfunktionen. Dies erlaubt das 
+schnelle Erstellen und veröffentlichen neuer MEC-Komponenten wie MEC-Platform oder MEC-Anwendungen.
+Die Kombination von \acrshort{sdn}s und \acrshort{nfv} erlaubt zusammen das Erstellen von \textit{Network Slices}. \cite{BARAKABITZE2020106984} 
 
 \subsection{Virtuelle Maschinen und Container}
 \label{subsec:Virtuelle Maschinen und Container}
@@ -376,7 +393,7 @@ MEC Systems.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/MecFramework.png}
-  \caption{Multi-access Edge Computing Framework}
+  \caption{Multi-Access Edge Computing Framework \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:MecFramework}
 \end{figure}
 
@@ -386,7 +403,7 @@ Dies ist möglich durch die in Kapitel \ref{sec:Benötigte Technologien} vorgest
 Die Grafik \ref{fig:mecarchitecture} zeigt die Komponenten der Referenz Architecture.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/mecarchitecture.png}
-  \caption{Multi-access edge system reference architecture }
+  \caption{Multi-Access Edge System Reference Architecture \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:mecarchitecture}
 \end{figure}
 Die einzelnen Komponenten der MEC Framework und Referenz Architektur sind in folgende Ebenen unterteilt:
@@ -410,7 +427,7 @@ des MEC Platform Managers entgegen und passt die DNS Records und Proxies an. Des
 \\
 \textbf{MEC-Anwendungen:} Multi-Access Edge Computing Anwendungen werden in einer Virtuellen Maschine oder als
 Container auf der Infrastruktur des MEC-Hosts ausgeführt. Die Anwendungen registrieren sich bei der MEC Platform
-Komponente, um darüber andere Anwendungen anzufragen und ihren Dienste zur Verfügung zu stellen.
+Komponente, um darüber andere Anwendungen anzufragen und ihren Dienste zur Verfügung zu stellen. \cite{DevelopingSoftwareMultiAccess}
 \\
 \\
 \textbf{MEC-Platform-Manager:} Der Platform-Manager verwaltet den Lifecycle der Anwendungen. Er startet, stoppt und startet diese neu.
@@ -434,7 +451,7 @@ Wie ein Handoff zwischen zwei MEC-Host abläuft wird in Kapitel \ref{sec:Mobilit
 Das MEC System Level ist übergreifend über mehrere MEC-Hosts. 
 \begin{figure}
   \includegraphics[width=\linewidth]{images/mec-System-Level.png}
-  \caption{MEC-System Level}
+  \caption{MEC-System Level übergreifend über mehrere MEC-Hosts}
   \label{fig:mec-System-Level}
 \end{figure}
 \textbf{MEC- Orchestrator:}
@@ -486,11 +503,11 @@ Diese Informationen sind wichtig für die Entscheidung, ob ein eine MEC-Anwendun
 Der Bandbreiten Service ermöglicht das Erhöhen der Bandbreite für bestimmten Datenverkehr von MEC-Anwendungen und damit die Priorisierung wichtiger Daten.
 \subsection{Zusammenfassung}
 \begin{figure}
-  \includegraphics[width=\linewidth]{images/mecarchitecture.png}
-  \caption{Schritte für das starten einer MEC Anwendungen}
+  \includegraphics[width=\linewidth]{images/mec-referenzepoints.png}
+  \caption{Schritte für das Starten einer MEC Anwendungen \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:ablaufmec}
 \end{figure}
-Dieses Unterkapitel beschreibt, wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten. Die Grafik \ref{ablaufmec} zeigt die 
+Dieses Unterkapitel beschreibt, wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten. Die Grafik \ref{fig:ablaufmec} zeigt die 
 Referenz Architektur. Wird eine neue MEC-Anwendung gestartet werden folgende Schritte durchgeführt:
 \begin{enumerate}
   \item Die \acrshort{ue} Anwendung stellt eine Anfrage für das Starten einer neuen Anwendung auf dem MEC-System. Die Anfrage läuft über den 
@@ -537,7 +554,7 @@ Die Abbildung \ref{fig:sba} zeigt auf der linken Seite ein 5G-System in Form von
 die rechte Seite zeigt die MEC-Systemarchitektur aus Kapitel \ref{subsec:MEC Framework - Referenz Architektur}.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture.png}
-  \caption{5G Servicebasierte Architektur und MEC Systemarchitektur \cite{arnold5GRadioAccess2017} \cite{etsiETSIGSMEC}}
+  \caption{5G Servicebasierte Architektur und MEC Systemarchitektur \cite{arnold5GRadioAccess2017} \cite{etsiETSIGSMEC}, \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:sba}
 \end{figure}
 \\
@@ -560,12 +577,6 @@ und ist eine Darstellung dieser in Netzwerkfunktion. Die UPF ist das Gateway zur
 Sie dient als Verbindungspunkt für die mobile Infrastruktur und das Data Network (DN). Beispielsweise ist es für das packen und entpacken von 
 getunnelten Daten verantwortlich. Darüber hinaus dient die \acrshort{upf} auch als Anker für die Mobilität, was besonders für das Mobilitätsmanagement wichtig ist.
 \cite{Leitfaden5GCampusnetze2020}
-\begin{figure}
-  \includegraphics[width=\linewidth]{images/mec-and-5g.png}
-  \caption{MEC und 5G}
-  \label{fig:mec-and-5g}
-\end{figure}
-
 \subsection{MEC- Kommunikation mit dem 5G Netzwerk}
 Dieser Abschnitt beschreibt die Kommunikation des MEC
 Plattform mit 5G-Kerndiensten.
@@ -585,7 +596,7 @@ hinterlegt.
 \subsection{MEC Deployment in 5G}
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5GMEC-System-Architecture2.png}
-  \caption{MEC in 5G}
+  \caption{MEC in 5G \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:sba2}
 \end{figure}
 In dem MEC- System auf der rechten Seite, agiert der MEC- Orchestartor auf der MEC-System Ebene. Dieser interagiert über die \acrshort{nef} oder
@@ -603,7 +614,7 @@ der Regeln zum Weiterleiten von Datenverkehr an MEC oder Internet / Cloud enthä
 MEC-Host.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5g-scenarios.png}
-  \caption{\acrshort{upf} in dem 5g Kernnetzwerk}
+  \caption{\acrshort{upf} in der \acrshort{up} und als Teil des MEC-Systems}
   \label{fig:sba2}
 \end{figure}
 In einer Konfiguration mit mehreren \acrfull{upf}s leitet eine \acrfull{upf} den Datenverkehr an die MEC-Anwendungen und 
@@ -631,7 +642,7 @@ Einsatz ab. Bei der Verwendung von MEC für Autonomes Fahren treten häufiger Ha
 beispielsweise in dem Szenario einer Smart Factory.\\
 Die Mobilität eines \acrshort{ue}s kann in weitreichenden MEC-Systemen vorhergesagt werden und die einzelnen MEC-Host demnach konfiguriert werden,
 dennoch muss der Zustand der Anwendung übertragen werden.
-Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen.
+Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen. \cite{etsiMultiaccessEdgeComputinga}
 
 \subsection{Verschieben der Anwendung und dessen Zustand}
 Bewegt sich das \acrshort{ue} im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geeigneter als der aktuelle
@@ -641,14 +652,14 @@ erfordert das Umziehen der Anwendung, ein synchronisieren des Zustands zwischen 
 verschobenen Anwendungsinstanz, um Kontinuität zu gewährleisten zu können.
 \\
 \\
-Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Diese muss so designt werden, 
+Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Diese muss so konzeptiert werden, 
 dass die Anwendung in mehreren Instanzen auf unterschiedlichen MEC-Hosts betrieben werden kann. 
 Für das Synchronisieren muss die Anwendungen das Einfrieren des Zustands und kopieren von einer Quell- Anwendung 
 zu einer Zielanwendung unterstüzen. 
 Läuft die Anwendung noch nicht auf dem Ziel Host, muss diese initalisiert und gestartet werden.
 Nachdem die Anwendung gestartet ist, startet der Umzugsvorgang und der Zustand wird von dem aktuellen 
 Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertragen ist, stoppt die aktuelle Instanz
-und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät.
+und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät. \cite{DevelopingSoftwareMultiAccess}
 \\
 Für das Erkennen von \acrshort{ue} Mobilität zu einer neuen Zelle, abonniert die MEC Platform Radio Network Informationen die von dem \acrfull{rnis} zu
 Verfügung gestellt werden. Mithilfe dieser Informationen können \acrshort{ue}s identifizieren werden, bei denen eine Zelländerung auftritt 
@@ -680,7 +691,7 @@ oder über die \acrshort{upf}s des Ziel und ursprünglichen MEC-Hosts geleitet (
   \label{fig:mecerror}
 \end{figure}
 Unabhängig davon, ob die Anwendungsinstanz erfolgreich auf den Ziel-MEC-Host übertragen wurde oder nicht, 
-der Verkehrspfad wird entsprechend aktualisiert.
+der Verkehrspfad wird entsprechend aktualisiert. \cite{etsiMultiaccessEdgeComputinga}
 \subsubsection{Aktualisieren des Routings}:
 Für das Aktualisieren und Aufrechterhalten der Routen, ist die \acrlong{af} verantwortlich.
 Die \acrfull{af} interagiert mit \acrshort{cp},  um das Routing zu beeinflussen. 
@@ -692,7 +703,7 @@ Die \acrfull{af} interagiert mit \acrshort{cp},  um das Routing zu beeinflussen.
 \end{figure}
 
 Die \acrfull{af} erfasst Informationen über das 5G Netzwerk und unterstützt so die Mobilität von Anwendungsinstanzen. 
-Dies ermöglicht in einem 5G-System eine flexiblere Bereitstellung der Data-Plane, um Edge-Computing nativ zu unterstützen. ????
+Dies ermöglicht in einem 5G-System eine flexiblere Bereitstellung der Data-Plane, um Edge-Computing nativ zu unterstützen.
 Die Abbildung \ref{fig:AF_GG} zeigt die \acrshort{af} in einer \acrlong{sba}.
 \\
 \\
@@ -705,16 +716,18 @@ Startet ein MEC-System diesen Prozess benötigt es folgende Parameter:
   \item Beschreigung des Datenverkehrs, dazu gehören IP-Adressen, Zieladressen und Data Network Name (DNN)
 \end{itemize}
 \begin{figure}
-  \includegraphics[width=\linewidth]{images/Datenverkehr_Update.png}
+  \centering
+  \includegraphics[width=7cm]{images/Datenverkehr_Update.png}
   \caption{Komponenten für die Aktualisierung des Routings}
   \label{fig:Datenverkehr_Update}
 \end{figure}
 Mithilfe dieser Parameter kann der Prozess des umleiten gestartet werden.
 Abbildung \ref{fig:Datenverkehr_Update} zeigt wie die einzelnen Komponenten zusammenarbeiten um ein benötigte Aktualisierung des Datenverkehrs durchzuführen.
 Die Kommunikation mit dem MEC-System läuft dabei über die \acrshort{nef}. Diese kommuniziert mit dem MEC-Orchestartor welcher
-die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt.
+die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt. \cite{etsiMultiaccessEdgeComputinga}  \cite{balasubramanianMobilityManagementArchitecture2019}
 \begin{figure}
-  \includegraphics[width=\linewidth]{images/Datenverkehr_Ablauf.png}
+  \centering
+  \includegraphics[width=9cm]{images/Datenverkehr_Ablauf.png}
   \caption{Ablauf der Aktualisierung}
   \label{fig:Datenverkehr_Ablauf}
 \end{figure}
@@ -729,16 +742,18 @@ Für das Aktualisieren des Routings werden folgende Schritte (Abbildung \ref{fig
   \item Der \acrshort{meo} wählt ein Ziel-MEC-Host für die Anwendung aus.
   \item In dem Fall, in dem der Ziel-MEC-Host aus nicht verfügbar ist, beispielsweise nicht ausreichend Ressourcen hat,
   wird die Anwendungsinstanz auf dem S-MEC-Host fortgesetzt und der vorhandene Pfad wird mittels der \acrshort{upf} zum S-MEC-Host umgeleitet.
-  \item Der \acrshort{meo} sendet eine Aktualisierung an den S-MEC-Plattformmanager dem T-MEC-Plattformmanager
+  \item Der \acrshort{meo} sendet eine Aktualisierung an den S-MEC-Plattformmanager und dem T-MEC-Plattformmanager
 \end{enumerate}
 Diese Schritte ermöglichen eine kontinuirliche Verbindung zwischen \acrshort{ue} und MEC-Anwendung, unabhängig ob diese sich beim S-MEC-Host oder Z-MEC-Host befindet.
+\newpage
 \subsection{Ping-Pong Handover}
 \subsubsection{Problem}
 Ping-Pong-Übergaben treten auf, wenn ein Endgerät von einer Zelle zur nächsten wechselt, dann aber wieder in die ursprüngliche 
 Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, das es zwischen den zwei Hosts
 hin und herspringt. Daher die Bezeichnung Ping-Pong Handover.
 \begin{figure}
-  \includegraphics[width=\linewidth]{images/pingpong.png}
+  \centering
+  \includegraphics[width=6cm]{images/pingpong.png}
   \caption{Ping Pong Handover}
   \label{fig:pingpong}
 \end{figure}
@@ -755,16 +770,16 @@ Für das Lösen des Ping-Pong Problems im MEC- System, schlägt \acrshort{etsi} 
   Aufgabenbereichen der MEC-Hots befindet.
   \item Nach dem \textit{Ping-Pong Recovery Event} setzt der \acrshort{meo} das Routing im UPFs wieder auf den ursprünglichen Zustand zurück.
 \end{enumerate}
+So kann mithilfe des \textit{Ping-Pong Handover Migration} und \textit{Ping-Pong Recovery Event} mit dem Ping-Pong Problem
+in einem MEC-System umbegangen werden.
 \begin{figure}
-  \includegraphics[width=\linewidth]{images/pingpongrouting.png}
+  \centering
+  \includegraphics[width=6cm]{images/pingpongrouting.png}
   \caption{Angepasstes Routing}
   \label{fig:pingpongrouting}
 \end{figure}
-
-\subsection{VM Handoff}
-Eine vorgeschlagene Möglichkeit \cite{etsiETSIGSMEC} für das Umziehen laufenden Anwendungen von einem MEC-Host zu einem Ziel MEC-Host, 
-ist der VM Handoff. \cite{Ha2015AdaptiveVH}
 \newpage
+
 
 \section{Multi-Access Edge Computing Scenarios}
 \label{sec:Anwendungen}
@@ -789,13 +804,13 @@ gleichen MEC-HOST, ist die Latenz auch unter den Nutzern geringer. Bei einem Onl
 auf dem gleichen Server sehr gering. Wird eine Remote-Desktop anwendung von mehreren Nutzern in dem gleichen MEC-Host verwendet, 
 ist die Latenz gering und die Bandbreite groß. 
 So können zu für kolaborative Arbeiten beispielsweise große Datein mit hoher Bandbreite geteilt werden, oder kolaborative Programme wie
-ein geteiltes Whiteboard mit geringer Latenz genutzt werden, auch wenn die Nutzer mobil sind.
+ein geteiltes Whiteboard mit geringer Latenz genutzt werden, auch wenn die Nutzer mobil sind. \cite{etsiMultiaccessEdgeComputing}
 \\
 \\
 Benötigen die Anwendungen eine geringe Latenz, kann auch das Rendern der Videospiele oder Virtuellen Maschine auf dem MEC-Host 
 durchgeführt werden. Die Endgeräte decodieren dann nur den Videostream der MEC-Anwendungen und senden die Steuerungseingaben in die Cloud.
 Gerade bei Spielen reichen dann \textit{Thin Clients} aus und es werden keine leistungsstarke lokale Ressourcen benötigt. 
-Dies ermöglicht das spielen von grafikintensiven Online-Spielen auf Smartphones.
+Dies ermöglicht das spielen von grafikintensiven Online-Spielen auf Smartphones. \cite{chinamobileztePoweredSA5G}
 \\
 \\
 Wenn sich ein \acrshort{ue} mit einem Funkknoten verbindet, der nicht demselben MEC-Host zugeordnet ist, 
@@ -804,12 +819,12 @@ muss sichergestellt sein, dass die Konnektivität zwischen dem \acrshort{ue} und
 Um die Latenzanforderungen und damit eine gute Benutzererfahrung aufrechtzuerhalten, 
 muss der \acrshort{meo} die Anwendung auf einen anderen MEC-Host, der in der Nähe des \acrshort{ue}s ist, verschieben. 
 Dabei ist es wichtig, dass die Verbindung aufrechterhalten wird. Gerade bei dem mobilen spielen von Online-Spielen
-ist dieser Schritt sehr wichtig, da es zu frustrierenden Benuzung kommt.
+ist dieser Schritt sehr wichtig, da es zu frustrierenden Benuzung kommt. \cite{etsiETSIGSMEC} 
 \\
 \\
 Aktuell werden Cloud-Gaming-Services wie Googles \textit{Stadia} immer verbreiteter. Das Streamen von Videospielen ist
 allerdings nur im Heimnetzwerk möglich. 5G und MEC könnten es ermöglichen auch von Mobilen Endgeräten Cloud-Gaming-Services zu Nutzen,
-und die Latenz zu verbessern
+und die Latenz zu verbessern. \cite{etsiMultiaccessEdgeComputing}
 \subsection{Smart Cities}
 \label{subsec:Smart Cities}
 In einer Smart City werden Technologien aus den Bereichen Energie, Mobilität, Stadtplanung, 
@@ -838,7 +853,7 @@ Videoinformationen und Speichern im MEC-HOST, in der Nähe der Kamera. Gleichzei
 hohe Datenrate. Durch die gewonnene Mobilität, ist es beispielsweise möglich das Kameras von Polizisten und Polizistinnen über das 5G Netz
 übertragen und in Echtzeit ausgewertet werden. Die Firma \textit{Dragon Law Enforcement} arbeitet aktuell an einer Spracherkennung.
 Diese passt sich den Akzenten an und reduziert den Lärm, um den Beamten dabei zu helfen, 
-Protokolle sehr genau und effizient zu erstellen.
+Protokolle sehr genau und effizient zu erstellen. \cite{5GGivingLaw}
 \\
 \\
 Ein weiter Use-Case im Bereich Smart-City ist die \textit{Vehicle-to-Infrastructure} Kommunikation.
@@ -871,7 +886,7 @@ nicht das Eingreifen eines Menschens.
 Im Mittelpunkt einer Smartfactory steht die intelligente Vernetzung von Maschinen und das hergestellte Produkt. 
 Das Produkt teilt die für die Fertigung benötigten Informationen der Smart Factory mit. 
 Anhand dieser Informationen stellen sich die Maschinen automatisch ein, um das gewünschte Produkt zu fertigen. 
-In vielen Fällen findet dafür eine drahtlose Kommunikation zwischen Produkten und Anlagen statt. 
+In vielen Fällen findet dafür eine drahtlose Kommunikation zwischen Produkten und Anlagen statt.  \cite{gundall5GEnablerIndustrie2018}
 \\
 \\
 Für die Smart-Factoy bietet sich ein MEC-System an. 5G besitzt die Möglichkeit eines Privaten Netzes. 
@@ -890,7 +905,7 @@ Eine mögliche Anwendung für MEC in einer Smart-Factory ist das Einsetzen von K
 Für das Erkennen von fehlern in Produktionsteilen, müssen hochauflösende Kameras verwendet werden. Der hohe Datenstrom
 kann über 5G an den MEC-Host gesendet werden. Dieser analyisiert das Bildmaterial auf fehler. Wird ein fehler erkannt,
 kann der MEC-Host andere Maschine benachrichtigen, die das beschädigte Teil entfernt. Je nach der Geschwindigkeit der Produktion,
-es wichtig das dies mit einer geringen Latenz passiert. 
+es wichtig das dies mit einer geringen Latenz passiert. \cite{etsiMultiaccessEdgeComputing}
 \\
 \\
 Huawai arbeitet zusammen mit China Mobile an einer \textit{5G Connected Factory}. Hier soll die Anlage mithilfe 
