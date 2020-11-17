@@ -1,4 +1,6 @@
 {
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
     "latex-workshop.latex.recipes":[
         {
             "name": "pdflatex, makeglossaries, pdflatex (2x)",
@@ -42,4 +44,27 @@
     "files.associations": {
         "*.yaml": "home-assistant"
     },
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.blg": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.lof": true,
+        "**/*.log": true,
+        "**/*.lot": true,
+        "**/*.out": true,
+        "**/*.synctex.gz": true,
+        "**/*.toc": true,
+        "**/*.eps": true,
+        "**/*.cls": true,
+        "**/*.bst": true,
+        "**/*.acn": true,
+        "**/*.acr": true,
+        "**/*.alg": true,
+        "**/*.glsdefs": true,
+        "**/*.xml": true,
+        "**/*.bcf": true
+        
+    }
 }
