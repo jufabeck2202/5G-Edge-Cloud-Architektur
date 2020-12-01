@@ -100,8 +100,8 @@
   Als ein Bestandteil der 5G-Netzwerkarchitektur bietet sie nicht nur eine Vielzahl von Cloud-Ressourcen, sondern
   ermöglicht neue Plattformen für Drittanbieter und das Entwickeln von neuen Erfahrungen für Nutzer.
   Multi-Access Edge Computing (MEC) bietet Speicher- und Rechenressourcen in der Nähe des Endgerätes, 
-  eine besser Latenzzeit für mobile Endbenutzer und effizientere Nutzung des Mobile Backhaul-
-  und Core Netzwerkes. Diese Seminararbeit erläutert, welche Technologien \acrfull{mec} ermöglicht und geht auf die Architekturen 
+  eine bessere Latenzzeit für mobile Endbenutzer und effizientere Nutzung des Mobile Backhaul-
+  und Core Netzwerkes. Diese Seminararbeit erläutert, welche Technologien \acrfull{mec} ermöglicht, und geht auf die Architekturen 
   hinter \Acrshort{mec} Computing ein.
 \end{abstract}
 
@@ -115,28 +115,27 @@
 \section{Einleitung}
 \label{sec:Einleitung}
 In den letzten zehn Jahren haben Fortschritte im Cloud-Computing einen zentralisierten Ansatz für die Systemadministration und den 
-Systembetrieb verfolgt. Edge Computing gilt dabei als eine Evolution von Cloud Computing, in dem es das Hosten von Anwendung an den
-Netzwerkrandes bringt, näher an den Benutzer und die Anwendungen die Daten generierten. 
+Systembetrieb verfolgt. Edge Computing gilt dabei als eine Evolution von Cloud Computing, da es das Hosten von Anwendung an den
+Netzwerkrandes bringt, näher an den Benutzer und an die Anwendungen, die Daten generiert. 
 Das Edge Computing ist eine der Schlüsseltechnologien der 5G-Mobilfunktechnik. 
 Im Gegensatz zu den Mobilfunknetzwerken der dritten oder vierten Generation (3G oder 4G) ist die Unterstützung einer Edge Cloud 
-von Beginn an in den 5G-Standards berücksichtigt und integriert wurden.
+von Beginn an in den 5G-Standards berücksichtigt und integriert worden.
 \\
 \\
-Die Abkürzungen \acrshort{mec} steht für  \acrlong{mec}. Dabei handelt es sich um eine Computer Architektur,
+Die Abkürzung \acrshort{mec} steht für  \acrlong{mec}. Dabei handelt es sich um eine Computerarchitektur,
 die die Bereitstellung verteilter Services und Ressourcen an den Rand des Netzwerks verlegt. \acrshort{mec} wird vom
 \acrfull{etsi} vorangetrieben und entwickelt. 
 \\
-\\
-\acrshort{mec} ist nicht nur bei 5G zu finden, 
-aber eine der wichtigesten Voraussetzung für diese. 
-Die 5G-Architektur unterscheidet sich dadurch von den früheren Mobilfunkgenerationen, 
-dass das MEC den latenzarmen Echtzeitzugang hoher Bandbreite zu den RAN-Daten umfasst. 
+\\ 
+Die 5G-Architektur unterscheidet sich von den früheren Mobilfunkgenerationen darin, 
+dass das MEC den latenzarmen Echtzeitzugang mit hoher Bandbreite unterstützt. 
 5G-Netze, die auf den 5G-Spezifikationen des 3GPP-Projekts basieren, 
 bieten sich für die Implementierung von MEC an. 
 Diese 5G-Spezifikationen definieren die Voraussetzungen für das Edge-Computing und erlauben MEC und 5G, 
 den Verkehr gemeinsam zu steuern. 
-Neben der vorteilhaften Latenz und Bandbreite der MEC-Architektur ermöglicht die verteilte Rechenleistung eine höhere Anzahl von angeschlossenen Geräten, 
-die untrennbarer Bestandteil der 5G-Bereitstellung und des sich entwickelnden Internet der Dinge (IoT) ist.   
+Neben der vorteilhaften Latenz und Bandbreite der MEC-Architektur 
+ermöglicht die verteilte Rechenleistung eine höhere Anzahl an angeschlossenen Geräten, 
+die was ein untrennbarer Bestandteil der 5G-Bereitstellung und des sich entwickelnden Internet der Dinge (IoT) ist.   
 \\
 \\
 MEC bietet dabei Vorteile wie: \cite{etsiETSIGSMEC}\cite{samikekkiwalterfeatherstoneyonggangfangpekkakuurealicelianuragranjanETSIMultiaccessEdge}
@@ -151,7 +150,7 @@ MEC bietet dabei Vorteile wie: \cite{etsiETSIGSMEC}\cite{samikekkiwalterfeathers
   \caption{MEC und 5G}
   \label{fig:mec-and-5g}
 \end{figure}
-Mit der Hilfe des \acrfull{mec} verwandelt sich das 5G Mobilfunknetz in eine vielseitige Plattform zur Erbringung 
+Mit der Hilfe des \acrfull{mec} verwandelt sich das 5G-Mobilfunknetz in eine vielseitige Plattform zur Erbringung 
 einer Vielzahl von Services. So ermöglicht MEC die Realisierung einer Vielzahl von Anwendungen: \cite{talebMultiAccessEdgeComputing23}\cite{depellegriniCompetitiveCachingContents2017}\cite{etsiMultiaccessEdgeComputing}
 \begin{itemize}
   \item Smart Cities
@@ -164,26 +163,27 @@ In dieser Arbeit wird in erster Linie auf die von \acrshort{etsi} veröffentlich
 \newpage
 \subsection{Aufbau der Seminararbeit}
 Das zweite Kapitel dieser Seminararbeit \textbf{\nameref{sec:Benötigte Technologien} \ref{sec:Benötigte Technologien}} beschreibt
-grundlegenden Technologien die für ein MEC System benötigt werden. 
-Dazu zählt \acrfull{nfv}, \acrfull{sdn} aber auch die einzelnen  Komponenten in einem 5G System.
+grundlegenden Technologien die für ein MEC-System benötigt werden. 
+Dazu zählt \acrfull{nfv}, \acrfull{sdn}, aber auch die einzelnen  Komponenten in einem 5G System.
 \\
 \\
 Darauf aufbauend beschreibt das dritte Kapitel die von \acrlong{etsi} definierte Architektur eines MEC-Systems und die einzelnen Komponenten.
 \\
 \\
-Im vierten Kapitel wird erläutert wie das MEC-System in 5G integriert wird und wie die einzelnen Komponenten mit einander kommunizieren.
+Im vierten Kapitel wird erläutert, wie das MEC-System in 5G integriert wird und wie die einzelnen Komponenten mit einander kommunizieren.
 \\
 \\
-Einer der wichtigsten Aspekte in einem Mobilen Netzwerk ist das Mobilitätsmanagement. Das vierte Kapitel beschreibt wie ein MEC-System mit der Mobilität von
+Einer der wichtigsten Aspekte in einem mobilen Netzwerk ist das Mobilitätsmanagement. Das vierte Kapitel beschreibt, wie ein MEC-System mit der Mobilität von
 Nutzern umgeht.
 \\
 \\
-Das sechste Kapitel zeigt Szenarien in denen MEC eingesetzt werden kann. Es wird beispielsweise der eines MEC-Systems in einer Smart Factory und die daraus entstehnden
-Vorteil erläutert.
+Das sechste Kapitel zeigt Szenarien, 
+in denen MEC eingesetzt werden kann. Es wird beispielsweise der eines MEC-Systems in einer Smart Factory und die daraus entstehenden
+Vorteile erläutert.
 \\
 \\
-Das letzte Kapitel zieht ein Fazit zum \acrlong{mec} und gibt ein Ausblick über die Zukunft der Technologie. 
-Des Weiteren wird auf die aktuellen Probleme für das Einsetzen von \acrshort{mec} eingegangen.
+Das letzte Kapitel zieht ein Fazit zum \acrlong{mec} und gibt einen Ausblick über die Zukunft der Technologie. 
+Des Weiteren wird auf die aktuellen Probleme für beim Einsatz von \acrshort{mec} eingegangen.
 
 
 
@@ -192,43 +192,43 @@ Des Weiteren wird auf die aktuellen Probleme für das Einsetzen von \acrshort{me
 \label{sec:Benötigte Technologien}
 \subsection{Edge Computing}
 \label{sub:Edge Computing}
-Bei Cloud-Computing werden Rechenressourcen über das Netzwerk zur Verfügung gestellt.
+Beim Cloud-Computing werden Rechenressourcen über das Netzwerk zur Verfügung gestellt.
 Beim Edge-Computing wird die Berechnung und Speicherung von Daten in die Nähe der Quelle gebracht,
 an den sogenannten Rand oder \textit{Edge} des Netzwerks. Im Gegensatz zum Cloud-Computing werden die Daten
 nicht in zentralen Rechenzentren verarbeitet, sondern an dezentralen Cloud Systemen am Rand des Netzwerks. 
 Edge-Computing bietet dabei folgende Vorteile: \cite{inproceedings} \cite{labrieTopBenefitsEdge} 
 \begin{itemize}
-  \item \textbf{Geschwindigkeit und Latenz:} Abhängig von der Anwendungen spielt die Zeit der Datenverarbeitung eine
+  \item \textbf{Geschwindigkeit und Latenz:} Abhängig von den Anwendungen spielt die Zeit der Datenverarbeitung eine
   entscheidende Rolle. Beispielsweise bei autonomen Fahrzeugen ist es wichtig, dass innerhalb von Millisekunden die Daten
-  verarbeitet werden. Auch bei Smart Factories (Abschnitt: \ref{sec:subsec:Smart Cities}) ist es ineffzient 
-  die Daten zu einer zentralen Cloud für die verarbeitung zu senden. 
+  verarbeitet werden. Auch bei Smart Factories (Abschnitt: \ref{sec:subsec:Smart Cities}) ist es ineffzient, 
+  die Daten zu einer zentralen Cloud für die Verarbeitung zu senden. 
   Wenn die Datenverarbeitung auf den Rand des Netzwerks verlegt wird, wird die Latenz des Netzwerks verringert und schneller
   auf Anfragen geantwortet. 
   \item \textbf{Netzlast:} Da die Daten nicht zu einer zentralen Cloud gesendet werden, sondern am Rand des Netzwerks 
   verarbeitet werden, verringert sich nicht nur die Latenz, sondern auch die Netzlast des gesamten Netzwerks. 
   Die Daten müssen nicht über das WAN gesendet werden, stattdessen werden sie 
   dezentral in der Nähe der Anwendungen verarbeitet.
-  \item \textbf{Security:} Wenn Daten in einer zentralen Cloud verarbeitet werden, kann dies zu Nachteilen über die Sicherheit eines Systems führen.
+  \item \textbf{Security und Compliance:} Wenn Daten in einer zentralen Cloud verarbeitet werden,die Sicherheit eines Systems beinträchtigen.
   So kann beispielsweise ein DDoS-Angriff den gesamten Betrieb eines Unternehmens blockieren, wenn alle Systeme mit einer zentralen
-  Cloud arbeiten. Da bei Edge-Computing kein einziges zentrales Systeme existiert, verringert sich die Auswirkung eines solchen
+  Cloud arbeiten. Da beim Edge-Computing kein einziges zentrales System existiert, verringert sich die Auswirkung eines solchen
   Angriffes für das ganze Unternehmen.  
-  Edge Computing hilft Unternehmen auch dabei, die Probleme der lokalen Compliance- und Datenschutzbestimmungen zu überwinden,
+  Edge-Computing hilft Unternehmen auch dabei, die Probleme der lokalen Compliance- und Datenschutzbestimmungen zu überwinden,
   da die Daten auf lokalen Systemen verarbeitet werden.
   \item \textbf{Kosteneinsparungen:} Durch \acrfull{iot} Geräte oder von Smart-Cities \ref{subsec:Smart Cities} werden
   eine Vielzahl an Daten generiert. Nicht alle Daten sind dabei kritisch für die Operation der Systeme. Edge Computing erlaubt
-  das Kategorisieren der Daten. In dem ein Großteil der Verarbeitung am Rand des Netzwerks stattfindet wird Bandbreite eingespart.
+  das Kategorisieren der Daten. Indem ein Großteil der Verarbeitung am Rand des Netzwerks stattfindet, wird Bandbreite eingespart.
   Dies optimiert den Datenfluss von lokalen Anwendungen und minimiert so die Betriebskosten einer zentralen Cloud.
-  \item \textbf{Zuverlässigkeit:} Wenn eien Edge-Cloud Daten lokal speichern und verarbeiten können, verbessert dies die Zuverlässigkeit.
-  Ein Unternehmen ist nicht auf die Verbindung zu einer zentralen Cloud angewiesen und eine vorübergehende Unterbrechungen der 
-  Verbindung hat keine Auswirkungen auf den Betrieb von Geräte, wenn diese die Verbindung zur Cloud verloren haben.
+  \item \textbf{Zuverlässigkeit:} Wenn eine Edge-Cloud Daten lokal speichern und verarbeiten kann, verbessert dies die Zuverlässigkeit.
+  Ein Unternehmen ist nicht auf die Verbindung zu einer zentralen Cloud angewiesen, hat eine vorübergehende Unterbrechungen der 
+  Verbindung keine Auswirkungen auf den Betrieb.
 \end{itemize}
 \subsection{5G Network}
 \label{subsec:5G Network}
-Das 5G-Netzwerk wurde entwickelt um auch von der Industrie genutzt zu werden.
+Das 5G-Netzwerk wurde entwickelt, um auch von der Industrie genutzt werden zu können.
 Dies wird durch Techniken wie \acrlong{nfv} und \acrlong{sdn} ermöglicht. \cite{BARAKABITZE2020106984}
-Klassischerweise wurden mobile Netzwekre in erster Linie für Endgeräte wie Smartphones und Laptop konzipiert. 
-Dies ändert sich bei dem 5G Netzwerk. Durch eine Vielzahl von Anwendungen und unterschiedliche Anforderungen,
-muss das Netzwerk so designt sein, dass es alle Forderungen der Industrie und des Endverbrauchers erfüllt. 
+Klassischerweise wurden mobile Netzwerke in erster Linie für Endgeräte wie Smartphones und Laptop konzipiert. 
+Dies ändert sich bei dem 5G-Netzwerk. Durch eine Vielzahl von Anwendungen,
+muss das Netzwerk so designt sein, dass die Anforderungen der Industrie und des Endverbrauchers erfüllt werden.
 \\
 \\
 Um den neuen 5G-Anforderungen 10 Gbit/s Datenrate, 1 ms End-to-End-Latenz, und 99:99\% 
@@ -240,50 +240,55 @@ Serviceverfügbarkeit gerecht zu werden setzt 5G auf Technologien wie \acrfull{c
 \end{figure}
 \\
 Die Darstellung \ref{fig:ServiceBased5g} zeigt die einzelnen Komponenten in Form einer \acrfull{sba}. \cite{5GCoreNetwork2017}
-Das 5G Netzwerk besteht aus sogenannten Netzwerkfunktionen (Abschnitt: \ref{subsec:Network Function Virtualization}), die softwarebasiert sind und so nach Bedarf angepasst/skaliert werden können.
-Die 5G CP ist das Kernnetz, dass aus einer Reihe von Netzwerkfunktionen besteht, 
+Das 5G-Netzwerk besteht aus sogenannten Netzwerkfunktionen (Abschnitt: \ref{subsec:Network Function Virtualization}), 
+die softwarebasiert sind und so nach Bedarf angepasst bzw. skaliert werden können.
+Die 5G CP ist das Kernnetz, das aus einer Reihe von Netzwerkfunktionen besteht, 
 die für die Separierung, Priorisierung und Zugriffssteuerung erforderlich sind:
 \begin{itemize}
-  \item \textbf{\acrfull{ausf}} dient als Authentifizierungsserver
-  \item \textbf{\acrfull{amf}} ist für die Integrität, Registrierungsmanagement, Verbindungsmanagement,
-  Zugriffs und Securitymanagement zuständig
-  \item \textbf{\acrfull{nef}} verbreiten von Funktionen und Events, 
-  sichere Bereitstellung von Informationen aus externen Anwendungen für das \acrshort{3gpp}-Netzwerk. Diese Funktion ist vor allem für die Mobilität
+  \item \textbf{\acrfull{ausf}:} dient als Authentifizierungsserver
+  \item \textbf{\acrfull{amf}:} ist für die Integrität, das Registrierungsmanagement, das Verbindungsmanagement, das
+  Zugriffs und Securitymanagement zuständig.
+  \item \textbf{\acrfull{nef}:} ist zustndig für das Verbreiten von Funktionen und Events sowie die 
+  sichere Bereitstellung von Informationen aus externen Anwendungen für das \acrshort{3gpp}-Netzwerk. 
+  Diese Funktion ist vor allem für die Mobilität
   in der 5G Edge Cloud wichtig, was in Abschnitt \ref{sec:Mobilitätsmanagement} erläutert wird.
-  \item \textbf{\acrfull{smf}} Sitzungsverwaltung, Zuweisung von IP Adressen an die Endgeräte. 
-  \item \textbf{\acrfull{udm}} Generierung von Anmeldeinformationen für Authentifizierungen, 
+  \item \textbf{\acrfull{smf}:} zuständig für Sitzungsverwaltung sowie Zuweisung von IP Adressen an die Endgeräte. 
+  \item \textbf{\acrfull{udm}:} Generierung von Anmeldeinformationen für Authentifizierungen, 
   Verwalten der Benutzeridentifikation und Zugriffsautorisierung.
-  \item \textbf{\acrfull{upf}} Datenrouting und Weiterleitung. Dateninspektionen. Die \acrshort{upf}s spielt eine zentrale Rolle für das Mobilitätsmanagement, was in 
-  Kapitel \ref{sec:Mobilitätsmanagement} erleutert wird.
-  \item \textbf{\acrfull{pcf}} Bereitstellung von Richtlinien für Funktionen, 
+  \item \textbf{\acrfull{upf}:} zuständig für Datenrouting, Weiterleitung und Dateninspektionen. 
+  Die \acrshort{upf}s spielt eine zentrale Rolle für das Mobilitätsmanagement.
+  \item \textbf{\acrfull{pcf}:} Bereitstellung von Richtlinien für Funktionen, 
   Zugriff auf Abonnementinformationen
-  \item \textbf{\acrfull{ran}} Funkzugangsnetz
-  \item \textbf{\acrfull{nssf}} kann vom \acrshort{amf} verwendet werden, um bei der Auswahl der Network Slice-Instanzen zu helfen, die Anfrage von einem Gerät benötigt werden.
-Bei der 5G Architektur sind die Netzwerkfunktionen der \acrfull{cp} von der \acrfull{up} getrennt, was als \acrfull{cups} bezeichnet wird.
-Aufgaben der \acrshort{cp} ist das Verwalten der Benutzerverbindungen, Richtlinien sowie Authentifizierung während die \acrshort{up} für die 
-Weiterleitung des Datenverkehrs zuständig ist.
-Die Motivation hinter \acrshort{cups} ist die unabhängige Skalierung der \acrlong{up}, um den Netzwerkbetreibung eine flexible Dimensionierung
-des Netzwerks zu ermöglichen. Wenn beispielsweise der Datenverkehr zunimmt, können \acrlong{upf}s hinzugefügt werden, ohne die \acrlong{cp} zu beinträchtigen.
-Teile der \acrshort{cp} Netzwerkfunktionen wie \acrshort{ausf}, \acrshort{pcf}, \acrshort{udm}, \acrshort{amf} und \acrshort{smf}. 
-Zu der \acrshort{up} gehöret die \acrshort{upf}. \cite{5GCoreNetwork2017} \cite{5GCoreNetwork}
+  \item \textbf{\acrfull{ran}:} Funkzugangsnetz
+  \item \textbf{\acrfull{nssf}:} kann vom \acrshort{amf} verwendet werden, um bei der Auswahl der Network Slice-Instanzen zu 
+  helfen, die für Anfrage von einem Gerät benötigt werden.
 \end{itemize}
+Bei der 5G-Architektur sind die Netzwerkfunktionen der \acrfull{cp} von der \acrfull{up} getrennt, was als \acrfull{cups} bezeichnet wird.
+Aufgaben der \acrshort{cp} sind das Verwalten der Benutzerverbindungen, der Richtlinien sowie der Authentifizierung, 
+während die \acrshort{up} für die 
+Weiterleitung des Datenverkehrs zuständig ist.
+Die Motivation hinter \acrshort{cups} ist die unabhängige Skalierung der \acrlong{up}, um den Netzwerkbetreibern eine flexible Dimensionierung
+des Netzwerks zu ermöglichen. Wenn beispielsweise der Datenverkehr zunimmt, können \acrlong{upf}s hinzugefügt werden, ohne die \acrlong{cp} zu beinträchtigen.
+Teile der \acrshort{cp} sind Netzwerkfunktionen wie \acrshort{ausf}, \acrshort{pcf}, \acrshort{udm}, \acrshort{amf} und \acrshort{smf}. 
+Zu der \acrshort{up} zählt die \acrshort{upf}. \cite{5GCoreNetwork2017} \cite{5GCoreNetwork}
+
 
 
 \subsection{Network Function Virtualization}
 \label{subsec:Network Function Virtualization}
-\acrfull{nfv} erlaubt es Netzwerkfunktionen, von der Hardware zu entkoppeln.
-Dies ermöglicht das Verwenden von Gateways, Firewalls, DNS Services und Caching ohne proprietär Hardware.
+\acrfull{nfv} erlaubt es Netzwerkfunktionen von der Hardware zu entkoppeln.
+Dies ermöglicht das Verwenden von Gateways, Firewalls, DNS Services und Caching ohne proprietäre Hardware.
 \\
 \\
-Um ein neues Netwzerk zu erstellen, wird in der Regel eine Vielzahl von verschieden Hardware Komponenten benötigt. 
+Um ein neues Netwzerk zu erstellen, wird in der Regel eine Vielzahl von verschieden Hardwarekomponenten benötigt. 
 Diese benötigen Platz, Energie und müssen von qualifizierten Personal überwacht und gewartet werden. 
-\acrlong{nfv} will dieses Problem lösen, indem mithilfe von Virtualisierungstechniken, Netzwerkfunktionen auf Standard
-Server Hardware Komponenten betrieben werden. 
-Folgende Vorteile werden durch NFV erziehlt: \cite{nfv_wp} \cite{etsiNetworkFunctionsVirtualisation}
+\acrlong{nfv} will dieses Problem lösen, indem mithilfe von Virtualisierungstechniken, Netzwerkfunktionen auf standard
+Server Hardwarekomponenten betrieben werden. 
+Folgende Vorteile werden durch NFV erzielt: \cite{nfv_wp} \cite{etsiNetworkFunctionsVirtualisation}
 \begin{itemize}
   \item \textbf{Skalierbarkeit und Flexibilität:} Die Virtualisierung erlaubt eine einfache Skalierung der Ressourcen.
   Bei einer großen Nachfrage eines Services kann dieser skaliert werden. Es können auch schnell weitere Instanzen einer Netzwerkfunktion gestartet werden.
-  \item \textbf{Kosteneinsparungen:} Durch die Verwendung von Standard Komponenten werden die Kosten und der Energieverbrauch minimiert.
+  \item \textbf{Kosteneinsparungen:} Durch die Verwendung von standard Komponenten werden die Kosten und der Energieverbrauch minimiert.
   \item \textbf{Anpassungsfähigkeit:} Die Virtualisierung erlaubt eine schnelle Anpassung an die Anforderungen eines Kunden. 
   Die Server können durch der Virtualiserung von mehreren Nutzern gleichzeitig verwendet werden und die Anforderungen des jeweiligen
   Kunden erfüllen. Dies wird auch als Network Slicing bezeichnet.
@@ -291,25 +296,25 @@ Folgende Vorteile werden durch NFV erziehlt: \cite{nfv_wp} \cite{etsiNetworkFunc
 
 
 \subsubsection{NFV Architektur und Orchestration Framework:}
-\acrshort{etsi} hat ein Standard für ein \acrshort{nfv} Framework veröffentlicht.
+\acrshort{etsi} hat ein Standard für ein \acrshort{nfv}-Framework veröffentlicht.
 Dieser Standard definiert sogenannte \acrfull{vnf}, welche Netzwerkfunktionen in Software abbilden.
 Die \acrshort{vnf} werden in der \acrfull{nfvi} gehostet. Die \acrshort{nfvi} besteht aus gewöhnlichen
-den Hardware Komponenten wie CPU und Speicher, aber auch einem Virtualisierungslayer. \\
+Hardwarekomponenten wie CPU und Speicher und einem Virtualisierungslayer. \\
 Der \textit{NFV MANO} (NFV Management und Orchestrierung) Layer verwaltet die Infrastruktur und passt diese an die Anforderungen an.
 \cite{etsiNetworkFunctionsVirtualisation}
 
-\subsubsection{5G Edge Cloud und NFV}
+\subsubsection{5G Edge Cloud und NFV:}
 Die \acrlong{nfv} spielt eine Schlüsselrolle für die Umsetzung einer 5G Edge Cloud.
 \acrshort{nfv} erlaubt \textit{Network Slicing}, ein Aspekt der virtuellen Netzwerkarchitektur, 
 mit dem mehrere virtuelle Netzwerke auf einer gemeinsam genutzten Infrastruktur bereitgestellt werden können. \cite{suzhiSpaceEdgeCloud2019}
 \\
 \\
-\acrshort{nfv} ermöglicht die 5G-Virtualisierung, sodass physische Netzwerk in mehrere virtuelle Netzwerke unterteilt werden können. 
-Dies erlaubt es unterschiedliche \acrfull{ran} verschiedene Arten von Diensten gleichzeitig anzubieten. 
-Der Anwender merkt dabei kein Unterschied, da die \textit{Network Slicies} voneinander isoliert arbeiten. 
+\acrshort{nfv} ermöglicht die 5G-Virtualisierung, sodass physische Netzwerke in mehrere virtuelle Netzwerke unterteilt werden können. 
+Dies erlaubt es unterschiedlichen \acrfull{ran} verschiedene Arten von Diensten gleichzeitig anzubieten. 
+Der Anwender merkt dabei keinen Unterschied, da die \textit{Network Slicies} voneinander isoliert arbeiten. 
 \acrshort{nfv} ist für die Skalierbarkeit, Flexibilität und Migration in einer 5G Edge Cloud wichtig. Wenn Anfragen an eine
-Anwendung steigen, kann nicht nur die Ressourcen für diese Anwendung skaliert werden, sondern es kann auch durch das Hinzufügen weiterer
-Software Instanzen in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV} \cite{etsiNetworkFunctionsVirtualisation}
+Anwendung steigen, kann nicht nur die Ressourcen für diese Anwendung skaliert werden. Es ist auch möglich, durch das Hinzufügen weiterer
+Softwareinstanzen, in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert werden. \cite{How5GNFV} \cite{etsiNetworkFunctionsVirtualisation}
 \newpage
 
 \subsection{Software-defined Networking}
@@ -320,10 +325,10 @@ Software Instanzen in der \acrfull{nfvi}, die Netzwerkinfrastruktur mit skaliert
   \caption{SDN Aufbau mit Northbound und Southbound API}
   \label{sdn1}
 \end{figure}
-Neben \acrshort{nfv}, ist auch \acrlong{sdn} für die Virtualisierung von Netzwerken wichtig.
-Bei einem \acrshort{sdn} ist die Steuerung des Netzwerks von der Hardware getrennt. Es wird zwischen einem Controller, 
-einer Southbound und einer Northbound API unterschieden. Die Northbound API, kommuniziert mit dem Application Layer,
-die Southbound API mit dem Infrastruktur Layer,was in \ref{sdn1} zu sehen ist.
+Neben \acrshort{nfv} ist auch \acrlong{sdn} für die Virtualisierung von Netzwerken wichtig.
+Bei einem \acrshort{sdn} ist die Steuerung des Netzwerks von der Hardware entkoppelt. Es wird zwischen einem Controller, 
+einer Southbound und einer Northbound API unterschieden. Die Northbound API kommuniziert mit dem Application Layer,
+die Southbound API mit dem Infrastruktur Layer, was in \ref{sdn1} zu sehen ist.
 Die Southbound APIs führt die Anweisungen aus und gibt Informationen des Controllers an Netzwerkgeräte wie Switches,
 Access Points und Router weiter. Der Controller ist das zentrale Element eines \acrshort{sdn} Netzwerkes, 
 er ermöglicht ein zentrales Verwalten und Steuern des 
@@ -336,70 +341,72 @@ Da bei einem \acrshort{sdn} die \acrfull{up} und \acrfull{cp} durch die Southbou
 führt \acrshort{sdn} eine zentrale Steuerung ein, 
 mit der \acrshort{vnf} einfach gestartet und angeboten werden können. 
 Die zugrunde liegende Netzwerkinfrastruktur wird so abstrahiert. Die Abstraktion von \acrshort{cp} und \acrshort{up} ermöglicht
-im 5G eine bessere Implementation von \acrfull{cups}. Die Grafik \ref{fig:sdn2} zeigt die Controll-Netzwerkfunktionen von 5G in 
-die über die Northbound API (NBI) mit dem SDN-Controller kommunizieren. Dieser steuert die \acrshort{up} des 5G Netzwerks über
+im 5G eine bessere Implementation von \acrfull{cups}. Die Grafik \ref{fig:sdn2} zeigt die Controll-Netzwerkfunktionen von 5G,
+über die die Northbound API (NBI) mit dem SDN-Controller kommunizieren. Dieser steuert die \acrshort{up} des 5G Netzwerks über
 die Southbound API (SBI).
 Im Kontext von \acrshort{mec} kann der \acrshort{sdn}-Controller MEC bezogene \acrshort{vnf}, 
-\acrshort{vm}s und Container als eine weitere Netzwerkkomponente behandeln, die dynamisch zugewiesen und neu lokalisiert werden können.
+\acrshort{vm}s und Container als eine weitere Netzwerkkomponente behandeln, die dynamisch zugewiesen und neu lokalisiert werden kann.
 So kann der \acrshort{sdn}-Controller flexibel Services anpassen und dynamisch Dienste bereitstellen, 
-indem er \acrshort{vnf}s und  \acrshort{mec} Dienste verbindet. Dies macht \acrshort{sdn} zu einem zentralen Element für die Virtualisierung
+indem er \acrshort{vnf}s und \acrshort{mec}.Dienste verbindet. Dies macht \acrshort{sdn} zu einem zentralen Element für die Virtualisierung
 des MEC-Systems und für die Unterstützung der Mobilität.
 \begin{figure}
   \centering
   \includegraphics[width=11cm]{images/sdn2.png}
   \caption{SDN in einer 5G \acrshort{sba} Architektur}
-  \label{fig:}
+  \label{fig:sn2}
 \end{figure}
 Kommt es beispielsweise zu einer hohen Anfrage in einem 5G Netzwerk, wird das 5G-Netzwerk mittels \acrshort{nfv} Technologien skaliert.
 \acrshort{sdn} hat dabei die Aufgabe des Load-balancings zwischen MEC-Anwendungen und Netzwerkfunktionen. Dies erlaubt das 
-schnelle Erstellen und veröffentlichen neuer MEC-Komponenten wie MEC-Platform oder MEC-Anwendungen.
+schnelle Erstellen und Veröffentlichen neuer MEC-Komponenten wie MEC-Platform oder MEC-Anwendungen.
 
 \subsection{Network-Slicing}
 \label{subsec:Network-Slicing}
-Die Kombination von \acrshort{sdn}, \acrshort{nfv}, \acrshort{nfvi} erlauben zusammen das Erstellen von \textit{Network Slices}. \cite{BARAKABITZE2020106984} 
+Die Kombination von \acrshort{sdn}, \acrshort{nfv} und \acrshort{nfvi} erlauben zusammen das Erstellen von \textit{Network Slices}. \cite{BARAKABITZE2020106984} 
 \textit{Network Slices} ist eine der wichtigsten Technologien im 5G Netzwerk und
  erweitert die Funktionsvirtualisierung (NFV) um eine neue Dimension, 
  da sie es erlaubt, mehrere logische Netze gleichzeitig auf einer gemeinsamen physischen Infrastruktur zu betreiben.
- Network-Slicing bietet Anwendungen wie IoT, wo es eine extrem große Anzahl von Nutzern geben kann, aber die insgesamt benötigte Bandbreite klein ist, deutliche Vorteile.
+ Network-Slicing bietet Anwendungen wie IoT, bei denen eine extrem große Anzahl von Nutzern geben kann, 
+ aber bei denen die insgesamt benötigte Bandbreite klein ist, deutliche Vorteile.
  Die Anpassungsfähigkeit des Netzwerks erlaubt, die Kosten, das Ressourcen-Management und die Flexibilität der Netzkonfigurationen zu optimieren. Da jeder Anwendungsfall
- eigene Anforderungen an das Netzwerk stellt, ist das Network-Slicing ein wichtiges Entwurfskriterium für die 5G-Netzarchitektur
+ eigene Anforderungen an das Netzwerk stellt, ist das Network-Slicing ein wichtiges Entwurfskriterium für die 5G-Netzarchitektur.
 
 
 \subsection{Virtuelle Maschinen und Container}
 \label{subsec:Virtuelle Maschinen und Container}
-Eine Cloud Plattform besteht typischerweise aus einer Anzahl von Maschinen, 
+Eine Cloud-Plattform besteht typischerweise aus einer Anzahl von Maschinen, 
 die durch einen Hypervisor zu einer zentralen Maschine zusammen gefasst werden.
 Dieser kann isoliert virtuelle Maschinen erstellen und ausführen und dient als Abstraktionsebene, 
 unabhängig von der Hardware auf denen die \acrshort{vm}s laufen.
 \\
 \\
-Eine leichtgewichtigte Alternative zur Hypervisor-basierten Virtualisierung ist die Containergestützte Virtualisierung. 
-Diese verwendet im Vergleich zu virtuellen Maschinen, eine andere Abstraktionsebene in Bezug auf Virtualisierung und Isolation. 
-Container implementieren die Isolierung auf Betriebssystem Ebene und vermeiden so die Virtualisierung von Hardware und Treibern. 
+Eine leichtgewichtige Alternative zur Hypervisor-basierten Virtualisierung ist die Containergestützte Virtualisierung. 
+Diese verwendet, im Vergleich zu virtuellen Maschinen, eine andere Abstraktionsebene in Bezug auf Virtualisierung und Isolation. 
+Container implementieren die Isolierung auf Betriebssystemebene und vermeiden so die Virtualisierung von Hardware und Treibern. 
 Insbesondere teilen sich Container denselben Kernel mit dem zugrunde liegenden Hostcomputer. 
 Dies macht Container sehr leichtgewichtig und flexibel im 
-Gegensatz zu \acrshort{vm}s. Typischerweise führt ein Container genau ein Service aus, was eine schnelle Migration ermöglicht.
+Gegensatz zu \acrshort{vm}s. Typischerweise führt ein Container genau einen Service aus, was eine schnelle Migration ermöglicht.
 \\
 \\
-Im Blick auf \acrshort{mec} ermöglichen Container eine leichtgewichtige Virtualisierungslösung. So eigenen sich die Container
-als eine portable Laufzeit Umgebung für MEC-Dienste, die auch von MEC-Host zu einem weiteren migiriert werden können.
+Im Blick auf \acrshort{mec} ermöglichen Container eine leichtgewichtige Virtualisierungslösung. So eignen sich die Container
+als eine portable Laufzeitumgebung für MEC-Dienste, die auch von MEC-Host zu einem weiteren migiriert werden können.
 Einzelne Dienste können in Containern ausgeführt werden, sind so isoliert und können einfach 
 verwaltet und gesteuert werden. Für die Umsetzung bietet sich die mittlerweile weitverbreitete Containerlösung Docker an. Hier stehen mit 
-Kubernetes auch Orchestrierungs und Clustering Tools zur Verfügung \cite{morabitoConsolidateIoTEdge2018}
+Kubernetes auch Orchestrierungs- und Clusteringtools zur Verfügung \cite{morabitoConsolidateIoTEdge2018}
 
 
 
 \newpage
 \section{MEC Framework und Referenz Architektur}
 \label{subsec:MEC Framework - Referenz Architektur}
-Folgendes Kapitel zeigt die von \acrfull{etsi} beschriebene
+Folgendes Kapitel zeigt die vom \acrfull{etsi} beschriebene
 Referenz Architektur zur Implementation eines \acrshort{mec} Systems. 
 \\ 
 \\
 \acrshort{etsi} beschreibt dabei in ihrer Spezifikation \textit{Multi-access Edge Computing (MEC); 
 Framework and Reference Architecture} \cite{etsiETSIGSMEC} ein Framework und eine 
-Referenz Architektur. Die Grafik \ref{fig:MecFramework} zeigt das MEC-Framework. 
-Das MEC-Framework zeigt eine abstrahierte sicht der Komponenten eines MEC-Systems. Die Reference Architecture (Abbildung \ref{fig:mecarchitecture}) bietet 
+Referenzarchitektur. Die Grafik \ref{fig:MecFramework} zeigt das MEC-Framework. 
+Das MEC-Framework zeigt eine abstrahierte Sicht der Komponenten eines MEC-Systems. 
+Die Referenzarchitektur (Abbildung \ref{fig:mecarchitecture}) bietet 
 ein genauen Überblick der Komponenten und wie diese miteinander kommunizieren.
 
 
@@ -410,54 +417,54 @@ ein genauen Überblick der Komponenten und wie diese miteinander kommunizieren.
 \end{figure}
 
 \subsection{Multi-access Edge Referenz Architektur}
-Die Komponenten werden dabei auf Infrastruktur virtualisiert am Rande des Netzwerks ausgeführt. 
+Die Komponenten werden dabei, auf Infrastruktur virtualisiert, am Rande des Netzwerks ausgeführt. 
 Dies ist möglich durch die in Kapitel \ref{sec:Benötigte Technologien} vorgestellten Technologien.
-Die Grafik \ref{fig:mecarchitecture} zeigt die Komponenten der Referenz Architecture.
+Die Grafik \ref{fig:mecarchitecture} zeigt die Komponenten der Referenzarchitektur.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/mecarchitecture.png}
-  \caption{Multi-Access Edge System Reference Architecture \cite{etsiMultiaccessEdgeComputinga}}
+  \caption{Multi-Access Edge System Referenzarchitektur \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:mecarchitecture}
 \end{figure}
-Die einzelnen Komponenten der MEC Framework und Referenz Architektur sind in folgende Ebenen unterteilt:
+Die einzelnen Komponenten sind in folgende Ebenen unterteilt:
 \subsubsection{Netzwerk Ebene}
 Die unterste Ebene des Frameworks ist die Netzwerk Ebene. Sie ermöglicht die Verbindung zu dem lokalen und 
 externen Netzwerk. Die \acrshort{3gpp} Komponente steht für \acrlong{3gpp}, was ein Überbegriff für mobilen
 Telecommunications Standards wie LTE und 5G ist. 
 \subsubsection{Distributed Host Level}
-Wie der Name schon sagt, gibt es mehrere MEC-Hosts, die im Netzwerk Verteilt sind.
-Der MEC Host enthält die MEC Platform und die Infrastruktur auf denen die Anwendungen, in der Edge Cloud, betreiben werden.
-Die Infrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen virtualisiert zu Verfügung. Als Virtualisierungslösung kann
+Wie der Name schon sagt, gibt es mehrere MEC-Hosts, die im Netzwerk verteilt sind.
+Der MEC Host enthält die MEC Platform und die Infrastruktur, auf denen die Anwendungen in der Edge Cloud betreiben werden.
+Die Infrastruktur stellt Rechen-, Speicher- und Netzwerkressourcen virtualisiert zur Verfügung. Als Virtualisierungslösung kann
 die in Kapitel \ref{subsec:Network Function Virtualization} eingeführte \acrlong{nfvi}
 eingesetzt werden. Der MEC-Host beinhaltet folgende weitere Komponenten:
 \\
 \\
-\textbf{MEC-Platform:} Die MEC-Platform dient als eine art Registry für  
-Anwendungen die auf der MEC Infrastruktur laufen. Die Plattform bietet eine Umgebung, in der MEC Anwendungen sich registieren,
+\textbf{MEC-Platform:} Die MEC-Platform dient als eine Art Registry für  
+Anwendungen, die auf der MEC Infrastruktur laufen. Die Plattform bietet eine Umgebung, in der MEC Anwendungen sich registieren,
 und anderen Anwendungen Anfragen stellen können. Die MEC-Platform ist auch für DNS-Rekords zuständig. Sie nimmt Befehle
-des MEC Platform Managers entgegen und passt die DNS Records und Proxies an. Des Weiteren verwaltet diese auch den Persistenten Speicher
+des MEC-Platform-Managers entgegen und passt die DNS Records und Proxies an. Des Weiteren verwaltet diese auch den persistenten Speicher.
 \\
 \\
-\textbf{MEC-Anwendungen:} Multi-Access Edge Computing Anwendungen werden in einer Virtuellen Maschine oder als
+\textbf{MEC-Anwendungen:} Multi-Access Edge Computing Anwendungen werden in einer virtuellen Maschine oder als
 Container auf der Infrastruktur des MEC-Hosts ausgeführt. Die Anwendungen registrieren sich bei der MEC Platform
 Komponente, um darüber andere Anwendungen anzufragen und ihren Dienste zur Verfügung zu stellen. \cite{DevelopingSoftwareMultiAccess}
 \\
 \\
 \textbf{MEC-Platform-Manager:} Der Platform-Manager verwaltet den Lifecycle der Anwendungen. Er startet, stoppt und startet diese neu.
 Gleichzeitig informiert er den MEC-Orchestrator über wichtige Events der Anwendungen. 
-Eine weitere Aufgabe ist das Verwalten, Managen und Autorisierung von DNS Configurationen.
+Eine weitere Aufgabe ist das Verwalten, Managen und die Autorisierung von DNS Configurationen.
 Des Weiteren erhält der Platform-Manager Fehlerberichte und Informationen über die Infrastruktur von dem Virtualisierungs-Infrastruktur-Manager.
 \\
 \\ 
-\textbf{Virtualization-Infrastruktur-Manager:} Eine weitere Komponente im Host Level, ist der Virtualization-Infrastruktur-
+\textbf{Virtualization-Infrastruktur-Manager:} Eine weitere Komponente im Host-Level ist der Virtualization-Infrastruktur-
 Manager. Dieser ist für das Zuweisen, Verwalten und Freigeben von virtualisierten (Rechen-, Speicher- und Netzwerkressourcen)
 Ressourcen der Virtualisierungsinfrastruktur zuständig. Der Manager ist dabei auch für das Konfigurieren der Infrastruktur für 
-ein neues Software Image verantwortlich. Dazu gehört das Herunterladen und Speicheren der Images. Dabei kann der Manager auch 
-Infrastructure-as-a-service Systeme wie Openstack unterstützen. Performance- und Fehlerdaten der Komponente werden von dem Manager gesammelt und weitergeleitet.
+ein neues Softwareimage verantwortlich. Dazu gehört das Herunterladen und Speichern der Images. Dabei kann der Manager auch 
+Infrastructure-as-a-service-Systeme wie Openstack unterstützen. Performance- und Fehlerdaten der Komponente werden von dem Manager gesammelt und weitergeleitet.
 \\
 \\
 Kommt es zu einer Verschiebung einer Anwendung, wenn eine laufende Anwendung umgezogen wird,
 interagiert der Virtualization Infrastruktur Manager mit dem MEC-Host zusammen um den Handoff an die neue Cloud durchzuführen.
-Wie ein Handoff zwischen zwei MEC-Host abläuft wird in Kapitel \ref{sec:Mobilitätsmanagement} genauer erläutert.
+Wie ein Handoff zwischen zwei MEC-Hosts abläuft, wird in Kapitel \ref{sec:Mobilitätsmanagement} genauer erläutert.
 \subsubsection{MEC System Level}
 Das MEC System Level ist übergreifend über mehrere MEC-Hosts (Abbildung \ref{fig:mec-System-Level})
 \\
@@ -467,58 +474,62 @@ Das MEC System Level ist übergreifend über mehrere MEC-Hosts (Abbildung \ref{f
   \caption{MEC-System Level übergreifend über mehrere MEC-Hosts}
   \label{fig:mec-System-Level}
 \end{figure}
+\\
 \textbf{MEC- Orchestrator:}
 Der MEC-Orchestrator spielt eine zentrale Rolle, 
 da er die Ressourcen und Funktionen des gesamten MEC-Systems im Blick hat. 
 In vielerlei Hinsicht ähnelt dieser dem ETSI Network Functions Virtualization Orchestrator und hat ähnliche 
-Aufgaben wie Orchestierung und Kontrolle der Instanziierung, Lösung von Ressourcenkonflikten.
-Der MEC- Orchestartor ist verantwortlich für das Initialisieren, terminieren der Anwendungen, sowie das prüfen
-der Integrität und Authentizität. Der Orchestrators stellt sicher, 
-dass ein MEC- Host der die Anforderungen an die Anwendung wie Latenz und Verfügbaren Resourcen erfüllt, ausgewählt wird.
-Ist dies nicht der Fall ist es auch Aufgabe des Orchestartor, ein besseren Host zu finden und die Anwendungen zu migrieren.
+Aufgaben wie Orchestierung und Kontrolle der Instanziierung, sowie Lösung von Ressourcenkonflikten.
+Der MEC- Orchestartor ist verantwortlich für das Initialisieren, Terminieren der Anwendungen sowie das Prüfen
+der Integrität und Authentizität. Der Orchestrator stellt sicher, 
+dass ein MEC-Host ausgewählt wird, der die Anforderungen an die Anwendung wie Latenz und verfügbaren Resourcen erfüllt.
+Ist dies nicht der Fall ist es auch Aufgabe des Orchestartor, einen besseren Host zu finden und die Anwendungen zu migrieren.
 \\
 \\
 \textbf{Operations Support System:}
 Das \acrfull{oss} ist die höchste Ebene, die eine Anwendung bei der Ausführung an einem Standort unterstützt. 
 Das \acrshort{oss} empfängt Anforderungen zum Instanziieren und Beenden der mobilen Edge-Anwendungen von dem \acrfull{cfs} und von den Endgeräten.
-Um diese zu erfüllen kommuniziert das Operation Support System mit dem MEC-Orchestartor.
+Um diese zu erfüllen, kommuniziert das Operation Support System mit dem MEC-Orchestartor.
 \\
 \\
 \textbf{Customer Facing Service:}
 Der \acrfull{cfs} dient als Schnittstelle für Drittanbieter und ähnelt Portalen wie bei Cloud-Plattformen. 
-Dieser kommuniziert mit dem \acrshort{oss}.
+Dieser Service kommuniziert mit dem \acrshort{oss}.
 \\
 \\
 \textbf{User App Lifecycle Management Proxy:} 
 Der User App Lifecycle Management Proxy (User App LCM Proxy) ist eine Funktion, die Endgeräte anfordern können für Onboarding, Initalisierung und Terminierung der auf der
 Edge-Cloud laufenden Services. Stellt eine Endgerät eine Anfrage, autorisiert der Proxy die Anfrage und leitet diese an das \acrshort{oss} und den MEC- Orchestrator weiter. 
 Die Endgeräte können so mit dem MEC- System über den Proxy kommunizieren und so auch beispielsweise das Umziehen einer Anwendung von 
-einer externen Cloud in das MEC-System starten. Der User App LCM Proxy kann nur von dem Mobilen Netzwerk erreicht werden.
+einer externen Cloud in das MEC-System starten. Der User App LCM Proxy kann nur von dem mobilen Netzwerk erreicht werden.
 
 \subsubsection{MEC-Services}
-In einem MEC-System ist ein MEC-Service, ein Service, der von der MEC-Platform oder von einer MEC-Anwendung konsumiert oder zur Verfügung gestellt werden kann. 
-Wird der MEC-Service von einer Anwendung bereitgestellt, muss dieser sich in die Liste der Services auf der MEC-Platform registieren. MEC-Anwendungen können 
-Services abonniert, um Informationen zu erhalten. Beispielsweise gibt es Services die eine Anwendung benachrichtigen, wenn sich der Nutzer aus dem Funkbereich wegbewegt.
+In einem MEC-System ist ein MEC-Service, 
+ein Service der von der MEC-Platform oder von einer MEC-Anwendung konsumiert oder zur Verfügung gestellt werden kann. 
+Wird der MEC-Service von einer Anwendung bereitgestellt, 
+muss dieser sich in die Liste der Services, auf der MEC-Platform registieren. MEC-Anwendungen können 
+Services abonnieren, um Informationen zu erhalten. Beispielsweise gibt es Services die eine Anwendung benachrichtigen, wenn sich der Nutzer aus dem Funkbereich wegbewegt.
 \\
 \\
 \textbf{Funknetz Informationsservice}
-An dem Funknetz Informationsservice können autorisiert Anwendungen Informationen über das Funknetz abfragen.
-Abonniert eine Anwendung diesen Service, erhält sie Informationen über den aktuellen Zustand des Funknetz und der \acrshort{up}. Die Anwendung erhält über den Service,
+An dem Funknetz-Informationsservice können autorisierte Anwendungen Informationen über das Funknetz abfragen.
+Abonniert eine Anwendung diesen Service, erhält sie Informationen über den aktuellen Zustand des Funknetz und der \acrshort{up}. 
+Die Anwendung erhält über den Service
 die Informationen in regelmäßigen Abständen.
 \\
 \\
 \textbf{Standort und Bandbreiten Service}
-Der Standort Service informiert Anwendungen über den Standort von Endgeräten, 
+Der Standortservice informiert Anwendungen über den Standort von Endgeräten, 
 die derzeit von dem MEC-Host zugeordneten Funkknoten bedient werden. 
-Es kann auch eine Liste aller Endgeräte an einem Standort abgefragt werden, sowie der Standort aller
-Funkknoten die dem MEC-Host zugeordnetsind. 
-Diese Informationen sind wichtig für die Entscheidung, ob ein eine MEC-Anwendung zu einem dem Endgerät näheren MEC-Host wechseln soll.
+Es kann auch eine Liste aller Endgeräte an einem Standort abgefragt werden sowie der Standort aller
+Funkknoten, die dem MEC-Host zugeordnet sind. 
+Diese Informationen sind wichtig für die Entscheidung, ob eine MEC-Anwendung zu einem dem Endgerät näheren MEC-Host wechseln soll.
 \\
-Der Bandbreiten Service ermöglicht das Erhöhen der Bandbreite für bestimmten Datenverkehr von MEC-Anwendungen und damit die Priorisierung wichtiger Daten.
+Der Bandbreitenservice ermöglicht das Erhöhen der Bandbreite für bestimmten Datenverkehr von MEC-Anwendungen und damit die Priorisierung wichtiger Daten.
 \newpage
 \subsection{Zusammenfassung}
 Dieses Unterkapitel beschreibt, wie die zuvor erläuterten Komponenten des MEC-Systems zusammenarbeiten. Die Grafik \ref{fig:ablaufmec} zeigt die 
-Referenz Architektur. Wird eine neue MEC-Anwendung gestartet werden folgende Schritte durchgeführt:
+Referenzarchitektur. Wird eine neue MEC-Anwendung gestartet, werden folgende Schritte durchgeführt:
 \begin{figure}
   \includegraphics[width=\linewidth]{images/mec-referenzepoints.png}
   \caption{Schritte für das Starten einer MEC Anwendungen \cite{etsiMultiaccessEdgeComputinga}}
@@ -529,30 +540,30 @@ Referenz Architektur. Wird eine neue MEC-Anwendung gestartet werden folgende Sch
   User App LCM Proxy. Dieser leitet diese an das \acrlong{oss} weiter.
   \item Das \acrshort{oss} gibt die Anfrage an den MEC- Orchestartor weiter.
   \item Die Anfrage für das Starten einer neuen MEC- Anwendung enthält Informationen über 
-  die Anwendung und andere Informationen. Dies beinhaltet der Ort an dem die Anwendung ausgeführt werden soll, 
+  die Anwendung und andere Informationen. Dies beinhaltet der Ort, an dem die Anwendung ausgeführt werden soll, 
   andere Anwendungsregeln und Anforderungen sowie den Speicherort des Anwendungsimage, 
   falls dieses noch nicht im MEC-System vorhanden ist. 
-  \item Anhand folgender Informationen wählt der MEC-Orchestartor ein geigneten MEC-Host aus:
+  \item Anhand folgender Informationen wählt der MEC-Orchestartor einen geigneten MEC-Host aus:
   \begin{itemize}
     \item Latenzanforderungen an die Anwendung
     \item Anforderung an den Ort (möglichst in der Nähe des \acrshort{ue})
     \item Benötigte Speicher- und Rechenressourcen
-    \item MEC-Services die für die Anwendung benötigt werden
+    \item MEC-Services, die für die Anwendung benötigt werden
     \item Mobilitätsanforderungen (muss die Anwendung umziehen, muss der Zustand der Anwendung umziehen)
-    \item Art des Hostens der Anwendung (Handelt es sich um eine Instanz pro Benutzer eine Instanz pro MEC-Host)
+    \item Art des Hostens der Anwendung (Handelt es sich um eine Instanz pro Benutzer, eine Instanz pro MEC-Host?)
     \item Informationen über den Netzbetreiber des MEC-Hosts (Kosten, Funknetztopologie)
   \end{itemize}
   Der MEC-Orchestrator wählt anhand dieser Informationen ein oder mehrere MEC-Hosts aus und startet das Initialisieren der Anwendungen.
   \item Für das Abfragen der verfügbaren Ressourcen kommuniziert der MEC-Orchestartor mit dem Virtualization-Infrastruktur-Manager.
-  \item Wurde ein passender MEC-Host gefunden, startet der MEC Platform Manager die Anwendung. der MEC-Platform Manager erhält von dem 
-  MEC-Orchestartor die Anfroderderungen der Anwendung.
-  \item Der MEC-Platform Manager kommuniziert mit dem Virtualization Infrastruktur Manager um die benötigten virtualisierten Ressourcen 
-  bereitzustellen. der Infrastruktur Manager läd das benötigte Image für die Anwendung runter wenn dieses noch nicht Verfügbar ist.
-  \item Anschließend kommuniziert der MEC- Platform Manager mit der MEC- Platform um die Anwendung zu konfigurieren.
-  \item Die MEC- Platform konfiguriert das Routing des Datenverkehrs  auf der Data-Plane der virtuellen Infrastruktur.
-  \item Der MEC- Platform Manager startet die Anwendung auf der virtuellen Infrastruktur.
+  \item Wurde ein passender MEC-Host gefunden, startet der MEC Platform Manager die Anwendung. Der MEC-Platform Manager erhält von dem 
+  MEC-Orchestartor die Anforderungen der Anwendung.
+  \item Der MEC-Platform Manager kommuniziert mit dem Virtualization Infrastruktur Manager, um die benötigten virtualisierten Ressourcen 
+  bereitzustellen. Der Infrastruktur Manager läd das benötigte Image für die Anwendung runter, wenn dieses noch nicht verfügbar ist.
+  \item Anschließend kommuniziert der MEC-Platform Manager mit der MEC-Platform, um die Anwendung zu konfigurieren.
+  \item Die MEC-Platform konfiguriert das Routing des Datenverkehrs auf der Data-Plane der virtuellen Infrastruktur.
+  \item Der MEC-Platform Manager startet die Anwendung auf der virtuellen Infrastruktur.
   \item Die Anwendung registriert sich bei der MEC-Platform in der Service Registry. Die MEC-Platform konfiguriert die DNS Regeln der 
-  Anwendung und verwaltet den Zugriff auf den Persistenten Speicher.
+  Anwendung und verwaltet den Zugriff auf den poersistenten Speicher.
 \end{enumerate}
 
 \newpage
