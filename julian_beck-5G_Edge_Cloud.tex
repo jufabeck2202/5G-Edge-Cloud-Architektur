@@ -569,13 +569,13 @@ Referenzarchitektur. Wird eine neue MEC-Anwendung gestartet, werden folgende Sch
 \newpage
 
 \section{Integration von MEC und 5G}
-In der 5G-Systemspezifikation stehen zwei Optionen für die Architektur zur Verfügung. 
-Eine mit dem traditionellen Interface Ansatz und eine weitere 
+In der 5G-Systemspezifikation stehen zwei Optionen für die Architektur zur Verfügung:
+Eine mit dem traditionellen Interface Ansatz und eine weitere, 
 bei der die Netzwerkfunktionen des Kernnetzes mithilfe einer \acrfull{sba} verbunden sind. 
 Hier wird die Service Based Architecture betrachtet. Bei \acrshort{sba} können die Netzwerkfunktionen Dienste bereitstellen oder konsumieren, eine
 Funktion kann auch mehrere Dienste anbieten. 
-Für die effiziente Nutzung der Dienste, 
-ist eine Registrierung, Service Discovery, Abmeldung sowie Authentifizierung und Autorisierung erforderlich.
+Für die effiziente Nutzung der Dienste 
+ist eine Registrierung, eine Service Discovery, eine Abmeldung sowie Authentifizierung und Autorisierung erforderlich.
 Die Abbildung \ref{fig:sba} zeigt auf der linken Seite ein 5G-System in Form von \acrshort{sba}, 
 die rechte Seite zeigt die MEC-Systemarchitektur aus Kapitel \ref{subsec:MEC Framework - Referenz Architektur}.
 \begin{figure}
@@ -588,35 +588,34 @@ Dieser Abschnitt beschreibt, wie \acrfull{mec} in die 5G-Netzwerkumgebung integr
 und welche Komponenten miteinander interagieren.
 \\
 \\
-Die Netzwerkfunktionen und die Dienste die diese zu verfügungstellen, werden im 5G System in der \acrfull{nrf} registriert.
+Die Netzwerkfunktionen und die Dienste, die diese zur verfügungstellen, werden im 5G-System in der \acrfull{nrf} registriert.
 Die \acrshort{nrf} bietet damit eine Liste mit allen Diensten an. 
-In einem MEC System werden die Dienste die von den MEC- Anwendungen bereitgestellt werden in der Service Registry in der MEC Platform registriert.
-Will eine Netzwerkfunktion im 5G Netzwerk ein Dienst nutzen, kann diese direkt mit der Funktion die den Dienst zur Verfügungstellt interagieren,
+In einem MEC-System werden die Dienste, die von den MEC- Anwendungen bereitgestellt werden, in der Service Registry in der MEC-Platform registriert.
+Will eine Netzwerkfunktion im 5G-Netzwerk einen Dienst nutzen, kann diese direkt mit der Funktion, die den Dienst zur Verfügung stellt, interagieren,
 wenn diese au­then­ti­fi­zie­rt ist. Die \acrfull{nef} im 5G System stellt auch Dienste an nicht au­then­ti­fi­zie­rte Komponenten 
 zur Verfügung. Die \acrshort{nef} ist damit sehr wichtig für die Bereitstellung von Services, da sie Anfragen von nicht authentifizierten Komponenten
 entgegennimmt.
 \\
 \\
 \subsection{\acrfull{upf}}
-Für die Integration von MEC in ein 5G Netzwerk, spielt die \acrfull{upf} eine wichtige Rolle. Die \acrshort{upf} ist Teil der User Plane
-und ist eine Darstellung dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrollen und Weiterleitung von Nutzdaten. 
-Sie dient als Verbindungspunkt für die mobile Infrastruktur und das Data Network (DN). Beispielsweise ist es für das packen und entpacken von 
+Für die Integration von MEC in ein 5G Netzwerk spielt die \acrfull{upf} eine wichtige Rolle. Die \acrshort{upf} ist Teil der User Plane
+und ist eine Darstellung dieser in Netzwerkfunktion. Die UPF ist das Gateway zur Kontrolle und Weiterleitung von Nutzdaten. 
+Sie dient als Verbindungspunkt für die mobile Infrastruktur und das Data Network (DN). Beispielsweise ist es für das Packen und Entpacken von 
 getunnelten Daten verantwortlich. Darüber hinaus dient die \acrshort{upf} auch als Anker für die Mobilität, was besonders für das Mobilitätsmanagement wichtig ist.
 \cite{Leitfaden5GCampusnetze2020}
 \subsection{MEC- Kommunikation mit dem 5G Netzwerk}
-Dieser Abschnitt beschreibt die Kommunikation des MEC
-Plattform mit 5G-Kerndiensten.
+Dieser Abschnitt beschreibt die Kommunikation der MEC-Plattform mit 5G-Kerndiensten.
 
-In einem 5G System, verhält sich das MEC-System wie eine \acrfull{af} für 5G. Ist ide \acrshort{af} ein Teil des Netzbetreibers, ist diese 
-Registriert als ein Teil des Kernnetzwerkes. Die AF sendet Informationen wie MEC-Application Details und Routing-Informationen 
-an die \acrshort{pcf}. Diese benachrichtigt den \acrshort{smf}. Die \acrlong{smf} verwendet die Inofmrationen um neue Routing Regeln in der
+In einem 5G System verhält sich das MEC-System wie eine \acrfull{af} für 5G. Ist die \acrshort{af} ein Teil des Netzbetreibers, ist diese 
+registriert als ein Teil des Kernnetzwerkes. Die AF sendet Informationen wie MEC-Application-Details und Routing-Informationen 
+an die \acrshort{pcf}. Diese benachrichtigt die \acrshort{smf}. Die \acrlong{smf} verwendet die Informationen, um neue Routingregeln in der
 aktuellen \acrshort{upf} zu hinterlegen. Ist die \acrshort{upf} nicht an der aktuellen Lage verfügbar, erstellt die \acrshort{smf} eine 
-neue \acrshort{upf} und hinterlegt die routing-Regeln so, dass der Netzwerkverkehr des Endgeräts zu der MEC-Anwendung weitergeleitet wird.
+neue \acrshort{upf} und hinterlegt die Routingregeln so, dass der Netzwerkverkehr des Endgeräts zu der MEC-Anwendung weitergeleitet wird.
 \\
 \\
 Ist das MEC nicht Teil des Netzbetreibers, dann interagiert die \acrshort{af} mit der \acrshort{nef} um den Datenverkehr zu steuern.
-Nach der Autorisierung die \acrshort{af}, sendet der \acrshort{nef} Details über das Routing an den \acrshort{smf}. Ist die \acrshort{upf}
-verfügbar, fügt der \acrshort{smf} neue Routing-Regeln, ist dies nicht der Fall, wird eine neue \acrshort{upf} erstellt und die Routing-Regeln
+Nach der Autorisierung der \acrshort{af}, sendet der \acrshort{nef} Details über das Routing an den \acrshort{smf}. Ist die \acrshort{upf}
+verfügbar, fügt der \acrshort{smf} neue Routingregeln hinzu. Ist dies nicht der Fall, wird eine neue \acrshort{upf} erstellt und die Routingregeln
 hinterlegt.
 
 \subsection{MEC Deployment in 5G}
@@ -625,18 +624,17 @@ hinterlegt.
   \caption{MEC in 5G \cite{etsiMultiaccessEdgeComputinga}}
   \label{fig:sba2}
 \end{figure}
-In dem MEC- System auf der rechten Seite, agiert der MEC- Orchestartor auf der MEC-System Ebene. Dieser interagiert über die \acrshort{nef} oder
-direkt mit den einzelnen Netzwerkfunktionen des 5G Netzwerks. Auf der MEC-Host Ebene, interagiert die MEC-Platform mit den Neutzwerkfunktionen des 5G Netzwerkes.
-Die MEC-Host Ebene ist meistens auf der \acrshort{up} des 5G Netzwerks, während der \acrshort{nef} als Teil des \acrshort{cp} als Systemlevel 
-Funktion zentral eingesetzt wird.
+In dem MEC-System auf der rechten Seite agiert der MEC- Orchestartor auf der MEC-Systemebene. Dieser interagiert über die \acrshort{nef} oder
+direkt mit den einzelnen Netzwerkfunktionen des 5G Netzwerks. Auf der MEC-Hostebene, interagiert die MEC-Platform mit den Neutzwerkfunktionen des 5G Netzwerkes.
+Die MEC-Hostebene ist meistens auf der \acrshort{up} des 5G Netzwerks, während der \acrshort{nef} als Teil des \acrshort{cp} als Systemlevelfunktion zentral eingesetzt wird.
 Wie Abbildung \ref{fig:sba2} zeigt, befindet sich das MEC-System auf der \acrshort{cp} des 5G Netzwerkes. 
 \\
 \\
 Das 5G-Kernnetz kann aus einem oder mehreren
-UPFs, die zum Steuern des Datenverkehrs zwischen MEC und dem 5G-Kernnetz konfiguriert sind.
+UPFs bestehen, die zum Steuern des Datenverkehrs zwischen MEC und dem 5G-Kernnetz konfiguriert sind.
 Alternativ kann die MEC-Plattform einen lokalem UPF bereitstellen.
 In einer einzelnen \acrfull{upf}-Konfiguration können 5G-Netz und MEC-Plattform nur mit einer \acrfull{upf} verbunden werden, 
-der Regeln zum Weiterleiten von Datenverkehr an MEC oder Internet / Cloud enthält. In diesem fall ist die einzelne \acrshort{upf}s Teil des 
+die Regeln zum Weiterleiten von Datenverkehr an MEC oder Internet / Cloud enthält. In diesem fall ist die einzelne \acrshort{upf} Teil des 
 MEC-Host.
 \begin{figure}
   \includegraphics[width=\linewidth]{images/5g-scenarios.png}
@@ -644,8 +642,8 @@ MEC-Host.
   \label{fig:sba2}
 \end{figure}
 In einer Konfiguration mit mehreren \acrfull{upf}s leitet eine \acrfull{upf} den Datenverkehr an die MEC-Anwendungen und 
-eine anderer an Cloud- / Remote-Anwendungen weiter.
-Das MEC- System kann an verschiedenen Standorten in der nähe der Base Station des 5G Netzwerkes eingesetzt werden. 
+eine andere an Cloud-/ Remote-Anwendungen weiter.
+Das MEC- System kann an verschiedenen Standorten in der Nähe der Base Station des 5G-Netzwerkes eingesetzt werden. 
 
 \newpage
 
