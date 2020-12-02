@@ -649,49 +649,49 @@ Das MEC- System kann an verschiedenen Standorten in der Nähe der Base Station d
 
 \section{Mobilitätsmanagement in Mobile Edge Clouds}
 \label{sec:Mobilitätsmanagement}
-Die Mobilität von Endgeräte im \acrshort{3gpp} Netzwerken, kann dazu führen, dass ein \acrshort{ue} sich von einer 
-Radio Station zu nächsten bewegt. Das Verwalten und Aufrechterhalten dieser Verbindungen in Funknetzen wird
-als Mobilitätsmanagement bezeichnet und ist eine Kernkomponenten von Funknezten. 
+Die Mobilität von Endgeräten im \acrshort{3gpp} Netzwerken kann dazu führen, dass ein \acrshort{ue} sich von einer 
+Radiostation zur nächsten bewegt. Das Verwalten und Aufrechterhalten dieser Verbindungen in Funknetzen wird
+als Mobilitätsmanagement bezeichnet und ist eine Kernkomponente von Funknetzen.
 Wird eine aktive Funkverbindung von einer Netzwerkzelle zu einer anderen weitergegeben, wird der Vorgang
 der Übergabe als Handoff oder Handover bezeichnet.\\
 Die Mobilität des Endgerätes kann dazu führen, 
 dass sich das \acrshort{ue} zu einer anderen Zelle bewegt, 
 die einem anderen MEC-Host zugeordnet ist. Es muss sichergestellt werden, dass der Datenverkehr
-richtig geroutet wird um das Ziel zu erreichen.
+richtig geroutet wird, um das Ziel zu erreichen.
 Entfernt sich das Endgerät weiter vom Ort der MEC-Anwendung, 
-kann dies dazu führen, dass die Latenz sich erhöht und die Deshalb ist es wichtig, dass je nach Anwendung,
-die laufende Anwendungsinstanz verschoben wird um die Latenz Anforderungen weiterhin zu erfüllen. \\
-Die Häufigkeit eines wechsel der MEC Hosts, hängt stark von dem 
-Einsatz ab. Bei der Verwendung von MEC für Autonomes Fahren treten häufiger Handover Event ein, wie bei
-beispielsweise in dem Szenario einer Smart Factory.\\
-Die Mobilität eines \acrshort{ue}s kann in weitreichenden MEC-Systemen vorhergesagt werden und die einzelnen MEC-Host demnach konfiguriert werden,
+kann dies dazu führen, dass die Latenz sich erhöht. Deshalb ist es wichtig, dass je nach Anwendung,
+die laufende Anwendungsinstanz verschoben wird, um die Latenzanforderungen weiterhin zu erfüllen. \\
+Die Häufigkeit eines Wechsel der MEC Hosts hängt stark von dem 
+Einsatz ab. Bei der Verwendung von MEC für autonomes Fahren treten häufiger Handover Events ein, wie
+beispielsweise in dem Szenario einer Smarten City.\\
+Die Mobilität eines \acrshort{ue}s kann in weitreichenden MEC-Systemen vorhergesagt werden und die einzelnen MEC-Hosts demnach konfiguriert werden,
 dennoch muss der Zustand der Anwendung übertragen werden.
-Dieses Kapitel beschreibt wie verschiedene Handoff Events ablaufen. \cite{etsiMultiaccessEdgeComputinga}
+Dieses Kapitel beschreibt, wie verschiedene Handoff-Events ablaufen. \cite{etsiMultiaccessEdgeComputinga}
 
 \subsection{Verschieben der Anwendung und dessen Zustand}
-Bewegt sich das \acrshort{ue} im Funknetz und ist möglicherweise ein anderer Ziel MEC-Host geeigneter als der aktuelle
+Bewegt sich das \acrshort{ue} im Funknetz und ist ein anderer Ziel MEC-Host besser geeigneter als der aktuelle
 MEC-Host, muss die Anwendung umziehen. Die MEC-Anwendungen werden in zustandslose und zustandsbehaftete Anwendungen eingeteilt.
-Handelt es sich um eine zustandsbehaftete Anwendung, 
-erfordert das Umziehen der Anwendung, ein synchronisieren des Zustands zwischen der aktuellen und der
+Handelt es sich um eine zustandsbehaftete Anwendung 
+erfordert das Umziehen der Anwendung, ein Synchronisieren des Zustands zwischen der aktuellen und der
 verschobenen Anwendungsinstanz, um Kontinuität zu gewährleisten zu können.
 \\
 \\
-Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Diese muss so konzeptiert werden, 
-dass die Anwendung in mehreren Instanzen auf unterschiedlichen MEC-Hosts betrieben werden kann. 
-Für das Synchronisieren muss die Anwendungen das Einfrieren des Zustands und kopieren von einer Quell- Anwendung 
+Das Synchronisieren des Zustands muss bei dem Entwickeln der Anwendungen berücksichtigt werden. Die App muss so konzeptiert werden, 
+dass sie in mehreren Instanzen auf unterschiedlichen MEC-Hosts betrieben werden kann. 
+Für das Synchronisieren muss die Anwendung das Einfrieren des Zustands und Kopieren von einer Quell- Anwendung 
 zu einer Zielanwendung unterstüzen. 
-Läuft die Anwendung noch nicht auf dem Ziel Host, muss diese initalisiert und gestartet werden.
+Läuft die Anwendung noch nicht auf dem Ziel-Host, muss diese initalisiert und gestartet werden.
 Nachdem die Anwendung gestartet ist, startet der Umzugsvorgang und der Zustand wird von dem aktuellen 
-Host zu dem Ziel MEC-Host übertragen. Wenn der Zustand vollständig übertragen ist, stoppt die aktuelle Instanz
-und die Ziel Instanz übernimmt das kommunizieren mit dem Endgerät. \cite{DevelopingSoftwareMultiAccess}
+Host zu dem Ziel-MEC-Host übertragen. Wenn der Zustand vollständig übertragen ist, stoppt die aktuelle Instanz
+und die Zielinstanz übernimmt das Kommunizieren mit dem Endgerät. \cite{DevelopingSoftwareMultiAccess}
 \\
-Für das Erkennen von \acrshort{ue} Mobilität zu einer neuen Zelle, abonniert die MEC Platform Radio Network Informationen die von dem \acrfull{rnis} zu
-Verfügung gestellt werden. Mithilfe dieser Informationen können \acrshort{ue}s identifizieren werden, bei denen eine Zelländerung auftritt 
-und bestimmen es kann bestimmt werden, ob diese sich aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
+Für das Erkennen von \acrshort{ue} Mobilität zu einer neuen Zelle abonniert die MEC Platform Radio Network Informationen, die von dem \acrfull{rnis} zur
+Verfügung gestellt werden. Mithilfe dieser Informationen können \acrshort{ue}s identifiziert werden, bei denen eine Zelländerung auftritt 
+und bestimmen werden, ob diese sich aus dem Versorgungsbereich des aktuellen MEC-Hosts herausbewegen.
 \subsection{Aktualisierung des Routings für Mobilitätsupport}
-\subsubsection{Problem}
-Das MEC-System ist in der Lage flexibel \acrlong{up} Funktionen anzupassen je nach den Anforderungen oder Regeln des MEC-Systems 
-und dem Zustand des Netzwerkes. Für das Mobilitätsmanagement ermöglicht dies, das flexible lenken des Datenverkehrs auf der \acrshort{up}
+\subsubsection{Problem:}
+Das MEC-System ist in der Lage flexibel, \acrlong{up} Funktionen anzupassen, je nach den Anforderungen oder Regeln des MEC-Systems 
+und dem Zustand des Netzwerkes. Für das Mobilitätsmanagement ermöglicht dies das flexible Lenken des Datenverkehrs auf der \acrshort{up},
 um die Verbindung zwischen dem Endgerät und der Anwendungsinstanz auf dem MEC-Host aufrecht zu halten. Soll die Anwendungsinstanz
 beispielsweise zu einem neuen MEC-Host migriert werden und dieser ist nicht in der Lage die Instanz zu hosten, kann der aktuelle
 MEC-Host noch einen zufriedenstellenden Service anbieten.
@@ -701,23 +701,23 @@ MEC-Host noch einen zufriedenstellenden Service anbieten.
   \label{fig:Verschieben_Instanz}
 \end{figure}
 \\
-Bewegt sich das Endgerät kann es zu einem gNB Handover kommen, was zu einer Änderung in der \acrshort{upf}s Ebene führt. 
+Bewegt sich das Endgerät, kann es zu einem gNB Handover kommen, was zu einer Änderung in der \acrshort{upf}s Ebene führt. 
 Bei Bedarf wird der Zustand zu der Instanz in dem Ziel-MEC-Host übertragen und das Routing wird für das Endgerät angepasst, 
 was in der Grafik \ref{fig:Verschieben_Instanz} zu sehen ist.
 Kann der Ziel MEC- Host die Anwendung nicht hosten, weil dieser nicht über ausreichend Ressourcen verfügt oder nicht den gewünschten Service
 erfüllt, kann der Zustand einer laufenden Anwendungsinstanz nicht von dem S-MEC-Host zum Ziel-MEC-Host übertragen werden. 
 Wenn dies der Fall, muss das Routing
 trotzdem aktualisiert werden. Die Anwendungsdaten werden entweder über den Ziel-MEC-Host (Bild 2 in Abbildung \ref{fig:mecerror}) 
-oder über die \acrshort{upf}s des Ziel und ursprünglichen MEC-Hosts geleitet (Bild 3 in Abbildung \ref{fig:mecerror}).
+oder über die \acrshort{upf}s des Ziels und des ursprünglichen MEC-Hosts geleitet (Bild 3 in Abbildung \ref{fig:mecerror}).
 \begin{figure}
   \includegraphics[width=\linewidth]{images/MEC_host_Error.png}
-  \caption{Routing wenn der Ziel-MEC Host die Anwendung nicht hosten kann}
+  \caption{Routing, wenn der Ziel-MEC Host die Anwendung nicht hosten kann}
   \label{fig:mecerror}
 \end{figure}
 Unabhängig davon, ob die Anwendungsinstanz erfolgreich auf den Ziel-MEC-Host übertragen wurde oder nicht, 
 der Verkehrspfad wird entsprechend aktualisiert. \cite{etsiMultiaccessEdgeComputinga}
 \subsubsection{Aktualisieren des Routings}:
-Für das Aktualisieren und Aufrechterhalten der Routen, ist die \acrlong{af} verantwortlich.
+Für das Aktualisieren und Aufrechterhalten der Routen ist die \acrlong{af} verantwortlich.
 Die \acrfull{af} interagiert mit \acrshort{cp},  um das Routing zu beeinflussen. 
 
 \begin{figure}
@@ -732,12 +732,12 @@ Die Abbildung \ref{fig:AF_GG} zeigt die \acrshort{af} in einer \acrlong{sba}.
 \\
 \\
 \acrshort{etsi} definiert für das Anpassen des Routings mithilfe der \acrshort{af} den sogenannten \textit{Application Function influence on traffic routing} Prozess.
-Startet ein MEC-System diesen Prozess benötigt es folgende Parameter:
+Startet ein MEC-System diesen Prozess, benötigt es folgende Parameter:
 \begin{itemize}
   \item \acrshort{ue} Identifikator, eindeutig für das Endgerät
-  \item Mögliche Orte für die Anwendung, Data Network Access Identifier (DNAI) wird benötigt um die Ziel UPFS zu erlangen.
-  \item AF-Transaktionskennung, wird von der \acrshort{af} generiert
-  \item Beschreigung des Datenverkehrs, dazu gehören IP-Adressen, Zieladressen und Data Network Name (DNN)
+  \item Mögliche Orte für die Anwendung, Data Network Access Identifier (DNAI) wird benötigt, um die Ziel UPFS zu erlangen
+  \item AF-Transaktionskennung wird von der \acrshort{af} generiert
+  \item Beschreibung des Datenverkehrs, dazu gehören IP-Adressen, Zieladressen und Data Network Name (DNN)
 \end{itemize}
 \begin{figure}
   \centering
@@ -745,10 +745,10 @@ Startet ein MEC-System diesen Prozess benötigt es folgende Parameter:
   \caption{Komponenten für die Aktualisierung des Routings}
   \label{fig:Datenverkehr_Update}
 \end{figure}
-Mithilfe dieser Parameter kann der Prozess des umleiten gestartet werden.
-Abbildung \ref{fig:Datenverkehr_Update} zeigt wie die einzelnen Komponenten zusammenarbeiten um ein benötigte Aktualisierung des Datenverkehrs durchzuführen.
-Die Kommunikation mit dem MEC-System läuft dabei über die \acrshort{nef}. Diese kommuniziert mit dem MEC-Orchestartor welcher
-die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt. \cite{etsiMultiaccessEdgeComputinga}  \cite{balasubramanianMobilityManagementArchitecture2019}
+Mithilfe dieser Parameter kann der Prozess des Umleiten gestartet werden.
+Abbildung \ref{fig:Datenverkehr_Update} zeigt, wie die einzelnen Komponenten zusammenarbeiten, um eine benötigte Aktualisierung des Datenverkehrs durchzuführen.
+Die Kommunikation mit dem MEC-System läuft dabei über die \acrshort{nef}. Diese kommuniziert mit dem MEC-Orchestartor, welcher
+die Informationen auf MEC-Host-Ebene an den Platform Manager weitergibt. \cite{etsiMultiaccessEdgeComputinga}  \cite{balasubramanianMobilityManagementArchitecture2019}
 \begin{figure}
   \centering
   \includegraphics[width=9cm]{images/Datenverkehr_Ablauf.png}
@@ -757,23 +757,23 @@ die Informationen auf MEC-Host Ebene an den Platform Manager weitergibt. \cite{e
 \end{figure}
 Für das Aktualisieren des Routings werden folgende Schritte (Abbildung \ref{fig:Datenverkehr_Ablauf}) durchgeführt:
 \begin{enumerate}
-  \item Der \acrfull{meo} abonniert über \acrshort{nef}, \acrshort{up} Event Mittelungen. 
-  Der \acrshort{meo} erhält daher eine Mitteilung das sich die \acrshort{ue} und \acrshort{dn} des
+  \item Der \acrfull{meo} abonniert über \acrshort{nef} \acrshort{up} Event Mittelungen. 
+  Der \acrshort{meo} erhält daher eine Mitteilung, dass sich die \acrshort{ue} und \acrshort{dn} des
   \acrshort{ue}s aufgrund der Mobilität verändert haben.
-  \item Die Quell-MEC-Plattform (S-MEC-Plattform) abonniert dem \acrshort{ue} zugeordnete Zellenänderungsbenachrichtigung. 
+  \item Die Quell-MEC-Plattform (S-MEC-Plattform) abonniert die dem \acrshort{ue} zugeordnete Zellenänderungsbenachrichtigung. 
   Nachdem die S-MEC-Plattform eine Nachricht erhalten hat, bestimmt diese, ob das \acrshort{ue} die Zelle verlassen hat. 
-  Ist dies der Fall sendet die S-MEC-Plattform eine Mobilitätsanfrage an den \acrshort{meo}.
+  Ist dies der Fall, sendet die S-MEC-Plattform eine Mobilitätsanfrage an den \acrshort{meo}.
   \item Der \acrshort{meo} wählt ein Ziel-MEC-Host für die Anwendung aus.
-  \item In dem Fall, in dem der Ziel-MEC-Host aus nicht verfügbar ist, beispielsweise nicht ausreichend Ressourcen hat,
+  \item In dem Fall, in dem der Ziel-MEC-Host nicht verfügbar ist, beispielsweise nicht ausreichend Ressourcen hat,
   wird die Anwendungsinstanz auf dem S-MEC-Host fortgesetzt und der vorhandene Pfad wird mittels der \acrshort{upf} zum S-MEC-Host umgeleitet.
-  \item Der \acrshort{meo} sendet eine Aktualisierung an den S-MEC-Plattformmanager und dem T-MEC-Plattformmanager
+  \item Der \acrshort{meo} sendet eine Aktualisierung an den S-MEC-Plattformmanager und den T-MEC-Plattformmanager.
 \end{enumerate}
-Diese Schritte ermöglichen eine kontinuirliche Verbindung zwischen \acrshort{ue} und MEC-Anwendung, unabhängig ob diese sich beim S-MEC-Host oder Z-MEC-Host befindet.
+Diese Schritte ermöglichen eine kontinuirliche Verbindung zwischen \acrshort{ue} und MEC-Anwendung, unabhängig, ob diese sich beim S-MEC-Host oder Z-MEC-Host befindet.
 \newpage
 \subsection{Ping-Pong Handover}
 \subsubsection{Problem}
 Ping-Pong-Übergaben treten auf, wenn ein Endgerät von einer Zelle zur nächsten wechselt, dann aber wieder in die ursprüngliche 
-Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, das es zwischen den zwei Hosts
+Zelle zurückgeht. Befindet sich ein Endgerät zwischen zwei Zellen, hat dies die Folgen, dass es zwischen den zwei Hosts
 hin und herspringt. Daher die Bezeichnung Ping-Pong Handover.
 \begin{figure}
   \centering
@@ -782,20 +782,23 @@ hin und herspringt. Daher die Bezeichnung Ping-Pong Handover.
   \label{fig:pingpong}
 \end{figure}
 \subsubsection{Lösung}
-Für das Lösen des Ping-Pong Problems im MEC- System, schlägt \acrshort{etsi} eine Verringerung der Migrationsevent die vom MEO durchgeführt werden vor.
+Für das Lösen des Ping-Pong Problems im MEC- System, schlägt \acrshort{etsi} eine Verringerung der Migrationsevents die vom MEO durchgeführt werden vor.
 \begin{enumerate}
-  \item Der \acrshort{meo} wird Benachrichtigt, wenn es zu einem Ping-Pong Handover kommt, das zahlreiche Migrationen von MEC-Anwendung verursacht. Das
-  Ping-Pong event wird dabei durch eine Vielzahl von Events der UPFS Erkannt.
-  \item Nach dem Erkennen eines Ping-Pong Events, startet der \acrshort{meo} den \textit{Ping-Pong Handover Migration} Prozess. Dieser verändert die \acrshort{upf}
-  so, dass diese sich immer zur S-MEC-Anwendung verbindet, unabhängig von der Verbindungsqualität des UEs. Dies reduziert die Anzahl der Migrationen
-  zwischen Source-MEC-Host und Target-MEC-Host, auch wenn das \acrshort{ue} sich oft zwischen Netzbereichen der Hosts wechselt. Das \acrshort{ue} kommuniziert weiterhin
-  mit der Anwendung im S-MEC über die Source-UPF. Abildung \ref{fig:pingpongrouting} zeigt dies.
+  \item Der \acrshort{meo} wird benachrichtigt, wenn es zu einem Ping-Pong Handover kommt, das zahlreiche Migrationen der MEC-Anwendung verursacht. Das
+  Ping-Pong-Event wird dabei durch eine Vielzahl von Events der UPFS erkannt.
+  \item Nach dem Erkennen eines Ping-Pong Events startet der \acrshort{meo} den \textit{Ping-Pong Handover Migration} Prozess. 
+  Dieser verändert die \acrshort{upf}
+  so, dass diese sich immer mit der S-MEC-Anwendung verbindet, unabhängig von der Verbindungsqualität des UEs. 
+  Dies reduziert die Anzahl der Migrationen
+  zwischen Source-MEC-Host und Target-MEC-Host, auch wenn das \acrshort{ue} oft zwischen Netzbereichen der Hosts wechselt. 
+  Das \acrshort{ue} kommuniziert weiterhin
+  mit der Anwendung im S-MEC über die Source-UPF. Abbildung \ref{fig:pingpongrouting} zeigt dies.
   \item Der \acrshort{meo} wartet auf das sogenannte \textit{Ping-Pong Recovery Event}. Dieses signalisiert, dass das \acrshort{ue} sich nicht mehr zwischen zwei
   Aufgabenbereichen der MEC-Hots befindet.
   \item Nach dem \textit{Ping-Pong Recovery Event} setzt der \acrshort{meo} das Routing im UPFs wieder auf den ursprünglichen Zustand zurück.
 \end{enumerate}
-So kann mithilfe des \textit{Ping-Pong Handover Migration} und \textit{Ping-Pong Recovery Event} mit dem Ping-Pong Problem
-in einem MEC-System umbegangen werden.
+So kann mithilfe des \textit{Ping-Pong Handover Migration} und \textit{Ping-Pong Recovery Event} mit dem Ping-Pong-Problem
+in einem MEC-System umganben werden.
 \begin{figure}
   \centering
   \includegraphics[width=6cm]{images/pingpongrouting.png}
@@ -810,48 +813,48 @@ in einem MEC-System umbegangen werden.
 Folgendes Kapitel beschreibt unterschiedliche Use-Cases und Szenarios für die Verwendung von MEC.\cite{patelContributorHuaweiVice}
 \subsection{Cloud-Gaming, Remote Desktop}
 \label{subsec:Cloud-Gaming}
-Computer Spiele werden immer populärer, aber die meisten Online Multiplayer Spiele benötigen eine geringe 
-Latenz über das Netzwerk. Dies ist meistens nicht für mobile Endgeräte möglich, da sich die Server nicht im \acrshort{ran} befindet und so
+Computerspiele werden immer populärer, die meisten Online-Multiplayer Spiele benötigen allerdings eine geringe 
+Latenz über das Netzwerk. Dies ist meistens nicht für mobile Endgeräte möglich, da sich die Server nicht im \acrshort{ran} befinden und so
 nicht in der Nähe des Endgerätes.
 \\
 \\
-Bringt man die Spielserver in die Nähe des Funknetzes, ermöglicht dies das spielen von Spielen die eine geringe Latenz benötigen
-für mobile Nutzer. 
+Bringt man die Spielserver in die Nähe des Funknetzes, ermöglicht dies das Spielen von Spielen, die nur mit einer geringen Latzenzeit 
+für mobile Nutzer spielbar sind.
 Die Verwendung ist dabei nicht auf Spiele beschränkt und kann auch für andere Anwendungen von Vorteil sein, 
 die eine geringe Latenz erfordern. Beispielsweise können durch die geringe Latenz mobile Endgeräte mit \textit{Remote Desktop} auf
-Virtuelle Maschinen zugreifen und benötigen so keine lokale Rechenressourcen. Dies erlaubt Tablets mit wenig Rechenleistung als 
+virtuelle Maschinen zugreifen und benötigen so keine lokale Rechenressourcen. Dies erlaubt Tablets mit wenig Rechenleistung als 
 \textit{Thin Client} sich mit geringer Latenz mit einer \acrshort{vm} zu verbinden.
-Es kann sich ein oder mehrere Nutzer mit der VM auf dem Server verbinden. 
+Es können sich ein oder mehrere Nutzer mit der VM auf dem Server verbinden. 
 Der Nutzer startet für das Verbinden
-die Anwendung lokal auf dem Endgerät und diese Verbindet sich mit der Cloud. Nutzen mehrere Benutzer eine Anwendungs Instanz auf dem 
+die Anwendung lokal auf dem Endgerät und diese verbindet sich mit der Cloud. Nutzen mehrere Benutzer eine Anwendungsinstanz auf dem 
 gleichen MEC-HOST, ist die Latenz auch unter den Nutzern geringer. Bei einem Onlinespiel ist die Verzögerung zwischen zwei Spielern
-auf dem gleichen Server sehr gering. Wird eine Remote-Desktop anwendung von mehreren Nutzern in dem gleichen MEC-Host verwendet, 
+auf dem gleichen Server sehr gering. Wird eine Remote-Desktop-Anwendung von mehreren Nutzern in dem gleichen MEC-Host verwendet, 
 ist die Latenz gering und die Bandbreite groß. 
-So können zu für kolaborative Arbeiten beispielsweise große Datein mit hoher Bandbreite geteilt werden, oder kolaborative Programme wie
+So können für kollaborative Arbeiten beispielsweise große Datein mit hoher Bandbreite geteilt werden, oder kollaborative Programme wie
 ein geteiltes Whiteboard mit geringer Latenz genutzt werden, auch wenn die Nutzer mobil sind. \cite{etsiMultiaccessEdgeComputing}
 \\
 \\
-Benötigen die Anwendungen eine geringe Latenz, kann auch das Rendern der Videospiele oder Virtuellen Maschine auf dem MEC-Host 
+Benötigen die Anwendungen eine geringe Latenz, kann auch das Rendern der Videospiele oder virtuellen Maschinen auf dem MEC-Host 
 durchgeführt werden. Die Endgeräte decodieren dann nur den Videostream der MEC-Anwendungen und senden die Steuerungseingaben in die Cloud.
 Gerade bei Spielen reichen dann \textit{Thin Clients} aus und es werden keine leistungsstarke lokale Ressourcen benötigt. 
-Dies ermöglicht das spielen von grafikintensiven Online-Spielen auf Smartphones. \cite{chinamobileztePoweredSA5G}
+Dies ermöglicht das Spielen von grafikintensiven Online-Spielen auf Smartphones. \cite{chinamobileztePoweredSA5G}
 \\
 \\
 Wenn sich ein \acrshort{ue} mit einem Funkknoten verbindet, der nicht demselben MEC-Host zugeordnet ist, 
-auf dem die Anwendung ausgeführt wird (z. B. nachdem sich das Endgerät von dem wegbewegt hat), 
+auf dem die Anwendung ausgeführt wird (z. B. nachdem sich das Endgerät von dem Host wegbewegt hat), 
 muss sichergestellt sein, dass die Konnektivität zwischen dem \acrshort{ue} und der Anwendung aufrechterhalten wird. 
 Um die Latenzanforderungen und damit eine gute Benutzererfahrung aufrechtzuerhalten, 
 muss der \acrshort{meo} die Anwendung auf einen anderen MEC-Host, der in der Nähe des \acrshort{ue}s ist, verschieben. 
-Dabei ist es wichtig, dass die Verbindung aufrechterhalten wird. Gerade bei dem mobilen spielen von Online-Spielen
-ist dieser Schritt sehr wichtig, da es zu frustrierenden Benuzung kommt. \cite{etsiETSIGSMEC} 
+Dabei ist es wichtig, dass die Verbindung aufrechterhalten wird. Gerade beim mobilen spielen von Online-Spielen
+ist dieser Schritt sehr wichtig, da dies frustrierend für den Benutzer sein kann. \cite{etsiETSIGSMEC} 
 \\
 \\
 Aktuell werden Cloud-Gaming-Services wie Googles \textit{Stadia} immer verbreiteter. Das Streamen von Videospielen ist
-allerdings nur im Heimnetzwerk möglich. 5G und MEC könnten es ermöglichen auch von Mobilen Endgeräten Cloud-Gaming-Services zu Nutzen,
+allerdings nur im Heimnetzwerk möglich. 5G und MEC könnten es ermöglichen, auch von mobilen Endgeräten Cloud-Gaming-Services zu nutzen
 und die Latenz zu verbessern. \cite{etsiMultiaccessEdgeComputing}
-\subsection{Smart Cities}
+\subsection{Smar-Cities}
 \label{subsec:Smart Cities}
-In einer Smart City werden Technologien aus den Bereichen Energie, Mobilität, Stadtplanung, 
+In einer Smart-City werden Technologien aus den Bereichen Energie, Mobilität, Stadtplanung, 
 Verwaltung und Kommunikation so miteinander vernetzt, dass sich die Lebensqualität für die Bewohner verbessert. 
 Gleichzeitig profitiert die Nachhaltigkeit der Stadt. Dies wird immer wichtiger, da die Bevölkerungszahlen in 
 Städten immer weiter zunehmen.
@@ -860,76 +863,76 @@ exponentiellen Zunahme der Daten, die von verschiedenen Geräten wie Smartphones
 vor weitere Herausforderungen stellen. 
 \\
 \\
-Die Vielzahl von Daten die von einer Smart-City generiert werden müssen verarbeitet und ausgewertet werden. Dies kann durch lokalen Rechenressourcen
-direkt an der Datenquelle durchgeführt werden, was aber sehr teuer ist und praktikabel ist. 
+Die Vielzahl von Daten, die von einer Smart-City generiert werden müssen verarbeitet und ausgewertet werden. Dies kann durch lokale Rechenressourcen
+direkt an der Datenquelle durchgeführt werden, was sehr teuer und unpraktikabel ist. 
 Um die Notwendigkeit von dedizierter teurer Computerhardware zu beseitigen, wurde Cloud-Computing eingeführt. Cloud-Computing führt allerdings
-zu einer hohen Latenz was gerade im Kontext von Smart-Cities die Vielzahl von Echtzeitdaten generieren nicht optimal ist.
+zu einer hohen Latenz, was gerade im Kontext von Smart-Cities nicht optimal ist, da diese die Vielzahl von Echtzeitdaten generieren.
 Des Weiteren belastet Cloud-Computing das gesamte Netzwerk der Stadt. 
-Wenn die Rechenleistung näher an der Datenquelle liegt, könnenn die Daten mithilfe von Edge-Computing und 5G schneller analysieret
-und auf Anfragen geantwortet werden, ohne das gesamteNetz zu belasten.
+Wenn die Rechenleistung näher an der Datenquelle liegt, können die Daten mithilfe von Edge-Computing und 5G schneller analysieret
+und auf Anfragen beantwortet werden, ohne das gesamte Netz zu belasten.
 \\
 \\
-Die Verwendung von Kameras in einer Smart-City ist vorallem durch die Verfügbar Bandbreite eingeschränkt. 
+Die Verwendung von Kameras in einer Smart-City ist vor allem durch die verfügbare Bandbreite eingeschränkt. 
 Hochauflösende Lifestreams von Kameras erfordern viele Ressourcen für die Analyse und viel Speicherplatz. 
 Dies macht das Einsetzen von HD-Kameras unter den gegenwärtigen Bedingungen schwierig.
-Das Einsetzen von \acrlong{mec} kann dies ändern. Ein MEC-Systems ermöglicht das schnelle analysieren und auswerten von
-Videoinformationen und Speichern im MEC-HOST, in der Nähe der Kamera. Gleichzeitig ermöglicht  5G eine geringe Latenz und eine 
-hohe Datenrate. Durch die gewonnene Mobilität, ist es beispielsweise möglich das Kameras von Polizisten und Polizistinnen über das 5G Netz
+Das Einsetzen von \acrlong{mec} kann dies ändern. Ein MEC-System ermöglicht das schnelle analysieren und Auswerten von
+Videoinformationen und das Speichern von diesem im MEC-Host, in der Nähe der Kamera. Gleichzeitig ermöglicht 5G eine geringe Latenz und eine 
+hohe Datenrate. Durch die gewonnene Mobilität ist es beispielsweise möglich, das die Kameradaten von Polizisten und Polizistinnen über das 5G-Netz
 übertragen und in Echtzeit ausgewertet werden. Die Firma \textit{Dragon Law Enforcement} arbeitet aktuell an einer Spracherkennung.
 Diese passt sich den Akzenten an und reduziert den Lärm, um den Beamten dabei zu helfen, 
 Protokolle sehr genau und effizient zu erstellen. \cite{5GGivingLaw}
 \\
 \\
-Ein weiter Use-Case im Bereich Smart-City ist die \textit{Vehicle-to-Infrastructure} Kommunikation.
+Ein weiterer Use-Case im Bereich Smart-City ist die \textit{Vehicle-to-Infrastructure}-Kommunikation.
 Bei der Vehicle-to-Infrastructure werden Daten vom Fahrzeug und Sensoren an eine Infrastruktur gesendet, um die Sicherheit zu erhöhen und 
 Risikosituatonen frühzeitig zu erkennen. 
 Die Kommunikation zwischen Fahrzeug und der Infrastruktur erfordert eine geringe Latenz, 
-die je nach Anwenungsfall unter 10 ms liegen muss. 
-Gefahrenmeldungen wie Unfälle, stehengebliebene Fahrzeuge oder ein Stau können in in Echtzeit über 5G übertragen werden.
-MEC kann hier eingesetzt werden, um die Fahrzeuge mit einer verteilten Cloud zu verbinden. So können MEC Anwendungen auf den MEC-Host 
+die je nach Anwendungsfall unter 10 ms liegen muss. 
+Gefahrenmeldungen wie Unfälle, stehengebliebene Fahrzeuge oder ein Stau können in Echtzeit über 5G übertragen werden.
+MEC kann hier eingesetzt werden, um die Fahrzeuge mit einer verteilten Cloud zu verbinden. So können MEC-Anwendungen auf den MEC-Host 
 gehostet werden, die Daten aus Fahrzeugen und Sensoren analysiert. Wird eine Gefahr erkannt, kann der MEC-Host dies mit einer
 geringen Latenz an andere Fahrzeuge Broadcasten. 
 Dies ermöglicht einem smarten Auto innerhalb von Millisekunden Daten zu empfangen, 
 sodass der Fahrer auf eine Gefahr reagieren und ausweichen kann.
 \\
 \\
-Besonders für die \textit{Vehicle-to-Infrastructure} Kommunikation eignet sich ein MEC-System. Da Fahrzeuge mobil sind, wechseln sie
+Besonders für die \textit{Vehicle-to-Infrastructure}-Kommunikation eignet sich ein MEC-System. Da Fahrzeuge mobil sind, wechseln sie
 oft den Netzwerkknoten. Das MEC-System ist für so eine Mobilitätsaufgabe ausgelegt. Gerade bei diesem Use-Case betreibt 
-jeder MEC-Host die gleiche Anwendung. Beispielsweise eine Anwendung zur Analyse der Fahrzeugdaten. Das macht das wechseln von MEC-Hosts sehr effizient,
+jeder MEC-Host die gleiche Anwendung, beispielsweise eine Anwendung zur Analyse der Fahrzeugdaten. Das macht das Wechseln von MEC-Hosts sehr effizient,
 da kein Image geladen werden muss und die Anwendung auf dem Ziel-MEC schon läuft. Bei einer Gefahrensituation ist es wichtig, dass die
-umliegenden Fahrzeuge schnell Benachrichtigt werden. Da aufgrund der geographischen Lage die Fahrzeuge mit dem gleichen MEC-Host
-kommunizieren, wie das Fahrzeug das eine Gefahr erkannt hat, ist das Benachrichtigen mit einer geringer Latenz möglich. 
+umliegenden Fahrzeuge schnell benachrichtigt werden. Da aufgrund der geographischen Lage die Fahrzeuge mit dem gleichen MEC-Host
+kommunizieren, wie das Fahrzeug, das eine Gefahr erkannt hat, ist das Benachrichtigen mit einer geringer Latenz möglich. 
 \\
 \\
-Auch für die \textit{Vehicle-to-Vehicle} Kommunikation eignet sich MEC. Die Daten eines Fahzeuges können mit geringer Latenz
-an einen MEC-Host gesendet werden, analysiert und an andere Fahrzeuge im gleichen MEC-host weitergeleitet werden.
+Auch für die \textit{Vehicle-to-Vehicle}-Kommunikation eignet sich MEC. Die Daten eines Fahrzeuges können mit geringeren Latenz
+an einen MEC-Host gesendet, analysiert und an andere Fahrzeuge im gleichen MEC-host weitergeleitet werden.
 \subsection{Smart-Factory}
 Die Smart-Factory steht im Mittelpunkt der Industrie 4.0 und bezeichnet eine Produktionsumgebung, die sich selbst organisiert. 
 Zur Produktionsumgebung gehören die Fertigungsanlagen und die Logistiksysteme. Die Produktionsumgebung ist automatisiert und erfordert
 nicht das Eingreifen eines Menschens. 
-Im Mittelpunkt einer Smartfactory steht die intelligente Vernetzung von Maschinen und das hergestellte Produkt. 
-Das Produkt teilt die für die Fertigung benötigten Informationen der Smart Factory mit. 
+Im Mittelpunkt einer Smart-Factory steht die intelligente Vernetzung von Maschinen und das hergestellte Produkt. 
+Das Produkt teilt der Smart-Factory die für die Fertigung benötigten Informationen mit. 
 Anhand dieser Informationen stellen sich die Maschinen automatisch ein, um das gewünschte Produkt zu fertigen. 
 In vielen Fällen findet dafür eine drahtlose Kommunikation zwischen Produkten und Anlagen statt.  \cite{gundall5GEnablerIndustrie2018}
 \\
 \\
-Für die Smart-Factoy bietet sich ein MEC-System an. 5G besitzt die Möglichkeit eines Privaten Netzes. 
-So kann ein Netzwerk \textit{On-permise} bie einem Unternehmen zu Verfügung gestellt werden. 
+Für die Smart-Factoy bietet sich ein MEC-System an. 5G besitzt die Möglichkeit eines privaten Netzes. 
+So kann ein Netzwerk \textit{nn-permise} bei einem Unternehmen zur Verfügung gestellt werden. 
 Maschinen und Produkte können Daten via 5G an MEC-Hosts senden.
-Ein Smart Factory besteht aus einer Vielzahl von \acrfull{iot} Geräten. Dide Menge an Daten die dadruch 
-generiert wird, kann nicht über das \acrshort{wan} zu einer zentralen Cloud gesendet werden. Ein MEC-System ist reduziert die Latenz
+Eine Smart-Factory besteht aus einer Vielzahl von \acrfull{iot} Geräten. Die Menge an Daten, die dadurch 
+generiert wird, kann nicht über das \acrshort{wan} zu einer zentralen Cloud gesendet werden. Ein MEC-System reduziert die Latenz
 und die Auswirkungen auf das Netzwerk. Des Weiteren wird die Sicherheit erhöht, da die Daten lokal bleiben und nicht über 
 das \acrshort{wan} versendet werden. Auf dem MEC-Host können die Daten der \acrshort{iot} Geräte in Echtzeit analysiert werden. Beispielsweise können
-Maschine Learning Modelle für die Optimierung der Produktion eingesetzt werden. Der MEC-Host, kann die ankommenden Daten auch filtern und Entscheidungen über
+Maschine Learning Modelle für die Optimierung der Produktion eingesetzt werden. Der MEC-Host kann die ankommenden Daten auch filtern und Entscheidungen über
 die Relevanz der ankommenden Daten treffen. Nur die relevanten Daten können dann zu einer zentralen Cloud weitergeleitet werden. Die Vorauswahl der Daten entlastet
-das Netz und verursacht weniger kosten.
+das Netz und verursacht weniger Kosten.
 \\
 \\
 Eine mögliche Anwendung für MEC in einer Smart-Factory ist das Einsetzen von Kameras zur Qualitätssicherung.
-Für das Erkennen von fehlern in Produktionsteilen, müssen hochauflösende Kameras verwendet werden. Der hohe Datenstrom
-kann über 5G an den MEC-Host gesendet werden. Dieser analyisiert das Bildmaterial auf fehler. Wird ein fehler erkannt,
-kann der MEC-Host andere Maschine benachrichtigen, die das beschädigte Teil entfernt. Je nach der Geschwindigkeit der Produktion,
-es wichtig das dies mit einer geringen Latenz passiert. \cite{etsiMultiaccessEdgeComputing}
+Für das Erkennen von Fehlern in Produktionsteilen müssen hochauflösende Kameras verwendet werden. Der hohe Datenstrom
+kann über 5G an den MEC-Host gesendet werden. Dieser analyisiert das Bildmaterial auf fehler. Wird ein Fehler erkannt,
+kann der MEC-Host eine andere Maschine benachrichtigen, die das beschädigte Teil entfernt. Je nach der Geschwindigkeit der Produktion
+es wichtig, dass dies mit einer geringen Latenz passiert. \cite{etsiMultiaccessEdgeComputing}
 \\
 \\
 Huawai arbeitet zusammen mit China Mobile an einer \textit{5G Connected Factory}. Hier soll die Anlage mithilfe 
@@ -938,30 +941,30 @@ einer Edge Cloud die Produktion verbessern und über Kameras Fehler erkennen. \c
 \newpage
 
 \section{Fazit und Ausblick}
-Diese Seminararbeit gibt ein Überblick über die MEC-Technologien. Es wurden erläutert wie die 
+Diese Seminararbeit gibt einen Überblick über die MEC-Technologien. Es wurde erläutert, wie die 
 zugrunde liegenden
 Technologien wie \acrshort{sdn}, \acrshort{nfv}, \acrshort{nfvi}, Network-Slicing und \acrshort{cups}
-dem 5G Netzwerk helfen, die Latenz von MEC-Anwendungen zu verringern, was gleichzeitig die Nutzung der
+dem 5G-Netzwerk helfen, die Latenz von MEC-Anwendungen zu verringern, was gleichzeitig die Nutzung der
 Netzwerkressourcen optimiert und so die Benutzererfahrung verbessert. In dieser Arbeit wurde auch gezeigt, 
-wie das MEC-Framework und die MEC-Referenz Architektur mit Herausforderungen wie die Mobilität des Benutzers
-umgehen. Dabei wurde ausführlich auf die Integration von MEC in das 5G Netzwerk eingegangen.
+wie das MEC-Framework und die MEC-Referenzarchitektur mit Herausforderungen wie die Mobilität des Benutzers
+umgehen. Dabei wurde ausführlich auf die Integration von MEC in das 5G-Netzwerk eingegangen.
 \\
 \\
 Früher als Mobile Edge Computing bekannt, ist Multi-Access Edge Computing eine der 
 wichtigsten Säulen für 5G und  definitiv eine der vielversprechendsten Technologien, 
-um Cloud-basierte Anwendungen und Dienste in das Geschäft von Netzbetreibern zu integrieren.
+um cloud-basierte Anwendungen und Dienste in das Geschäft von Netzbetreibern zu integrieren.
 MEC ist eine der wichtigsten Technologien für 5G-Systeme, 
-da es zu einer geringen Latenz und zur Kapazitätsverbesserung und Kernnetzwerk führt. 
+da es zu einer geringen Latenz und zur Kapazitätsverbesserung und des Kernnetzwerk führt. 
 \\
 \\
-\acrlong{etsi} hat eine Vielzahl von MEC-Standards veröffentlicht,die eine Cloud-Umgebung am Rand des 
-Netzwerkes ermöglicht. Der Erfolg von 5G hängt im wesentlichen von der Ausrichtung der Technologien ab.
-\acrshort{etsi} definiert ausführlich die Managemen- und Orchestrierungssysteme für den Lifecyclemanagement der 
-Anwendungen sowie deren Mobilität. Darüber hinaus sind die API Schnittstelle der Services und die Integration
+\acrlong{etsi} hat eine Vielzahl von MEC-Standards veröffentlicht, die eine Cloud-Umgebung am Rand des 
+Netzwerkes ermöglichen. Der Erfolg von 5G hängt im wWsentlichen von der Ausrichtung der Technologien ab.
+\acrshort{etsi} definiert ausführlich die Management- und Orchestrierungssysteme für das Lifecyclemanagement der 
+Anwendungen sowie deren Mobilität. Darüber hinaus wurde die API Schnittstelle der Services und die Integration
 von MEC in 5G ausführlich definiert. 
 
 \subsection{Ausblick}
-Neben dem Ausbau des 5G Netzes, ist bei der Einführung von \textit{MEC} Systemen, 
+Neben dem Ausbau des 5G-Netzes, ist bei der Einführung von \textit{MEC}-Systemen
 die Standardisierung sehr wichtig.  \cite{abdullahSegmentRoutingSoftware21}
 \subsection{Angebote}
 \label{subsec:Angebote}
